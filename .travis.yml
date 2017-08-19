@@ -1,0 +1,21 @@
+addons:
+  apt:
+    packages:
+    - g++-4.8
+    sources:
+    - ubuntu-toolchain-r-test
+before_deploy: echo 'Ok! Time to deploy. Ready?'
+deploy:
+  api_key:
+    secure: amdt1qBe0/Mi5x0reZ9drGU6WybYLX9wauHnJYCWkf4QH95y4bwUrHtUXfwtq9QEHgWB3KEUcpCvu5AJLdNXXeDnj5La+7wAJP9LHUlcY1RL3wrs6HaRavD6+hilUBMR8CufmkQjlTb+t0Lvk+QqXiesGCCINVfV3BQq0kwcykvAr3YJHVRpYW9/WQ5eH+H8cH7GHoc6HNt6JkNM+7wOdntygZZIcNBR3Y2x5YRD9Ozv/yVgpaVj8bgULFXfhsAIQBu1+/5BkiUHImcSxkfl+lkASTWdjjCiizsZwtqgtKEF0R5/IUOjGSLQKfrjS+08sCksjDKeCQrLsvEHNmvUiT4eH40RwEOGgL3VkDxuEorO72TcNKnWsn4Hswsnn9nbivPWXCEb/I2jRL1gnDXbPVN4eViPkJ8DW5T4J5/2wxI4icyF9cUQ3p7LfZhLnmArmV+vJ7O5mYQFjCJfaYAh3J34SKHIw0L2TER3AZC5hw1FFORaNt5LrItZuhkVUwPtLLbeKL+UD+wMe3qBe5zQeF9Zw1bHKPcCql17J/AM1Ar1aq7JzwBxQlsDDgiiGM3rHIsAmkwxIIhXiOGLDds3Ym4f5Bb/7UTL328B32qTqjk5vNOaZAI5nLLcQIWhSljafAJwSd69sse7bVHKAfHqt/84/EGeb0Dv0+0+bZ4mFw4=
+  app:
+    develop: proyecto1avanzadas
+  provider: heroku
+env:
+- CXX=g++-4.8
+language: node_js
+node_js:
+- 6
+script:
+- npm install
+- npm test

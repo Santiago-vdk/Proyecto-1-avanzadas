@@ -1,0 +1,36 @@
+{
+  "name": "proyecto1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"No test specified\" && exit 0",
+    "dev": "grunt"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Santiago-vdk/Proyecto-1-avanzadas.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Santiago-vdk/Proyecto-1-avanzadas/issues"
+  },
+  "homepage": "https://github.com/Santiago-vdk/Proyecto-1-avanzadas#readme",
+  "dependencies": {
+    "body-parser": "latest",
+    "compression": "latest",
+    "cookie-parser": "latest",
+    "express": "latest",
+    "method-override": "latest",
+    "node-gyp": "latest",
+    "sequelize": "latest"
+  },
+  "devDependencies": {
+    "mocha": "latest",
+    "nodemon": "latest",
+    "supertest": "latest",
+    "grunt": "latest",
+    "grunt-nodemon": "latest"
+  }
+}
