@@ -12,3 +12,6 @@ Según el nombre en el Heroku CLI
 encircled:  para HELLedia  
 globular:   para Chepe  
 shaped:     para Alajuela  
+
+
+##### [Crow's foot](https://www.lucidchart.com/invitations/accept/a1c235e1-4453-43e0-90bd-42fd88376179)
