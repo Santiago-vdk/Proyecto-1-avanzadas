@@ -24,7 +24,8 @@
     "express": "latest",
     "method-override": "latest",
     "node-gyp": "latest",
-    "sequelize": "latest"
+    "sequelize": "latest",
+    "pg-promise": "latest"
   },
   "devDependencies": {
     "mocha": "latest",
