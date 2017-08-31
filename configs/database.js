@@ -1,5 +1,23 @@
+var pgp = require('pg-promise')(getInitOptions());
+var databaseHeredia = pgp(getDatabaseHeredia());
+var databaseSanjose = pgp(getDatabaseSanjose());
+var databaseAlajuela = pgp(getDatabaseAlajuela());
+
+function getDb(destino) {
+  if (destino.localeCompare("heredia") === 0) {
+    return databaseHeredia;
+  } else if (destino.localeCompare("sanjose") === 0) {
+    return databaseSanjose
+  } else if (destino.localeCompare("alajuela") === 0) {
+    return databaseAlajuela
+  } else {
+    return databaseHeredia
+  }
+}
+
 function getDatabaseHeredia(){
   return process.env.HEREDIA_URL || "postgres://yvqvdymfvliyiv:165a99f18f665f8e3c207c0e2c648b4e91ebb603f17f637855730f196039fac4@ec2-184-73-247-240.compute-1.amazonaws.com:5432/d7tbu4eh46j6i?ssl=true";
+
 }
 
 function getDatabaseSanjose(){
@@ -19,6 +37,10 @@ function getInitOptions(){
   return initOptions;
 }
 
+function getPgp() {
+  return pgp;
+}
+
 module.exports = {
     getDatabaseHeredia: function () {
         return getDatabaseHeredia();
@@ -31,5 +53,11 @@ module.exports = {
     },
     getInitOptions: function () {
       return getInitOptions();
+    },
+    getDb: function (destino) {
+      return getDb(destino);
+    },
+    getPgp: function () {
+      return getPgp();
     }
 };
