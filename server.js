@@ -8,7 +8,6 @@ const methodOverride = require('method-override');
 const compression = require('compression');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const pg = require('pg');
 
 //Configs
 const port = process.env.PORT || 5000;
