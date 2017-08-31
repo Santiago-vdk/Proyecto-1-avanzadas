@@ -1,16 +1,18 @@
 global.mainDir= __dirname;
 
 //Server & app
-var express = require('express');
-var app = express();
+const express = require('express');
+const app = express();
 
-var methodOverride = require('method-override');
-var compression = require('compression');
-var bodyParser = require('body-parser');
-var cookieParser = require('cookie-parser');
+const methodOverride = require('method-override');
+const compression = require('compression');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const pg = require('pg');
 
 //Configs
-var port = process.env.PORT || 5000;
+const port = process.env.PORT || 5000;
+
 app.use(compression());
 app.use(express.static(__dirname + '/public'));
 app.use(cookieParser());
@@ -20,7 +22,7 @@ app.use(bodyParser.json({
 app.use(methodOverride());
 
 //Pasar app a las rutas
-var routes = require('./routes');
+const routes = require('./routes');
 routes.set(app);
 
 module.exports = app;
