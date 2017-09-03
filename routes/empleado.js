@@ -2,22 +2,19 @@ module.exports.set = function(app) {
   var direccionador = require('../logic/direccionador');
   var databaseConfig = require('../configs/database');
   var pgp = databaseConfig.getPgp();
-
-
-  app.get('/api/v1/tienda', function(req, res) {
+  app.get('/api/v1/empleado', function(req, res) {
     var destino = req.query.origin || "heredia";
 
     // Default siempre desde heredia
-    const columns = ['id','id_sucursal','nombre'];
-    databaseConfig.getDb(destino).query('SELECT ${columns^} FROM tienda', {
+    const columns = ['id','id_tienda','id_puesto',"nombre"];
+    databaseConfig.getDb(destino).query('SELECT ${columns^} FROM empleado', {
         columns: columns.map(pgp.as.name).join(),
         table: 'Table Name'
       }).then(data => {
         console.log(data); // printing the data returned
-
         res.status(200).json({
           status: "success",
-          data: data
+          data:data
         });
       })
       .catch(error => {
@@ -32,13 +29,13 @@ module.exports.set = function(app) {
   });
 
 
-  app.get('/api/v1/tienda/:id?', function(req, res) {
+  app.get('/api/v1/empleado/:id?', function(req, res) {
 
     var destino = req.query.origin || "heredia";
 
     // Default siempre desde heredia
-    const columns = ['id','id_sucursal','nombre'];
-    databaseConfig.getDb(destino).query('SELECT ${columns^} FROM tienda WHERE id=id', {
+    const columns = ['id','id_tienda','id_puesto',"nombre"];
+    databaseConfig.getDb(destino).query('SELECT ${columns^} FROM empleado', {
         columns: columns.map(pgp.as.name).join(),
         table: 'Table Name'
       }).then(data => {
