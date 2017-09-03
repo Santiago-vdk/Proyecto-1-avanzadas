@@ -1,0 +1,36 @@
+<!-- Page Content -->
+<div class="container">
+
+  <div class="row">
+
+    <div class="col-lg-3" ng-if="isHeredia()">
+      <h1 class="my-4">Administrador</h1>
+      <h5 class="my-4">Consultas Disponibles</h5>
+      <div class="list-group">
+        <a href="#" ng-click="consulta1()" class="list-group-item">Monto de ventas por tienda para un período específico</a>
+        <a href="#" class="list-group-item">Monto de ventas por tienda y por producto para un período específico</a>
+        <a href="#" class="list-group-item">Listado de los tres mejores clientes en un período específico</a>
+      </div>
+    </div>
+
+
+    <div class="col-lg-9">
+
+      <br />
+
+
+      <div class="row" ui-view="consultas">
+
+
+
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+</div>

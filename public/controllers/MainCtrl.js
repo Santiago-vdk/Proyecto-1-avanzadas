@@ -1,6 +1,9 @@
-angular.module('MainCtrl', []).controller('MainController', ['$scope',  function($scope) {
+angular.module('MainCtrl', []).controller('MainController', ['$rootScope', '$scope', function($rootScope, $scope) {
 
-$scope.test = "This works";
+  $rootScope.origin = "heredia";
 
+  $scope.updateOrigin = function(origin) {
+    $rootScope.origin = origin
+  }
 
 }]);

@@ -27,6 +27,15 @@ angular.module('appRoutes', []).config(['$stateProvider', '$locationProvider', '
     url: '/administradores',
     templateUrl: 'views/administradores.html',
     controller: 'AdministradoresController'
+
+  }).state('consulta1', {
+    parent: 'administradores',
+    views: {
+      'consultas@administradores': {
+        templateUrl: 'views/consulta1.html',
+        controller: 'AdministradoresController'
+      }
+    }
   });
 
 

@@ -1,24 +1,27 @@
-angular.module('VentasService', []).factory('Ventas', ['$http', function($http) {
+angular.module('VentasService', []).factory('Ventas', ['$rootScope', '$http', function($rootScope, $http) {
 
   return {
     getVentas: function(limit, offset) {
-
-      return $http.get('/api/v1/venta/').then(function(data) {
+      return $http.get('/api/v1/venta?origin=' + $rootScope.origin).then(function(data) {
         return data;
       }).catch(function(err) {
-        return err;
+        throw err;
       });
     },
 
     getVentaById: function(id) {
-      return $http.get('/api/v1/venta/' + id).then(function(data) {
+      return $http.get('/api/v1/venta/' + id + '?origin='+ $rootScope.origin).then(function(data) {
         return data;
+      }).catch(function(err) {
+        throw err;
       });
     },
 
     postVenta: function(data) {
-      return $http.post('/api/v1/venta', data).then(function(data) {
+      return $http.post('/api/v1/venta?origin=' + $rootScope.origin, data).then(function(data) {
         return data;
+      }).catch(function(err) {
+        throw err;
       });
     }
 
