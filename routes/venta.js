@@ -20,8 +20,22 @@ module.exports.set = function(app) {
       })
       .catch(error => {
         console.log(error); // printing the error
+        res.status(500).json({
+          status: "error",
+          data:data
+        });
       });
   });
+
+  app.post('/api/v1/venta', function (req, res) {
+
+    var monto = req.body.monto;
+    console.log(monto);
+    res.status(201).json({
+      status: "success",
+      data: req.body
+    });
+  })
 
 
   app.param('id', function(req, res, next, id) {
@@ -48,6 +62,10 @@ module.exports.set = function(app) {
       })
       .catch(error => {
         console.log(error); // printing the error
+        res.status(500).json({
+          status: "error",
+          data:data
+        });
       });
 
   });
