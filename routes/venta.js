@@ -23,6 +23,16 @@ module.exports.set = function(app) {
       });
   });
 
+  app.post('/api/v1/venta', function (req, res) {
+
+    var monto = req.body.monto;
+    console.log(monto);
+    res.status(201).json({
+      status: "success",
+      data: req.body
+    });
+  })
+
 
   app.param('id', function(req, res, next, id) {
     req.id = id;
