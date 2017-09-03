@@ -18,14 +18,14 @@
   },
   "homepage": "https://github.com/Santiago-vdk/Proyecto-1-avanzadas#readme",
   "dependencies": {
-    "body-parser": "latest",
+    "body-parser": "^1.17.2",
     "compression": "latest",
     "cookie-parser": "latest",
     "express": "latest",
     "method-override": "latest",
     "node-gyp": "latest",
-    "sequelize": "latest",
-    "pg-promise": "latest"
+    "pg-promise": "latest",
+    "sequelize": "latest"
   },
   "devDependencies": {
     "mocha": "latest",
