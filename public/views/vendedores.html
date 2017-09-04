@@ -1,0 +1,52 @@
+<!-- Page Content -->
+<div class="container">
+  <br />
+
+
+  <form name="formVenta">
+    <div class="form-group ">
+      <label class="control-label requiredField" for="name">
+       Identificador Cliente
+       <span class="asteriskField">
+        *
+       </span>
+      </label>
+      <input class="form-control" id="idCliente" ng-model="venta.idCliente"  name="idCliente" type="number" ng-required="true"/>
+    </div>
+    <div class="form-group ">
+      <label class="control-label requiredField" for="idTienda">
+       Identificador Tienda
+       <span class="asteriskField">
+        *
+       </span>
+      </label>
+      <input class="form-control" id="idTienda" ng-model="venta.idTienda" name="idTienda" type="number" ng-required="true" />
+    </div>
+    <div class="form-group ">
+      <label class="control-label requiredField" for="date">
+       Fecha
+       <span class="asteriskField">
+        *
+       </span>
+      </label>
+      <input class="form-control" id="fecha" ng-model="venta.fecha" name="fecha" placeholder="MM/DD/YYYY" type="date" ng-required="true" />
+    </div>
+    <div class="form-group ">
+      <label class="control-label requiredField" for="number">
+       Monto
+       <span class="asteriskField">
+        *
+       </span>
+      </label>
+      <input class="form-control" ng-model="venta.monto" id="monto" name="monto" type="number" ng-required="true" />
+    </div>
+    <div class="form-group">
+      <div>
+        <button class="btn btn-primary " name="submit" ng-click="formVenta.$valid && agregarVenta(venta)" type="submit">
+        Submit
+       </button>
+      </div>
+    </div>
+  </form>
+
+</div>

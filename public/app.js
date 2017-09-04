@@ -2,6 +2,12 @@ var app = angular.module('app', [
   'ui.router',
   'appRoutes',
   // Controladores
-  'MainCtrl'
+  'MainCtrl',
+  'AdministradoresCtrl',
+  'VendedoresCtrl'
+
+  // Servicios
+
+  , 'VentasService'
 
 ]);
