@@ -32,4 +32,4 @@ ds.discoverModelDefinitions({Views:true, limit:20}, function(errs, models){
 	});
 
 
-ds.discoverSchema("cliente", {owner: 'public'}, cb);
+ds.discoverSchema("venta", {owner: 'public'}, cb);

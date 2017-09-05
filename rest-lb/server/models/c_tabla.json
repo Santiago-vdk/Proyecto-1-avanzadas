@@ -1,0 +1,33 @@
+{
+  "name": "c_tabla",
+  "plural":"c_tablas",
+  "base": "PersistedModel",
+  "options": {
+    "idInjection": true,
+    "postgresql": {"schema":"public", "table":"cambio_tabla"}
+  },
+  "properties": {
+    "id": {
+      "id" : true,
+      "type": "number",
+      "required": true,
+      "length": null,
+      "precision": 16,
+      "scale": 0,
+      "postgresql": ["Object"]
+    },
+    "Nombre":
+    {
+       "type": "string",
+       "required": true,
+       "length": 15,
+       "precision": null,
+       "scale": null,
+       "postgresql": ["Object"]
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

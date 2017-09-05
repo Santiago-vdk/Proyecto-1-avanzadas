@@ -1,0 +1,51 @@
+{
+  "name": "venta_articulo",
+  "plural":"venta_articulos",
+  "base": "PersistedModel",
+  "options": {
+    "idInjection": true,
+    "postgresql": {"schema":"public", "table":"venta_articulo"}
+  },
+  "properties": {
+    "id": {
+      "id" : true,
+      "type": "number",
+      "required": true,
+      "length": null,
+      "precision": 32,
+      "scale": 0,
+      "postgresql": ["Object"]
+    },
+    "id_venta":
+    {
+       "type": "number",
+       "required": true,
+       "length": null,
+       "precision": 16,
+       "scale": 0,
+       "postgresql": ["Object"]
+    },
+    "id_articulo":
+    {
+       "type": "number",
+       "required": true,
+       "length": null,
+       "precision": 16,
+       "scale": 0,
+       "postgresql": ["Object"]
+    },
+    "activo":
+    {
+       "type": "boolean",
+       "required": true,
+       "length": null,
+       "precision": null,
+       "scale": null,
+       "postgresql": ["Object"]
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

@@ -1,0 +1,78 @@
+{
+  "name": "venta",
+  "plural":"ventas",
+  "base": "PersistedModel",
+  "options": {
+    "idInjection": true,
+    "postgresql": {"schema":"public", "table":"venta"}
+  },
+  "properties": {
+    "id": {
+      "id" : true,
+      "type": "number",
+      "required": true,
+      "length": null,
+      "precision": 32,
+      "scale": 0,
+      "postgresql": ["Object"]
+    },
+    "id_cliente":
+    {
+       "type": "number",
+       "required": true,
+       "length": null,
+       "precision": 32,
+       "scale": 0,
+       "postgresql": ["Object"]
+    },
+    "id_tienda":
+    {
+       "type": "number",
+       "required": true,
+       "length": null,
+       "precision": 16,
+       "scale": 0,
+       "postgresql": ["Object"]
+    },
+    "id_empleado":
+    {
+       "type": "number",
+       "required": true,
+       "length": null,
+       "precision": 16,
+       "scale": 0,
+       "postgresql": ["Object"]
+    },
+    "fecha":
+    {
+       "type": "string",
+       "required": true,
+       "length": null,
+       "precision": null,
+       "scale": null,
+       "postgresql": ["Object"]
+    },
+    "monto":
+    {
+       "type": "number",
+       "required": true,
+       "length": null,
+       "precision": 32,
+       "scale": 0,
+       "postgresql": ["Object"]
+    },
+    "activo":
+    {
+       "type": "boolean",
+       "required": true,
+       "length": null,
+       "precision": null,
+       "scale": null,
+       "postgresql": ["Object"]
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

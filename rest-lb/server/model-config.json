@@ -24,5 +24,41 @@
   "sucursal" : {
     "dataSource" : "sanjose",
     "public" : true
+  },
+  "empleado" : {
+    "dataSource" : "sanjose",
+    "public" : true
+  },
+  "puesto" : {
+    "dataSource" : "sanjose",
+    "public" : true
+  },
+  "articulo" : {
+    "dataSource" : "sanjose",
+    "public" : true
+  },
+  "tipo_articulo" : {
+    "dataSource" : "sanjose",
+    "public" : true
+  },
+  "venta_articulo" : {
+    "dataSource" : "sanjose",
+    "public" : true
+  },
+  "venta" : {
+    "dataSource" : "sanjose",
+    "public" : true
+  },
+  "tienda" : {
+    "dataSource" : "sanjose",
+    "public" : true
+  },
+  "log" : {
+    "dataSource" : "sanjose",
+    "public" : true
+  },
+  "c_tabla" : {
+    "dataSource" : "sanjose",
+    "public" : true
   }
 }

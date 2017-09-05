@@ -1,0 +1,51 @@
+{
+  "name": "log",
+  "plural":"log",
+  "base": "PersistedModel",
+  "options": {
+    "idInjection": true,
+    "postgresql": {"schema":"public", "table":"log_tabla"}
+  },
+  "properties": {
+    "id": {
+      "id" : true,
+      "type": "number",
+      "required": true,
+      "length": null,
+      "precision": 64,
+      "scale": 0,
+      "postgresql": ["Object"]
+    },
+    "id_tabla":
+    {
+       "type": "number",
+       "required": true,
+       "length": null,
+       "precision": 16,
+       "scale": 0,
+       "postgresql": ["Object"]
+    },
+    "fila_id":
+    {
+       "type": "number",
+       "required": true,
+       "length": null,
+       "precision": 32,
+       "scale": 0,
+       "postgresql": ["Object"]
+    },
+    "replicado":
+    {
+       "type": "boolean",
+       "required": true,
+       "length": null,
+       "precision": null,
+       "scale": null,
+       "postgresql": ["Object"]
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

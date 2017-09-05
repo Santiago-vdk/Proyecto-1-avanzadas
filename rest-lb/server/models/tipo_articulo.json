@@ -1,0 +1,42 @@
+{
+  "name": "tipo_articulo",
+  "plural":"tipos_articulo",
+  "base": "PersistedModel",
+  "options": {
+    "idInjection": true,
+    "postgresql": {"schema":"public", "table":"tipo_articulo"}
+  },
+  "properties": {
+    "id": {
+      "id" : true,
+      "type": "number",
+      "required": true,
+      "length": null,
+      "precision": 16,
+      "scale": 0,
+      "postgresql": ["Object"]
+    },
+    "Nombre":
+    {
+       "type": "string",
+       "required": true,
+       "length": 45,
+       "precision": null,
+       "scale": null,
+       "postgresql": ["Object"]
+    },
+    "activo":
+    {
+       "type": "boolean",
+       "required": true,
+       "length": null,
+       "precision": null,
+       "scale": null,
+       "postgresql": ["Object"]
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
