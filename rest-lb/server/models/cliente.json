@@ -1,0 +1,51 @@
+{
+  "name": "cliente",
+  "plural":"clientes",
+  "base": "PersistedModel",
+  "options": {
+    "idInjection": true,
+    "postgresql": {"schema":"public", "table":"cliente"}
+  },
+  "properties": {
+    "id": {
+      "id" : true,
+      "type": "number",
+      "required": true,
+      "length": null,
+      "precision": 32,
+      "scale": 0,
+      "postgresql": ["Object"]
+    },
+    "nombre":
+    {
+       "type": "string",
+       "required": true,
+       "length": 50,
+       "precision": null,
+       "scale": null,
+       "postgresql": ["Object"]
+    },
+    "apellidos":
+    {
+       "type": "string",
+       "required": true,
+       "length": 69,
+       "precision": null,
+       "scale": null,
+       "postgresql": ["Object"]
+    },
+    "activo":
+    {
+       "type": "boolean",
+       "required": true,
+       "length": null,
+       "precision": null,
+       "scale": null,
+       "postgresql": ["Object"]
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

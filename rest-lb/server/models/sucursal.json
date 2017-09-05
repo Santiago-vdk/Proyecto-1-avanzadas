@@ -1,0 +1,42 @@
+{
+  "name": "sucursal",
+  "plural":"sucursales",
+  "base": "PersistedModel",
+  "options": {
+    "idInjection": false,
+    "postgresql": {"schema":"public", "table":"sucursal"}
+  },
+  "properties": {
+    "id": {
+      "id" : true,
+      "type": "number",
+      "required": true,
+      "length": null,
+      "precision": 16,
+      "scale": 0,
+      "postgresql": ["Object"]
+    },
+    "nombre":
+    {
+       "type": "string",
+       "required": true,
+       "length": 25,
+       "precision": null,
+       "scale": null,
+       "postgresql": ["Object"]
+    },
+    "activo":
+    {
+       "type": "boolean",
+       "required": true,
+       "length": null,
+       "precision": null,
+       "scale": null,
+       "postgresql": ["Object"]
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

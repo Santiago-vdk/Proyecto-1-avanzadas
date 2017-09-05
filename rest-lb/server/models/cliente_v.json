@@ -1,0 +1,33 @@
+{
+  "name": "cliente_v",
+  "plural":"clientes_v",
+  "base": "PersistedModel",
+  "options": {
+    "idInjection": false,
+    "postgresql": {"schema":"public", "table":"cliente_v"}
+  },
+  "properties": {
+    "nombre": {
+      "id" : true,
+      "type": "string",
+      "required": false,
+      "length": 50,
+      "precision": null,
+      "scale": null,
+      "postgresql": ["Object"]
+    },
+    "apellidos":
+    {
+       "type": "string",
+       "required": false,
+       "length": 69,
+       "precision": null,
+       "scale": null,
+       "postgresql": ["Object"]
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

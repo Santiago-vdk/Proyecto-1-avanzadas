@@ -1,0 +1,32 @@
+{
+  "heredia": {
+    "host": "ec2-184-73-247-240.compute-1.amazonaws.com",
+    "port": 5432,
+    "url": "postgres://yvqvdymfvliyiv:165a99f18f665f8e3c207c0e2c648b4e91ebb603f17f637855730f196039fac4@ec2-184-73-247-240.compute-1.amazonaws.com:5432/d7tbu4eh46j6i?ssl=true",
+    "database": "d7tbu4eh46j6i",
+    "password": "165a99f18f665f8e3c207c0e2c648b4e91ebb603f17f637855730f196039fac4",
+    "name": "heredia",
+    "user": "yvqvdymfvliyiv",
+    "connector": "postgresql"
+  },
+  "sanjose": {
+    "host": "ec2-184-73-247-240.compute-1.amazonaws.com",
+    "port": 5432,
+    "url": "postgres://mudfivqcbzdrjx:c48df6c2c7fa8b19c15eb6e25d3940e578bd667a26d8671cdec5599085090168@ec2-184-73-247-240.compute-1.amazonaws.com:5432/d83cv10h0h3n6t?ssl=true",
+    "database": "d83cv10h0h3n6t",
+    "password": "c48df6c2c7fa8b19c15eb6e25d3940e578bd667a26d8671cdec5599085090168",
+    "name": "sanjose",
+    "user": "mudfivqcbzdrjx",
+    "connector": "postgresql"
+  },
+  "alajuela": {
+    "host": "ec2-184-73-247-240.compute-1.amazonaws.com",
+    "port": 5432,
+    "url": "postgres://cdupaxvqdzogjf:bf7c78dcc99b60541341c7c64a0ef4554db17ec49216086a870e80b494198085@ec2-184-73-247-240.compute-1.amazonaws.com:5432/ddtutf05cfihd2?ssl=true",
+    "database": "ddtutf05cfihd2",
+    "password": "bf7c78dcc99b60541341c7c64a0ef4554db17ec49216086a870e80b494198085",
+    "name": "alajuela",
+    "user": "cdupaxvqdzogjf",
+    "connector": "postgresql"
+  }
+}
