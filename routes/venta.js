@@ -19,11 +19,8 @@ module.exports.set = function(app) {
         });
       })
       .catch(error => {
-        console.log(error); // printing the error
-        res.status(500).json({
-          status: "error",
-          data:data
-        });
+        console.log("here",error); // printing the error
+        res.status(500).send();
       });
   });
 
@@ -62,10 +59,7 @@ module.exports.set = function(app) {
       })
       .catch(error => {
         console.log(error); // printing the error
-        res.status(500).json({
-          status: "error",
-          data:data
-        });
+        res.status(500).send();
       });
 
   });

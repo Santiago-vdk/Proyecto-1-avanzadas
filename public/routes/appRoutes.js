@@ -28,15 +28,68 @@ angular.module('appRoutes', []).config(['$stateProvider', '$locationProvider', '
     templateUrl: 'views/administradores.html',
     controller: 'AdministradoresController'
 
-  }).state('consulta1', {
+  }).state('ventasportiendaperiodo', {
     parent: 'administradores',
     views: {
       'consultas@administradores': {
-        templateUrl: 'views/consulta1.html',
+        templateUrl: 'views/administrativo/ventasportiendaperiodo.html',
         controller: 'AdministradoresController'
       }
     }
-  });
+  }).state('ventasportiendayproductoperiodo', {
+    parent: 'administradores',
+    views: {
+      'consultas@administradores': {
+        templateUrl: 'views/administrativo/ventasportiendayproductoperiodo.html',
+        controller: 'AdministradoresController'
+      }
+    }
+  }).state('mejoresclientesperiodo', {
+    parent: 'administradores',
+    views: {
+      'consultas@administradores': {
+        templateUrl: 'views/administrativo/mejoresclientesperiodo.html',
+        controller: 'AdministradoresController'
+      }
+    }
+  }).state('dineroRecaudado', {
+    parent: 'administradores',
+    views: {
+      'consultas@administradores': {
+        templateUrl: 'views/administrativo/dineroRecaudado.html',
+        controller: 'AdministradoresController'
+      }
+    }
+  }).state('pedidosClientePeriodo', {
+    parent: 'administradores',
+    views: {
+      'consultas@administradores': {
+        templateUrl: 'views/administrativo/pedidosClientePeriodo.html',
+        controller: 'AdministradoresController'
+      }
+    }
+  }).state('promedioComprasClientePeriodo', {
+    parent: 'administradores',
+    views: {
+      'consultas@administradores': {
+        templateUrl: 'views/administrativo/promedioComprasClientePeriodo.html',
+        controller: 'AdministradoresController'
+      }
+    }
+  }).state('ventaProductoMesParticular', {
+    parent: 'administradores',
+    views: {
+      'consultas@administradores': {
+        templateUrl: 'views/administrativo/ventaProductoMesParticular.html',
+        controller: 'AdministradoresController'
+      }
+    }
+  })
+
+
+
+
+  ;
 
 
   $urlRouterProvider.otherwise("/");
