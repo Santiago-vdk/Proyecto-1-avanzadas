@@ -3,7 +3,7 @@
 This is the place for your application front-end files.
 
 
-##Los cambios hechos fueron según:
+## Los cambios hechos fueron según:
 
 [Angular-example-app](https://loopback.io/doc/en/lb2/Angular-example-app.html)
 
