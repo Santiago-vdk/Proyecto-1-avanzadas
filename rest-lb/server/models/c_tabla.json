@@ -1,6 +1,6 @@
 {
   "name": "c_tabla",
-  "plural":"c_tablas",
+  "plural":"c_tabla",
   "base": "PersistedModel",
   "options": {
     "idInjection": true,

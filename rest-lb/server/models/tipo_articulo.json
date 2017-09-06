@@ -1,6 +1,6 @@
 {
   "name": "tipo_articulo",
-  "plural":"tipos_articulo",
+  "plural":"tipo_articulo",
   "base": "PersistedModel",
   "options": {
     "idInjection": true,

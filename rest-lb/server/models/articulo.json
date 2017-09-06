@@ -1,6 +1,6 @@
 {
   "name": "articulo",
-  "plural":"articulos",
+  "plural":"articulo",
   "base": "PersistedModel",
   "options": {
     "idInjection": true,

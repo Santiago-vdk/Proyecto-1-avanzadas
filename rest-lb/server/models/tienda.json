@@ -1,6 +1,6 @@
 {
   "name": "tienda",
-  "plural":"tiendas",
+  "plural":"tienda",
   "base": "PersistedModel",
   "options": {
     "idInjection": true,

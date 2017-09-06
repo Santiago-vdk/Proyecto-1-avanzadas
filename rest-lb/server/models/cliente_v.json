@@ -1,6 +1,6 @@
 {
   "name": "cliente_v",
-  "plural":"clientes_v",
+  "plural":"cliente_v",
   "base": "PersistedModel",
   "options": {
     "idInjection": false,

@@ -1,6 +1,6 @@
 {
   "name": "venta",
-  "plural":"ventas",
+  "plural":"venta",
   "base": "PersistedModel",
   "options": {
     "idInjection": true,

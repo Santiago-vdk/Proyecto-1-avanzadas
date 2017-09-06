@@ -1,6 +1,6 @@
 {
   "name": "venta_articulo",
-  "plural":"venta_articulos",
+  "plural":"venta_articulo",
   "base": "PersistedModel",
   "options": {
     "idInjection": true,

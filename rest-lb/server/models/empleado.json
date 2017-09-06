@@ -1,6 +1,6 @@
 {
   "name": "empleado",
-  "plural":"empleados",
+  "plural":"empleado",
   "base": "PersistedModel",
   "options": {
     "idInjection": true,

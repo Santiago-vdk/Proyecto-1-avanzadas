@@ -1,6 +1,6 @@
 {
   "name": "sucursal",
-  "plural":"sucursales",
+  "plural":"sucursal",
   "base": "PersistedModel",
   "options": {
     "idInjection": false,

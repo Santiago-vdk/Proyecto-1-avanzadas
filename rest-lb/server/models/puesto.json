@@ -1,6 +1,6 @@
 {
   "name": "puesto",
-  "plural":"puestos",
+  "plural":"puesto",
   "base": "PersistedModel",
   "options": {
     "idInjection": true,
