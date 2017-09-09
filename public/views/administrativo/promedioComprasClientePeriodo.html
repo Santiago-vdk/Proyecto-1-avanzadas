@@ -1,8 +1,9 @@
 <div class="container">
   <h3>Monto promedio de compras por cliente para un período de fechas específico</h3>
   <label>Desde:</label>
-  <input type="date" name="myDate" max="1989-10-29">
+  <input type="date" name="myDate" ng-model="params.desde">
   <br />
   <label>Hasta:</label>
-  <input type="date" name="myDate" min="2001-01-02">
+  <input type="date" name="myDate" ng-model="params.hasta">
+    <button class="btn btn-primary" ng-click="callPromedioComprasPorClientePeriodo(params)">Consultar</button>
 </div>
