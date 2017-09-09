@@ -5,6 +5,7 @@ var tienda = require('./tienda.js');
 var sucursal = require('./sucursal.js');
 var cliente = require('./cliente.js');
 var empleado = require('./empleado.js');
+var administrador = require('./administrador.js');
 
 module.exports.set = function(app) {
 
@@ -15,6 +16,7 @@ module.exports.set = function(app) {
   cliente.set(app)
   empleado.set(app)
   venta.set(app)
+  administrador.set(app)
 
   app.all(/^\/(?!api).*/, function(req, res) {
     res.sendFile(mainDir + '/public/index.html'); // load our public/index.html file
