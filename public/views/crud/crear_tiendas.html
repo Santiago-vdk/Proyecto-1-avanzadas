@@ -17,14 +17,14 @@
 
 <div class="form-group ">
   <label class="control-label requiredField" for="idTienda">
- Identificador Tienda
+ Tienda
  <span class="asteriskField">
   *
  </span>
 </label>
   <!-- <input class="form-control" id="idTienda" ng-model="venta.idTienda" name="idTienda" type="number" ng-required="true" /> -->
   <select id="idTienda" name="idTienda" ng-model="tienda.idTienda">
-    <option ng-repeat="tienda in tiendas" value="{{tienda.nombre}} & {{tienda.ubicacion}}">{{tienda.nombre}} {{tienda.ubicacion}}</option>
+    <option ng-repeat="tienda in tiendas" value="{{tienda.id}}">{{tienda.nombre}}</option>
   </select>
 
 

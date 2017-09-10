@@ -6,60 +6,6 @@ angular.module('MainCtrl', []).controller('MainController', ['$rootScope', '$sco
     $rootScope.origin = origin
   }
 
-  $scope.comprar = function(articulo) {
-    console.log(articulo);
-    var data = {
-      nombre: articulo.nombre,
-      id: articulo.id,
-      id_tipo: articulo.nombre,
-      precio: articulo.precio
-    }
-    Articulos.postArticulo(data).then(function(response) {
-      alert("Success");
-    }).catch(function(err) {
-
-    });
-  }
-
-  $scope.crearClientes = function(cliente) {
-    console.log(cliente);
-  }
-
-  $scope.crearEmpleados = function(empleado) {
-    console.log(empleado);
-  }
-
-  $scope.crearTiendas = function(tienda) {
-    console.log(tienda);
-  }
-
-  $scope.crearArticulos = function(articulo) {
-    console.log(articulo);
-  }
-
-
-  Clientes.getClientes().then(function(response) {
-    $scope.clientes = response.data.data;
-  }).catch(function(err) {
-
-  });
-
-  Empleados.getEmpleados().then(function(response) {
-    console.log("empleados", response.data.data);
-    $scope.empleados = response.data.data;
-  }).catch(function(err) {
-
-  });
-
-
-  Tiendas.getTiendas().then(function(response) {
-    console.log("tiendas", response.data.data);
-    $scope.tiendas = response.data.data;
-  }).catch(function(err) {
-
-  });
-
-
   $scope.irCrearClientes = function() {
     $state.go('crearclientes');
   }

@@ -6,10 +6,11 @@ module.exports.set = function(app) {
 
   app.get('/api/v1/empleado', function(req, res) {
     var destino = req.query.origin || "heredia";
-    var myquery = 'SELECT (id,id_tienda,id_puesto,nombre) FROM empleado WHERE activo = true';
+        const columns = ['id','id_tienda','id_puesto','nombre'];
+    var myquery = 'SELECT ${columns^} FROM empleado WHERE activo = true';
 
       databaseConfig.getDb(destino).query(myquery, {
-
+          columns: columns.map(pgp.as.name).join(),
           table: 'Table Name'
         }).then(result => {
           console.log(result); // printing the data returned

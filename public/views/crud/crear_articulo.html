@@ -2,56 +2,59 @@
 
 
 
-<h1>Crear Articulos</h1>
-<br />
+  <h1>Crear Articulos</h1>
+  <br />
 
-<form ng-model="articulo">
+  <form ng-model="articulo">
 
 
-  <div class="form-group ">
-   <label class="control-label requiredField" for="date">
+    <div class="form-group ">
+      <label class="control-label requiredField" for="date">
   Nombre
   <span class="asteriskField">
    *
   </span>
  </label>
-   <input class="form-control" id="nombre" ng-model="articulo.nombre" name="nombre" placeholder="nombre" type="text" ng-required="true" />
- </div>
+      <input class="form-control" id="nombre" ng-model="articulo.nombre" name="nombre" placeholder="nombre" type="text" ng-required="true" />
+    </div>
 
- <div class="form-group ">
-  <label class="control-label requiredField" for="date">
- Tipo
- <span class="asteriskField">
-  *
- </span>
-</label>
-  <input class="form-control" id="tipo" ng-model="articulo.tipo" name="tipo" placeholder="tipo" type="text" ng-required="true" />
-</div>
+    <div class="form-group ">
+      <label class="control-label requiredField" for="idTienda">
+  Tienda
+  <span class="asteriskField">
+   *
+  </span>
+ </label>
+      <!-- <input class="form-control" id="idTienda" ng-model="venta.idTienda" name="idTienda" type="number" ng-required="true" /> -->
+      <select id="idTipo" name="idTipo" ng-model="articulo.id_tipo">
+     <option value="1">Electronico</option>
+     <option value="2">Prenda de Vestir</option>
+   </select>
+    </div>
 
-
-<div class="form-group ">
- <label class="control-label requiredField" for="date">
+    <div class="form-group">
+      <label class="control-label requiredField" for="date">
 Precio
 <span class="asteriskField">
  *
 </span>
 </label>
- <input class="form-control" id="Precio" ng-model="articulo.precio" name="precio" placeholder="precio" type="text" ng-required="true" />
-</div>
+      <input class="form-control" id="Precio" ng-model="articulo.precio" name="precio" placeholder="precio" type="text" ng-required="true" />
+    </div>
 
 
 
 
-<div class="form-group">
-  <div>
-    <button class="btn btn-primary " name="submit" ng-click="crearArticulos(articulo)" type="submit">
+    <div class="form-group">
+      <div>
+        <button class="btn btn-primary " name="submit" ng-click="crearArticulos(articulo)" type="submit">
   Submit
  </button>
-  </div>
-</div>
+      </div>
+    </div>
 
 
 
 
-</form>
+  </form>
 </div>

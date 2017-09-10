@@ -8,7 +8,7 @@ angular.module('appRoutes', []).config(['$stateProvider', '$locationProvider', '
     views: {
       'crud@home': {
         templateUrl: 'views/crud/crear_clientes.html',
-        controller: 'MainController'
+        controller: 'CRUDClientesController'
       }
     }
   }).state('crearempleados', {
@@ -16,7 +16,7 @@ angular.module('appRoutes', []).config(['$stateProvider', '$locationProvider', '
     views: {
       'crud@home': {
         templateUrl: 'views/crud/crear_empleados.html',
-        controller: 'MainController'
+        controller: 'CRUDEmpleadosController'
       }
     }
   }).state('creartiendas', {
@@ -24,7 +24,7 @@ angular.module('appRoutes', []).config(['$stateProvider', '$locationProvider', '
     views: {
       'crud@home': {
         templateUrl: 'views/crud/crear_tiendas.html',
-        controller: 'MainController'
+        controller: 'CRUDTiendasController'
       }
     }
   }).state('creararticulo', {
@@ -32,7 +32,7 @@ angular.module('appRoutes', []).config(['$stateProvider', '$locationProvider', '
     views: {
       'crud@home': {
         templateUrl: 'views/crud/crear_articulo.html',
-        controller: 'MainController'
+        controller: 'CRUDArticulosController'
       }
     }
   });

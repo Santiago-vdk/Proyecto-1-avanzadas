@@ -6,7 +6,11 @@ var app = angular.module('app', [
   // Controladores
   'MainCtrl',
   'AdministradoresCtrl',
-  'VendedoresCtrl'
+  'VendedoresCtrl',
+  'CRUDTiendasCtrl',
+  'CRUDClientesCtrl',
+  'CRUDArticulosCtrl',
+  'CRUDEmpleadosCtrl'
 
   // Servicios
 
