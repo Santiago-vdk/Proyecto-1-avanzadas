@@ -63,15 +63,21 @@ angular.module('AdministradoresCtrl', []).controller('AdministradoresController'
 
   //Consulta 3
   $scope.callPromedioComprasPorClientePeriodo = function(params) {
-    Administrador.getPromedioComprasPorClientePeriodo($scope.form).then(function(response) {
-      alert("Success");
+
+        params.desde = fixDate(params.desde);
+        params.hasta = fixDate(params.hasta);
+
+
+    Administrador.getPromedioComprasPorClientePeriodo(params).then(function(response) {
+      console.log(response.data.data);
+      $scope.compras_cliente = response.data.data[0].compra_cliente_f;
     }).catch(function(err) {
       alert("Failed")
     });
   }
   //Consulta 4
   $scope.callVentasProductoMesParticular = function(params) {
-    Administrador.getMontoVentasProductoMesParticular($scope.form).then(function(response) {
+    Administrador.getMontoVentasProductoMesParticular(params).then(function(response) {
       alert("Success");
     }).catch(function(err) {
       alert("Failed")

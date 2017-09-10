@@ -20,7 +20,7 @@ angular.module('AdministradorService', []).factory('Administrador', ['$rootScope
     },
 
     // Consulta 3
-    getPromedioCompraPorClientePeriodo: function(data) {
+    getPromedioComprasPorClientePeriodo: function(data) {
       return $http.get('/api/v1/administrador/consulta3?origin=' + $rootScope.origin + '&desde=' + data.desde + '&hasta=' + data.hasta + '&cliente=' + data.cliente).then(function(data) {
         return data;
       }).catch(function(err) {
@@ -30,7 +30,7 @@ angular.module('AdministradorService', []).factory('Administrador', ['$rootScope
 
     // Consulta 4
     getMontoVentasProductoMesParticular: function(data) {
-      return $http.get('/api/v1/administrador/consulta4?origin=' + $rootScope.origin).then(function(data) {
+      return $http.get('/api/v1/administrador/consulta4?origin=' + $rootScope.origin + '&articulo=' + data.articulo + '&mes=' + data.mes).then(function(data) {
         return data;
       }).catch(function(err) {
         throw err;
