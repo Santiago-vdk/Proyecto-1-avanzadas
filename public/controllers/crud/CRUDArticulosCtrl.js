@@ -15,6 +15,13 @@ angular.module('CRUDArticulosCtrl', []).controller('CRUDArticulosController', ['
 
   }
 
+  Articulos.getTipoArticulos().then(function(response) {
+    console.log("articulos", response.data.data);
+    $scope.tipoarticulos = response.data.data;
+  }).catch(function(err) {
+
+  });
+
 
 
 

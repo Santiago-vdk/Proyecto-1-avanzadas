@@ -26,10 +26,8 @@
  </span>
 </label>
   <!-- <input class="form-control" id="puestos" ng-model="empleado.puestos" name="puestos" placeholder="puestos" type="text" ng-required="true" /> -->
-  <select id="puesto" name="puesto" ng-model="empleado.id_puesto">
-    <option value="1">Vendedor</option>
-    <option value="2">Administrador</option>
-    <option value="3">Gerente</option>
+  <select id="idPuesto" name="idPuesto" ng-model="empleado.id_puesto">
+    <option ng-repeat="puesto in puestos" value="{{puesto.id}}">{{puesto.nombre}}</option>
   </select>
 
 
@@ -37,16 +35,14 @@
 
 <div class="form-group ">
   <label class="control-label requiredField" for="idTienda">
- Identificador Tienda
+ Tienda
  <span class="asteriskField">
   *
  </span>
 </label>
   <!-- <input class="form-control" id="idTienda" ng-model="venta.idTienda" name="idTienda" type="number" ng-required="true" /> -->
-  <select id="ubicacion" name="ubicacion" ng-model="empleado.id_tienda">
-    <option value="1">Heredia</option>
-    <option value="2">San Jose</option>
-    <option value="3">Alajuela</option>
+  <select id="idTienda" name="idTienda" ng-model="empleado.id_tienda">
+    <option ng-repeat="tienda in tiendas" value="{{tienda.id}}">{{tienda.nombre}}</option>
   </select>
 
 

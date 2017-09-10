@@ -7,17 +7,21 @@ angular.module('VendedoresCtrl', []).controller('VendedoresController', ['$scope
     $scope.articulos = angular.copy(articulos);
 
     var monto = 0;
+    var articulosList = [];
     for (i = 0; i < articulos.length; i++) {
       var res = articulos[i].split("&");
       monto = monto + parseInt(res[1]);
+      articulosList.push(res[0]);
     }
 
     var data = {
       id_cliente: venta.idCliente,
       id_tienda: venta.idTienda,
       id_empleado: venta.idEmpleado,
-      monto: monto
+      monto: monto,
+      articulos: articulosList
     }
+    console.log("lista de articulos",articulosList);
 
     Ventas.postVenta(data).then(function(response) {
       toastr.success('Exito', 'Su solicitud fue procesada');
@@ -35,6 +39,7 @@ angular.module('VendedoresCtrl', []).controller('VendedoresController', ['$scope
   });
 
   Clientes.getClientes().then(function(response) {
+    console.log(response.data.data);
     $scope.clientes = response.data.data;
   }).catch(function(err) {
     toastr.error('Hubo un error mientras se solicitaban los datos.', 'Error');

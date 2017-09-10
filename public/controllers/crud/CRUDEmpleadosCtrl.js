@@ -1,4 +1,4 @@
-angular.module('CRUDEmpleadosCtrl', []).controller('CRUDEmpleadosController', ['$rootScope', '$scope', '$location','Empleados','toastr', function($rootScope, $scope, $location, Empleados, toastr) {
+angular.module('CRUDEmpleadosCtrl', []).controller('CRUDEmpleadosController', ['$rootScope', '$scope', '$location','Empleados','Tiendas','Puestos','toastr', function($rootScope, $scope, $location, Empleados,Tiendas,Puestos, toastr) {
 
   $rootScope.origin = "heredia";
   $scope.currentPath = $location.path();
@@ -14,10 +14,21 @@ angular.module('CRUDEmpleadosCtrl', []).controller('CRUDEmpleadosController', ['
     }).catch(function(err) {
       toastr.error('Hubo un error mientras se solicitaban los datos.', 'Error');
     });
-
-
-
   }
+
+  Tiendas.getTiendas().then(function(response) {
+    console.log("tiendas", response.data.data);
+    $scope.tiendas = response.data.data;
+  }).catch(function(err) {
+
+  });
+
+  Puestos.getPuestos().then(function(response) {
+    console.log("puestos", response.data.data);
+    $scope.puestos = response.data.data;
+  }).catch(function(err) {
+
+  });
 
 
 
