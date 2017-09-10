@@ -1,0 +1,57 @@
+<div class="container">
+
+
+
+<h1>Crear Articulos</h1>
+<br />
+
+<form ng-model="articulo">
+
+
+  <div class="form-group ">
+   <label class="control-label requiredField" for="date">
+  Nombre
+  <span class="asteriskField">
+   *
+  </span>
+ </label>
+   <input class="form-control" id="nombre" ng-model="articulo.nombre" name="nombre" placeholder="nombre" type="text" ng-required="true" />
+ </div>
+
+ <div class="form-group ">
+  <label class="control-label requiredField" for="date">
+ Tipo
+ <span class="asteriskField">
+  *
+ </span>
+</label>
+  <input class="form-control" id="tipo" ng-model="articulo.tipo" name="tipo" placeholder="tipo" type="text" ng-required="true" />
+</div>
+
+
+<div class="form-group ">
+ <label class="control-label requiredField" for="date">
+Precio
+<span class="asteriskField">
+ *
+</span>
+</label>
+ <input class="form-control" id="Precio" ng-model="articulo.precio" name="precio" placeholder="precio" type="text" ng-required="true" />
+</div>
+
+
+
+
+<div class="form-group">
+  <div>
+    <button class="btn btn-primary " name="submit" ng-click="crearArticulos(articulo)" type="submit">
+  Submit
+ </button>
+  </div>
+</div>
+
+
+
+
+</form>
+</div>

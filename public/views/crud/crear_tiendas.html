@@ -1,0 +1,45 @@
+<div class="container">
+<h1>Crear Tiendas</h1>
+<br />
+
+<form ng-model="tienda">
+
+
+  <div class="form-group ">
+   <label class="control-label requiredField" for="date">
+  Nombre
+  <span class="asteriskField">
+   *
+  </span>
+ </label>
+   <input class="form-control" id="nombre" ng-model="tienda.nombre" name="nombre" placeholder="nombre" type="text" ng-required="true" />
+ </div>
+
+<div class="form-group ">
+  <label class="control-label requiredField" for="idTienda">
+ Identificador Tienda
+ <span class="asteriskField">
+  *
+ </span>
+</label>
+  <!-- <input class="form-control" id="idTienda" ng-model="venta.idTienda" name="idTienda" type="number" ng-required="true" /> -->
+  <select id="idTienda" name="idTienda" ng-model="tienda.idTienda">
+    <option ng-repeat="tienda in tiendas" value="{{tienda.nombre}} & {{tienda.ubicacion}}">{{tienda.nombre}} {{tienda.ubicacion}}</option>
+  </select>
+
+
+</div>
+
+<div class="form-group">
+  <div>
+    <button class="btn btn-primary " name="submit" ng-click="creartiendas(tienda)" type="submit">
+  Submit
+ </button>
+  </div>
+</div>
+
+
+
+
+</form>
+</div>

@@ -21,36 +21,14 @@ angular.module('VendedoresCtrl', []).controller('VendedoresController', ['$scope
       monto: monto
     }
 
-    console.log(data);
+
     Ventas.postVenta(data).then(function(response) {
       alert("Success");
     }).catch(function(err) {
       alert("Failed")
     });
   }
-  /*
-    $scope.collectionGeneralArticulos = [{
-      nombre: "name1",
-      id: 0,
-      id_tipo: 0,
-      precio: 2000
-    }, {
-      nombre: "name2",
-      id: 1,
-      id_tipo: 0,
-      precio: 2000
-    }, {
-      nombre: "name3",
-      id: 2,
-      id_tipo: 1,
-      precio: 2000
-    }, {
-      nombre: "name4",
-      id: 3,
-      id_tipo: 0,
-      precio: 2000
-    }];
-  */
+
   Articulos.getArticulosGenerales().then(function(response) {
     $scope.collectionGeneralArticulos = response.data.data;
   }).catch(function(err) {
@@ -73,7 +51,7 @@ angular.module('VendedoresCtrl', []).controller('VendedoresController', ['$scope
 
   Tiendas.getTiendas().then(function(response) {
     console.log("tiendas",response.data.data);
-
+    $scope.tiendas = response.data.data;
   }).catch(function(err) {
     alert("Failed")
   });

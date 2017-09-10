@@ -1,0 +1,60 @@
+<div class="container">
+
+
+
+<h1>Crear Empleados</h1>
+<br />
+
+<form ng-model="empleado">
+
+
+  <div class="form-group ">
+   <label class="control-label requiredField" for="date">
+  Nombre
+  <span class="asteriskField">
+   *
+  </span>
+ </label>
+   <input class="form-control" id="nombre" ng-model="empleado.nombre" name="nombre" placeholder="nombre" type="text" ng-required="true" />
+ </div>
+
+ <div class="form-group ">
+  <label class="control-label requiredField" for="date">
+ Puesto
+ <span class="asteriskField">
+  *
+ </span>
+</label>
+  <input class="form-control" id="puestos" ng-model="empleado.puestos" name="puestos" placeholder="puestos" type="text" ng-required="true" />
+</div>
+
+<div class="form-group ">
+  <label class="control-label requiredField" for="idTienda">
+ Identificador Tienda
+ <span class="asteriskField">
+  *
+ </span>
+</label>
+  <!-- <input class="form-control" id="idTienda" ng-model="venta.idTienda" name="idTienda" type="number" ng-required="true" /> -->
+  <select id="ubicacion" name="ubicacion" ng-model="empleado.ubicacion">
+    <option value="heredia">Heredia</option>
+    <option value="sanjose">San Jose</option>
+    <option value="alajuela">Alajuela</option>
+  </select>
+
+
+</div>
+
+<div class="form-group">
+  <div>
+    <button class="btn btn-primary " name="submit" ng-click="crearempleados(empleado)" type="submit">
+  Submit
+ </button>
+  </div>
+</div>
+
+
+
+
+</form>
+</div>

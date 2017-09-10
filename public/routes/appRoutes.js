@@ -3,6 +3,38 @@ angular.module('appRoutes', []).config(['$stateProvider', '$locationProvider', '
     url: '/',
     templateUrl: 'views/home.html',
     controller: 'MainController'
+  }).state('crearclientes', {
+    parent: 'home',
+    views: {
+      'crud@home': {
+        templateUrl: 'views/crud/crear_clientes.html',
+        controller: 'MainController'
+      }
+    }
+  }).state('crearempleados', {
+    parent: 'home',
+    views: {
+      'crud@home': {
+        templateUrl: 'views/crud/crear_empleados.html',
+        controller: 'MainController'
+      }
+    }
+  }).state('creartiendas', {
+    parent: 'home',
+    views: {
+      'crud@home': {
+        templateUrl: 'views/crud/crear_tiendas.html',
+        controller: 'MainController'
+      }
+    }
+  }).state('creararticulo', {
+    parent: 'home',
+    views: {
+      'crud@home': {
+        templateUrl: 'views/crud/crear_articulo.html',
+        controller: 'MainController'
+      }
+    }
   });
 
   $stateProvider.state('electronico', {

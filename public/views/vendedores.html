@@ -15,7 +15,7 @@
         </label>
 
           <!-- <input class="form-control" id="idCliente" ng-model="venta.idCliente" name="idCliente" type="number" ng-required="true" /> -->
-          <select id="sel" name="sel" ng-model="sel">
+          <select id="idCliente" name="idCliente" ng-model="cliente.idCliente">
             <option ng-repeat="cliente in clientes" value="{{cliente.nombre}}&{{cliente.apellidos}}">{{cliente.nombre}} {{cliente.apellidos}}</option>
           </select>
 
@@ -28,7 +28,11 @@
           *
          </span>
         </label>
-          <input class="form-control" id="idEmpleado" ng-model="venta.idEmpleado" name="idEmpleado" type="number" ng-required="true" />
+          <!-- <input class="form-control" id="idEmpleado" ng-model="venta.idEmpleado" name="idEmpleado" type="number" ng-required="true" /> -->
+          <select id="idEmpleado" name="idEmpleado" ng-model="cliente.idEmpleado">
+            <option ng-repeat="empleado in empleados" value="{{empleado.nombre}}&{{empleado.puesto}}%{{empleado.tienda}}">{{empleado.nombre}} {{empleado.puesto}} {{empleado.tienda}}</option>
+          </select>
+
         </div>
 
         <div class="form-group ">
@@ -38,7 +42,12 @@
           *
          </span>
         </label>
-          <input class="form-control" id="idTienda" ng-model="venta.idTienda" name="idTienda" type="number" ng-required="true" />
+          <!-- <input class="form-control" id="idTienda" ng-model="venta.idTienda" name="idTienda" type="number" ng-required="true" /> -->
+          <select id="idTienda" name="idTienda" ng-model="cliente.idTienda">
+            <option ng-repeat="tienda in tiendas" value="{{tienda.nombre}} & {{tienda.ubicacion}}">{{tienda.nombre}} {{tienda.ubicacion}}</option>
+          </select>
+
+
         </div>
         <!-- <div class="form-group ">
           <label class="control-label requiredField" for="date">
