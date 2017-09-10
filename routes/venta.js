@@ -69,7 +69,7 @@ module.exports.set = function(app) {
       }).then(result => {
         console.log("este",result); // printing the data returned
 
-
+        
 
         res.status(200).json({
           status: "success",
