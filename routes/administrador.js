@@ -6,24 +6,53 @@ module.exports.set = function(app) {
   app.use(bodyParser.json());
 
   app.get('/api/v1/administrador/consulta1', function(req, res) { //Cantidad de dinero recaudado en la tienda
-    var destino = req.query.origin || "heredia";
-
+    var destino = req.query.origin || 1;
     // Default siempre desde heredia
-    const columns = ['id', 'id_tipo', 'nombre', 'precio'];
-    databaseConfig.getDb(destino).query('SELECT ${columns^} FROM tienda', {
+    const columns = [];
+    var myquery = 'SELECT ${columns^} dinero_tienda_f('+destino+')';
+    databaseConfig.getDb(destino).query(myquery, {
         columns: columns.map(pgp.as.name).join(),
         table: 'Table Name'
       }).then(result => {
         console.log(result); // printing the data returned
+
         res.status(200).json({
           status: "success",
           data: result
         });
+
       })
       .catch(error => {
-        console.log(error); // printing the error
-        res.status(500).send();
-      });
+        // var error_type = error.code.substring(0, 2);
+        // if (destino.localeCompare('heredia') == 0) {
+        //   console.log("Nodo central fuera de linea..."); // printing the error
+        //   res.status(500).send();
+        // } else {
+        //   if ((error_type.localeCompare('08') == 0) || (error_type.localeCompare('28') == 0)) {
+        //     console.log('Error de conexion, realizando consulta en nodo principal Heredia');
+        //     databaseConfig.getDb('heredia').query(myquery, {
+        //
+        //         table: 'Table Name'
+        //       }).then(result => {
+        //         console.log(result); // printing the data returned
+        //
+        //         res.status(200).json({
+        //           status: "success",
+        //           data: result
+        //         });
+        //
+        //       })
+        //       .catch(error => {
+        //         console.log("Nodo central fuera de linea..."); // printing the error
+        //         res.status(500).send();
+        //       });
+        //   } else {
+        //     console.log("Error inesperado"); // printing the error
+        //     res.status(500).send();
+        //   }
+        // }
+
+      })
   });
 
 
