@@ -26,13 +26,6 @@ module.exports.set = function(app) {
       });
   });
 
-
-  app.param('id', function(req, res, next, id) {
-    req.id = id;
-    next();
-  });
-
-
   app.get('/api/v1/tienda/:id?', function(req, res) {
 
     var destino = req.query.origin || "heredia";
