@@ -40,16 +40,22 @@ angular.module('AdministradoresCtrl', []).controller('AdministradoresController'
 
   //Consulta 1
   $scope.callDineroRecaudadoEnLaTienda = function() {
-    Administrador.dineroRecaudadoEnLaTiendas().then(function(response) {
-      $scope.dinero_recaudado = response.data.data;
+    Administrador.getDineroRecaudadoEnLaTienda().then(function(response) {
+      $scope.dinero_recaudado = response.data.data[0];
     }).catch(function(err) {
       alert("Failed")
     });
   }
   //Consulta 2
   $scope.callCantidadVentasClientePeriodo = function(params) {
-    Administrador.cantidadVentasClientePeriodo(params).then(function(response) {
-      alert("Success");
+
+    params.desde = fixDate(params.desde);
+    params.hasta = fixDate(params.hasta);
+
+
+    Administrador.getCantidadVentasClientePeriodo(params).then(function(response) {
+      console.log(response.data.data[0].venta_cliente_f);
+      $scope.ventas_cliente = response.data.data[0].venta_cliente_f;
     }).catch(function(err) {
       alert("Failed")
     });
@@ -57,7 +63,7 @@ angular.module('AdministradoresCtrl', []).controller('AdministradoresController'
 
   //Consulta 3
   $scope.callPromedioComprasPorClientePeriodo = function(params) {
-    Administrador.promedioComprasPorClientePeriodo($scope.form).then(function(response) {
+    Administrador.getPromedioComprasPorClientePeriodo($scope.form).then(function(response) {
       alert("Success");
     }).catch(function(err) {
       alert("Failed")
@@ -65,7 +71,7 @@ angular.module('AdministradoresCtrl', []).controller('AdministradoresController'
   }
   //Consulta 4
   $scope.callVentasProductoMesParticular = function(params) {
-    Administrador.montoVentasProductoMesParticular($scope.form).then(function(response) {
+    Administrador.getMontoVentasProductoMesParticular($scope.form).then(function(response) {
       alert("Success");
     }).catch(function(err) {
       alert("Failed")
@@ -73,7 +79,7 @@ angular.module('AdministradoresCtrl', []).controller('AdministradoresController'
   }
   //Consulta 5
   $scope.callVentasPorTiendaPeriodo = function(params) {
-    Administrador.montoVentasPorTiendaPeriodo($scope.form).then(function(response) {
+    Administrador.getMontoVentasPorTiendaPeriodo($scope.form).then(function(response) {
       alert("Success");
     }).catch(function(err) {
       alert("Failed")
@@ -81,7 +87,7 @@ angular.module('AdministradoresCtrl', []).controller('AdministradoresController'
   }
   //Consulta 6
   $scope.callVentasPorTiendaYProductoPeriodo = function(params) {
-    Administrador.ventasPorTiendaYProductoPeriodo($scope.form).then(function(response) {
+    Administrador.getMontoVentasPorTiendaYProductoPeriodo($scope.form).then(function(response) {
       alert("Success");
     }).catch(function(err) {
       alert("Failed")
@@ -92,7 +98,7 @@ angular.module('AdministradoresCtrl', []).controller('AdministradoresController'
     params.desde = fixDate(params.desde);
     params.hasta = fixDate(params.hasta);
 
-    Administrador.mejoresClientesPeriodo(params).then(function(response) {
+    Administrador.getMejoresClientesPeriodo(params).then(function(response) {
       $scope.mejores = response.data.data;
     }).catch(function(err) {
       alert("Failed")

@@ -11,8 +11,8 @@ angular.module('AdministradorService', []).factory('Administrador', ['$rootScope
     },
 
     // Consulta 2
-    cantidadVentasClientePeriodo: function(data) {
-      return $http.get('/api/v1/administrador/consulta2?origin=' + $rootScope.origin + '&desde=' + data.desde + '&hasta=' + data.hasta, data).then(function(data) {
+    getCantidadVentasClientePeriodo: function(data) {
+      return $http.get('/api/v1/administrador/consulta2?origin=' + $rootScope.origin + '&desde=' + data.desde + '&hasta=' + data.hasta + '&cliente=' + data.cliente).then(function(data) {
         return data;
       }).catch(function(err) {
         throw err;
@@ -20,8 +20,8 @@ angular.module('AdministradorService', []).factory('Administrador', ['$rootScope
     },
 
     // Consulta 3
-    promedioCompraPorClientePeriodo: function(data) {
-      return $http.get('/api/v1/administrador/consulta3?origin=' + $rootScope.origin + '&desde=' + data.desde + '&hasta=' + data.hasta, data).then(function(data) {
+    getPromedioCompraPorClientePeriodo: function(data) {
+      return $http.get('/api/v1/administrador/consulta3?origin=' + $rootScope.origin + '&desde=' + data.desde + '&hasta=' + data.hasta + '&cliente=' + data.cliente).then(function(data) {
         return data;
       }).catch(function(err) {
         throw err;
@@ -29,8 +29,8 @@ angular.module('AdministradorService', []).factory('Administrador', ['$rootScope
     },
 
     // Consulta 4
-    montoVentasProductoMesParticular: function(data) {
-      return $http.get('/api/v1/administrador/consulta4?origin=' + $rootScope.origin, data).then(function(data) {
+    getMontoVentasProductoMesParticular: function(data) {
+      return $http.get('/api/v1/administrador/consulta4?origin=' + $rootScope.origin).then(function(data) {
         return data;
       }).catch(function(err) {
         throw err;
@@ -38,8 +38,8 @@ angular.module('AdministradorService', []).factory('Administrador', ['$rootScope
     },
 
     // Consulta 5
-    montoVentasPorTiendaPeriodo: function(data) {
-      return $http.get('/api/v1/administrador/consulta5?origin=' + $rootScope.origin + '&desde=' + data.desde + '&hasta=' + data.hasta, data).then(function(data) {
+    getMontoVentasPorTiendaPeriodo: function(data) {
+      return $http.get('/api/v1/administrador/consulta5?origin=' + $rootScope.origin + '&desde=' + data.desde + '&hasta=' + data.hasta).then(function(data) {
         return data;
       }).catch(function(err) {
         throw err;
@@ -47,8 +47,8 @@ angular.module('AdministradorService', []).factory('Administrador', ['$rootScope
     },
 
     // Consulta 6
-    montoVentasPorTiendaYProductoPeriodo: function(data) {
-      return $http.get('/api/v1/administrador/consulta6?origin=' + $rootScope.origin + '&desde=' + data.desde + '&hasta=' + data.hasta, data).then(function(data) {
+    getMontoVentasPorTiendaYProductoPeriodo: function(data) {
+      return $http.get('/api/v1/administrador/consulta6?origin=' + $rootScope.origin + '&desde=' + data.desde + '&hasta=' + data.hasta).then(function(data) {
         return data;
       }).catch(function(err) {
         throw err;
@@ -56,8 +56,8 @@ angular.module('AdministradorService', []).factory('Administrador', ['$rootScope
     },
 
     // Consulta 7
-    mejoresClientesPeriodo: function(data) {
-      return $http.get('/api/v1/administrador/consulta7?origin=' + $rootScope.origin + '&desde=' + data.desde + '&hasta=' + data.hasta, data).then(function(data) {
+    getMejoresClientesPeriodo: function(data) {
+      return $http.get('/api/v1/administrador/consulta7?origin=' + $rootScope.origin + '&desde=' + data.desde + '&hasta=' + data.hasta).then(function(data) {
         return data;
       }).catch(function(err) {
         throw err;

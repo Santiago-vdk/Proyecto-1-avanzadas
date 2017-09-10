@@ -64,7 +64,7 @@ module.exports.set = function(app) {
     var cliente = req.query.cliente;
     console.log("params",destino,desde,hasta,cliente);
     const columns = [];
-    var myquery = 'SELECT ${columns^} venta_cliente_f('+cliente+','+desde+','+hasta+')';
+    var myquery = 'SELECT ${columns^} venta_cliente_f('+cliente+',\''+desde+'\',\''+hasta+'\')';
 
     databaseConfig.getDb(destino).query(myquery, {
         columns: columns.map(pgp.as.name).join(),

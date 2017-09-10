@@ -1,5 +1,7 @@
+<!-- consulta 2 -->
+
 <div class="container">
-  <h3>Cantidad de pedidos según cliente para un rango de fechas específico</h3>
+  <h3>Cantidad de ventas según cliente para un rango de fechas específico</h3>
   <label>Desde:</label>
   <input type="date" name="myDate" ng-model="params.desde">
   <br />
@@ -15,13 +17,15 @@
   </label>
 
     <!-- <input class="form-control" id="idCliente" ng-model="venta.idCliente" name="idCliente" type="number" ng-required="true" /> -->
-    <select id="idCliente" name="idCliente" ng-model="params.id_cliente">
+    <select id="idCliente" name="idCliente" ng-model="params.cliente">
       <option ng-repeat="cliente in clientes" value="{{cliente.id}}">{{cliente.nombre}} {{cliente.apellidos}}</option>
     </select>
-
   </div>
 
 
 
   <button class="btn btn-primary" ng-click="callCantidadVentasClientePeriodo(params)">Consultar</button>
+
+  <h4 ng-if="ventas_cliente">Ventas del Cliente: {{ventas_cliente}}</h4>
+
 </div>
