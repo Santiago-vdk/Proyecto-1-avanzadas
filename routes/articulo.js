@@ -57,12 +57,11 @@ app.post('/api/v1/articulo', function(req, res) {
 
   var destino = req.query.origin || "heredia";
   // Default siempre desde heredia
-  const columns = ['id', 'id_tipo', 'nombre', 'precio'];
-  var id = req.body.id;
+  const columns = ['id_tipo', 'nombre', 'precio'];
   var id_tipo = req.body.id_tipo;
   var nombre = req.body.nombre;
   var precio = req.body.precio;
-  var myquery = 'INSERT INTO public.articulo(${columns^}) VALUES ('+id+','+ id_tipo+','+ nombre+','+  precio+')';
+  var myquery = 'INSERT INTO public.articulo(${columns^}) VALUES ('id_tipo+','+ nombre+','+  precio+')';
 
   databaseConfig.getDb(destino).query(myquery, {
       table: 'Table Name'
