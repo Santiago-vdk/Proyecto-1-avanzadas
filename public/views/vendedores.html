@@ -13,8 +13,24 @@
           *
          </span>
         </label>
-          <input class="form-control" id="idCliente" ng-model="venta.idCliente" name="idCliente" type="number" ng-required="true" />
+
+          <!-- <input class="form-control" id="idCliente" ng-model="venta.idCliente" name="idCliente" type="number" ng-required="true" /> -->
+          <select id="sel" name="sel" ng-model="sel">
+            <option ng-repeat="cliente in clientes" value="{{cliente.nombre}}&{{cliente.apellidos}}">{{cliente.nombre}} {{cliente.apellidos}}</option>
+          </select>
+
         </div>
+
+        <div class="form-group ">
+          <label class="control-label requiredField" for="name">
+         Identificador Empleado
+         <span class="asteriskField">
+          *
+         </span>
+        </label>
+          <input class="form-control" id="idEmpleado" ng-model="venta.idEmpleado" name="idEmpleado" type="number" ng-required="true" />
+        </div>
+
         <div class="form-group ">
           <label class="control-label requiredField" for="idTienda">
          Identificador Tienda
@@ -24,7 +40,7 @@
         </label>
           <input class="form-control" id="idTienda" ng-model="venta.idTienda" name="idTienda" type="number" ng-required="true" />
         </div>
-        <div class="form-group ">
+        <!-- <div class="form-group ">
           <label class="control-label requiredField" for="date">
          Fecha
          <span class="asteriskField">
@@ -32,8 +48,11 @@
          </span>
         </label>
           <input class="form-control" id="fecha" ng-model="venta.fecha" name="fecha" placeholder="MM/DD/YYYY" type="date" ng-required="true" />
-        </div>
-        <div class="form-group ">
+        </div> -->
+
+
+
+        <!-- <div class="form-group ">
           <label class="control-label requiredField" for="number">
          Monto
          <span class="asteriskField">
@@ -41,30 +60,43 @@
          </span>
         </label>
           <input class="form-control" ng-model="venta.monto" id="monto" name="monto" type="number" ng-required="true" />
+        </div> -->
+
+        <div class="form-group">
+          <select id="myselect" name="mydata" multiple="multiple" ng-model="articulos" size="10">
+            <option ng-repeat="model in collectionGeneralArticulos" value="{{model.id}}&{{model.precio}}">{{model.nombre}}, ${{model.precio}}</option>
+          </select>
         </div>
+
+
         <div class="form-group">
           <div>
-            <button class="btn btn-primary " name="submit" ng-click="formVenta.$valid && agregarVenta(venta)" type="submit">
+            <button class="btn btn-primary " name="submit" ng-click="formVenta.$valid && agregarVenta(venta, articulos)" type="submit">
           Submit
          </button>
           </div>
         </div>
+
+
+
+
       </form>
 
     </div>
 
-      <div class="col-md-8" ng-init="cargarVentas()">
-        <div style="border: 1px solid black;padding:3%;" class="row" ng-repeat="venta in ventas">
-          <div class="col-md-12">
-            <h6>Identificador Venta: {{venta.id}}</h6>
-            <h6>Identificador Cliente: {{venta.idCliente}}</h6>
-            <h6>Identificador Tienda: {{venta.idTienda}}</h6>
-            <h6>Identificador Fecha:{{ venta.fecha}}</h6>
-            <h6>Identificador Monto: {{venta.monto}}</h6>
-          </div>
+    <div class="col-md-8" ng-init="cargarVentas()">
+      <div style="border: 1px solid black;padding:3%;" class="row" ng-repeat="venta in ventas">
+        <div class="col-md-12">
 
+          <h6>Identificador Cliente: {{venta.cliente}}</h6>
+          <h6>Identificador Tienda: {{venta.tienda}}</h6>
+          <h6>Identificador Empleado: {{venta.empleado}}</h6>
+          <h6>Identificador Fecha:{{ venta.fecha}}</h6>
+          <h6>Identificador Monto: {{venta.monto}}</h6>
         </div>
+
       </div>
+    </div>
 
 
   </div>

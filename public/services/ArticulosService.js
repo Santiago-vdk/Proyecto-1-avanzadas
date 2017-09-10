@@ -2,7 +2,7 @@ angular.module('ArticulosService', []).factory('Articulos', ['$rootScope', '$htt
 
   return {
     getArticulosGenerales: function(limit, offset) {
-      return $http.get('/api/v1/articulo/generales?origin=' + $rootScope.origin).then(function(data) {
+      return $http.get('/api/v1/articulo?origin=' + $rootScope.origin).then(function(data) {
         return data;
       }).catch(function(err) {
         throw err;

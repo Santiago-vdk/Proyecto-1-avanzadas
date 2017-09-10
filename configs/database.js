@@ -16,16 +16,16 @@ function getDb(destino) {
 }
 
 function getDatabaseHeredia(){
-  return process.env.HEREDIA_URL || "postgres://yvqvdymfvliyiv:165a99f18f665f8e3c207c0e2c648b4e91ebb603f17f637855730f196039fac4@ec2-184-73-247-240.compute-1.amazonaws.com:5432/d7tbu4eh46j6i?ssl=true";
+  return "postgres://root:mypassword@heredia.czeeqkvoq4jr.us-east-1.rds.amazonaws.com:5432/heredia?ssl=true";
 
 }
 
 function getDatabaseSanjose(){
-  return process.env.SANJOSE_URL || "postgres://mudfivqcbzdrjx:c48df6c2c7fa8b19c15eb6e25d3940e578bd667a26d8671cdec5599085090168@ec2-184-73-247-240.compute-1.amazonaws.com:5432/d83cv10h0h3n6t?ssl=true";
+  return "postgres://root:mypassword@sanjose.czeeqkvoq4jr.us-east-1.rds.amazonaws.com:5432/sanjose?ssl=true";
 }
 
 function getDatabaseAlajuela() {
-  return process.env.ALAJUELA_URL || "postgres://cdupaxvqdzogjf:bf7c78dcc99b60541341c7c64a0ef4554db17ec49216086a870e80b494198085@ec2-184-73-247-240.compute-1.amazonaws.com:5432/ddtutf05cfihd2?ssl=true";
+  return "postgres://root:mypassword@alajuela.czeeqkvoq4jr.us-east-1.rds.amazonaws.com:5432/alajuela?ssl=true";
 }
 
 function getInitOptions(){

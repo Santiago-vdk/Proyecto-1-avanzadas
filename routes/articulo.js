@@ -9,7 +9,6 @@ module.exports.set = function(app) {
       var destino = req.query.origin || "heredia";
       var myquery = 'SELECT * FROM articulo_v';
       databaseConfig.getDb(destino).query(myquery, {
-          columns: columns.map(pgp.as.name).join(),
           table: 'Table Name'
         }).then(result => {
           console.log(result); // printing the data returned
@@ -29,7 +28,6 @@ module.exports.set = function(app) {
               if ((error_type.localeCompare('08') == 0) || (error_type.localeCompare('28') == 0)) {
                 console.log('Error de conexion, realizando consulta en nodo principal Heredia');
                 databaseConfig.getDb('heredia').query(myquery, {
-                    columns: columns.map(pgp.as.name).join(),
                     table: 'Table Name'
                   }).then(result => {
                     console.log(result); // printing the data returned
@@ -67,7 +65,6 @@ app.post('/api/v1/articulo', function(req, res) {
   var myquery = 'INSERT INTO public.articulo(${columns^}) VALUES ('+id+','+ id_tipo+','+ nombre+','+  precio+')';
 
   databaseConfig.getDb(destino).query(myquery, {
-      columns: columns.map(pgp.as.name).join(),
       table: 'Table Name'
     }).then(result => {
       console.log(result); // printing the data returned
@@ -83,7 +80,6 @@ app.post('/api/v1/articulo', function(req, res) {
           console.log("El nodo central no se encuentra disponible, insertando en SanJose");
 
           databaseConfig.getDb('sanjose').query(myquery, {
-              columns: columns.map(pgp.as.name).join(),
               table: 'Table Name'
             }).then(result => {
               console.log(result); // printing the data returned
@@ -105,7 +101,6 @@ app.post('/api/v1/articulo', function(req, res) {
           if ((error_type.localeCompare('08') == 0) || (error_type.localeCompare('28') == 0)) {
             console.log('Error de conexion, realizando consulta en nodo principal Heredia');
             databaseConfig.getDb('heredia').query(myquery, {
-                columns: columns.map(pgp.as.name).join(),
                 table: 'Table Name'
               }).then(result => {
                 console.log(result); // printing the data returned
@@ -141,7 +136,7 @@ app.put('/api/v1/articulo', function(req, res) {
   var myquery = 'UPDATE articulo SET nombre = '+nombre+' precio = '+precio+' WHERE id = '+id;
 
   databaseConfig.getDb(destino).query(myquery, {
-      columns: columns.map(pgp.as.name).join(),
+
       table: 'Table Name'
     }).then(result => {
       console.log(result); // printing the data returned
@@ -157,7 +152,7 @@ app.put('/api/v1/articulo', function(req, res) {
           console.log("El nodo central no se encuentra disponible, insertando en SanJose");
 
           databaseConfig.getDb('sanjose').query(myquery, {
-              columns: columns.map(pgp.as.name).join(),
+
               table: 'Table Name'
             }).then(result => {
               console.log(result); // printing the data returned
@@ -179,7 +174,7 @@ app.put('/api/v1/articulo', function(req, res) {
           if ((error_type.localeCompare('08') == 0) || (error_type.localeCompare('28') == 0)) {
             console.log('Error de conexion, realizando consulta en nodo principal Heredia');
             databaseConfig.getDb('heredia').query(myquery, {
-                columns: columns.map(pgp.as.name).join(),
+
                 table: 'Table Name'
               }).then(result => {
                 console.log(result); // printing the data returned
@@ -210,7 +205,7 @@ app.delete('/api/v1/articulo', function(req, res) {
   var myquery = 'UPDATE articulo SET activo = false WHERE id = '+id;
 
   databaseConfig.getDb(destino).query(myquery, {
-      columns: columns.map(pgp.as.name).join(),
+
       table: 'Table Name'
     }).then(result => {
       console.log(result); // printing the data returned
@@ -225,7 +220,7 @@ app.delete('/api/v1/articulo', function(req, res) {
           console.log("El nodo central no se encuentra disponible, insertando en SanJose");
 
           databaseConfig.getDb('sanjose').query(myquery, {
-              columns: columns.map(pgp.as.name).join(),
+
               table: 'Table Name'
             }).then(result => {
               console.log(result); // printing the data returned
@@ -243,7 +238,7 @@ app.delete('/api/v1/articulo', function(req, res) {
           if ((error_type.localeCompare('08') == 0) || (error_type.localeCompare('28') == 0)) {
             console.log('Error de conexion, realizando consulta en nodo principal Heredia');
             databaseConfig.getDb('heredia').query(myquery, {
-                columns: columns.map(pgp.as.name).join(),
+
                 table: 'Table Name'
               }).then(result => {
                 console.log(result); // printing the data returned
@@ -274,7 +269,7 @@ app.get('/api/v1/articulo/:id?', function(req, res) {
   var myquery = 'SELECT * FROM articulo_v WHERE id = '+req.params.id;
 
   databaseConfig.getDb(destino).query(myquery, {
-      columns: columns.map(pgp.as.name).join(),
+
       table: 'Table Name'
     }).then(result => {
       console.log(result); // printing the data returned
@@ -289,7 +284,7 @@ app.get('/api/v1/articulo/:id?', function(req, res) {
           console.log("El nodo central no se encuentra disponible, insertando en SanJose");
 
           databaseConfig.getDb('sanjose').query(myquery, {
-              columns: columns.map(pgp.as.name).join(),
+
               table: 'Table Name'
             }).then(result => {
               console.log(result); // printing the data returned
@@ -307,7 +302,7 @@ app.get('/api/v1/articulo/:id?', function(req, res) {
           if ((error_type.localeCompare('08') == 0) || (error_type.localeCompare('28') == 0)) {
             console.log('Error de conexion, realizando consulta en nodo principal Heredia');
             databaseConfig.getDb('heredia').query(myquery, {
-                columns: columns.map(pgp.as.name).join(),
+
                 table: 'Table Name'
               }).then(result => {
                 console.log(result); // printing the data returned
