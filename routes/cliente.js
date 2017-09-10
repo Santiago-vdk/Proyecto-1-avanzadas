@@ -5,8 +5,7 @@ module.exports.set = function(app) {
 
   app.get('/api/v1/cliente', function(req, res) {
     var destino = req.query.origin || "heredia";
-    var myquery = 'SELECT ${columns^} FROM cliente';
-    const columns = ['id', 'nombre', 'apellidos'];
+    var myquery = 'SELECT * FROM cliente_v';
 
     databaseConfig.getDb(destino).query(myquery, {
         columns: columns.map(pgp.as.name).join(),
@@ -57,9 +56,7 @@ module.exports.set = function(app) {
 
   app.get('/api/v1/cliente/:id?', function(req, res) {
     var destino = req.query.origin || "heredia";
-    // Default siempre desde heredia
-
-    var myquery = 'SELECT ${columns^} FROM cliente WHERE id = '+req.params.id;
+    var myquery = 'SELECT * FROM cliente_v WHERE id = '+req.params.id;
 
     databaseConfig.getDb(destino).query(myquery, {
         columns: columns.map(pgp.as.name).join(),

@@ -7,10 +7,8 @@ module.exports.set = function(app) {
 
   app.get('/api/v1/articulo', function(req, res) {
       var destino = req.query.origin || "heredia";
-
-      // Default siempre desde heredia
-      const columns = ['id', 'id_tipo', 'nombre', 'precio'];
-      databaseConfig.getDb(destino).query('SELECT ${columns^} FROM articulo', {
+      var myquery = 'SELECT * FROM articulo_v';
+      databaseConfig.getDb(destino).query(myquery, {
           columns: columns.map(pgp.as.name).join(),
           table: 'Table Name'
         }).then(result => {
@@ -30,7 +28,7 @@ module.exports.set = function(app) {
             } else {
               if ((error_type.localeCompare('08') == 0) || (error_type.localeCompare('28') == 0)) {
                 console.log('Error de conexion, realizando consulta en nodo principal Heredia');
-                databaseConfig.getDb('heredia').query('SELECT ${columns^} FROM articulo', {
+                databaseConfig.getDb('heredia').query(myquery, {
                     columns: columns.map(pgp.as.name).join(),
                     table: 'Table Name'
                   }).then(result => {
@@ -60,7 +58,6 @@ module.exports.set = function(app) {
 app.post('/api/v1/articulo', function(req, res) {
 
   var destino = req.query.origin || "heredia";
-
   // Default siempre desde heredia
   const columns = ['id', 'id_tipo', 'nombre', 'precio'];
   var id = req.body.id;
@@ -274,9 +271,7 @@ app.delete('/api/v1/articulo', function(req, res) {
 app.get('/api/v1/articulo/:id?', function(req, res) {
 
   var destino = req.query.origin || "heredia";
-  // Default siempre desde heredia
-
-  var myquery = 'SELECT ${columns^} FROM articulo WHERE id = '+req.params.id;
+  var myquery = 'SELECT * FROM articulo_v WHERE id = '+req.params.id;
 
   databaseConfig.getDb(destino).query(myquery, {
       columns: columns.map(pgp.as.name).join(),
