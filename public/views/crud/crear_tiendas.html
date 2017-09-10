@@ -17,14 +17,14 @@
 
 <div class="form-group ">
   <label class="control-label requiredField" for="idTienda">
- Tienda
+ Sucursal
  <span class="asteriskField">
   *
  </span>
 </label>
   <!-- <input class="form-control" id="idTienda" ng-model="venta.idTienda" name="idTienda" type="number" ng-required="true" /> -->
-  <select id="idTienda" name="idTienda" ng-model="tienda.idTienda">
-    <option ng-repeat="tienda in tiendas" value="{{tienda.id}}">{{tienda.nombre}}</option>
+  <select id="idSucursal" name="idSucursal" ng-model="tienda.id_sucursal">
+    <option ng-repeat="sucursal in sucursales" value="{{sucursal.id}}">{{sucursal.nombre}}</option>
   </select>
 
 
@@ -32,7 +32,7 @@
 
 <div class="form-group">
   <div>
-    <button class="btn btn-primary " name="submit" ng-click="creartiendas(tienda)" type="submit">
+    <button class="btn btn-primary " name="submit" ng-click="crearTiendas(tienda)" type="submit">
   Submit
  </button>
   </div>
