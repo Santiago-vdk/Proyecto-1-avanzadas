@@ -61,7 +61,7 @@ module.exports.set = function(app) {
     var id_tienda = req.body.id_tienda;
     var id_empleado = req.body.id_empleado;
     var monto = req.body.monto;
-    var myquery = 'INSERT INTO public.venta(${columns^}) VALUES ('+ id_cliente+','+ id_tienda+','+ id_empleado+')'+ id_articulo+','+ monto+')';
+    var myquery = 'INSERT INTO public.venta(${columns^}) VALUES ('+ id_cliente+','+ id_tienda+','+ id_empleado+')'+ monto+')';
 
     databaseConfig.getDb(destino).query(myquery, {
         columns: columns.map(pgp.as.name).join(),
