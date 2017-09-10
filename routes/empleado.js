@@ -115,9 +115,10 @@ module.exports.set = function(app) {
     var id_puesto = req.body.id_puesto;
     var nombre = req.body.nombre;
 
-    var myquery = 'INSERT INTO public.empleado(${columns^}) VALUES ('+id_tienda+','+id_puesto+','+nombre+')';
+    var myquery = 'INSERT INTO public.empleado(${columns^}) VALUES ('+id_tienda+','+id_puesto+',\''+nombre+'\')';
 
     databaseConfig.getDb(destino).query(myquery, {
+      columns: columns.map(pgp.as.name).join(),
         table: 'Table Name'
       }).then(result => {
         console.log(result); // printing the data returned
@@ -128,6 +129,7 @@ module.exports.set = function(app) {
 
       })
       .catch(error => {
+        console.log(error);
           // var error_type = error.code.substring(0, 2);
           // if (destino.localeCompare('heredia') == 0) {
           //   console.log("El nodo central no se encuentra disponible, insertando en SanJose");

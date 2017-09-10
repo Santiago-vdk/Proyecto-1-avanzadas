@@ -3,12 +3,12 @@ module.exports.set = function(app) {
   var databaseConfig = require('../configs/database');
   var pgp = databaseConfig.getPgp();
 
-
   app.get('/api/v1/cliente', function(req, res) {
     var destino = req.query.origin || "heredia";
+
+    console.log("Solicitud desde ",destino);
     const columns = ['id', 'nombre', 'apellidos'];
     var myquery = 'SELECT (id, nombre, apellidos) FROM cliente WHERE activo = true';
-
 
     databaseConfig.getDb(destino).query(myquery, {
         columns: columns.map(pgp.as.name).join(),
@@ -117,9 +117,10 @@ module.exports.set = function(app) {
     const columns = ['nombre', 'apellidos'];
     var nombre = req.body.nombre;
     var apellidos = req.body.apellidos;
-    var myquery = 'INSERT INTO public.cliente(${columns^}) VALUES (' + nombre + ',' + apellidos + ')';
+    var myquery = 'INSERT INTO public.cliente(${columns^}) VALUES (\'' + nombre + '\',\'' + apellidos + '\')';
 
     databaseConfig.getDb(destino).query(myquery, {
+      columns: columns.map(pgp.as.name).join(),
         table: 'Table Name'
       }).then(result => {
         console.log(result); // printing the data returned
@@ -130,6 +131,7 @@ module.exports.set = function(app) {
 
       })
       .catch(error => {
+        console.log(error);
         // var error_type = error.code.substring(0, 2);
         // if (destino.localeCompare('heredia') == 0) {
         //   console.log("El nodo central no se encuentra disponible, insertando en SanJose");

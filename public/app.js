@@ -20,5 +20,6 @@ var app = angular.module('app', [
   , 'ClientesService'
   , 'EmpleadosService'
   , 'TiendasService'
+  , 'SucursalesService'
 
 ]);

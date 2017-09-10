@@ -7,6 +7,13 @@ angular.module('ClientesService', []).factory('Clientes', ['$rootScope', '$http'
       }).catch(function(err) {
         throw err;
       });
+    },
+    postCliente: function(data) {
+      return $http.post('/api/v1/cliente?origin=' + $rootScope.origin, data).then(function(data) {
+        return data;
+      }).catch(function(err) {
+        throw err;
+      });
     }
 
   };
