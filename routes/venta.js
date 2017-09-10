@@ -56,15 +56,13 @@ module.exports.set = function(app) {
 
     var destino = req.query.origin || "heredia";
     // Default siempre desde heredia
-    const columns = ['id', 'id_cliente', 'id_tienda', 'id_empleado', 'id_articulo', 'fecha', 'monto'];
-    var id = req.body.id;
+    const columns = ['id_cliente', 'id_tienda', 'id_empleado', 'id_articulo',  'monto'];
     var id_cliente = req.body.id_cliente;
     var id_tienda = req.body.id_tienda;
     var id_empleado = req.body.id_empleado;
-    var fecha = req.body.id_fecha;
     var id_articulo = req.body.id_articulo;
     var monto = req.body.monto;
-    var myquery = 'INSERT INTO public.venta(${columns^}) VALUES ('+id+','+ id_cliente+','+ id_tienda+','+ id_empleado+')'+ id_articulo+','+ fecha+','+ monto+')';
+    var myquery = 'INSERT INTO public.venta(${columns^}) VALUES ('+ id_cliente+','+ id_tienda+','+ id_empleado+')'+ id_articulo+','+ monto+')';
 
     databaseConfig.getDb(destino).query(myquery, {
         columns: columns.map(pgp.as.name).join(),
