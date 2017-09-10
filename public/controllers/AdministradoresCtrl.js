@@ -1,4 +1,4 @@
-angular.module('AdministradoresCtrl', []).controller('AdministradoresController', ['$rootScope', '$scope', '$state','Administrador', function($rootScope, $scope, $state, Administrador) {
+angular.module('AdministradoresCtrl', []).controller('AdministradoresController', ['$rootScope', '$scope', '$state', 'Administrador', function($rootScope, $scope, $state, Administrador) {
   $scope.params = {};
   $scope.isHeredia = function() {
     if ($rootScope.origin.localeCompare("heredia") === 0) {
@@ -7,10 +7,31 @@ angular.module('AdministradoresCtrl', []).controller('AdministradoresController'
     return false;
   }
 
+  function fixDate(date) {
+    date = new Date(date);
+    year = date.getFullYear();
+    month = date.getMonth() + 1;
+    dt = date.getDate();
 
+    if (dt < 10) {
+      dt = '0' + dt;
+    }
+    if (month < 10) {
+      month = '0' + month;
+    }
+    return  dt + '/' + month + '/' + year;
+
+  }
 
   $scope.callMejoresClientesPeriodo = function(params) {
-    Administrador.mejoresClientesPeriodo($scope.form).then(function(response) {
+    console.log(params);
+
+
+
+    params.desde = fixDate(params.desde);
+    params.hasta = fixDate(params.hasta);
+    console.log(params);
+    Administrador.mejoresClientesPeriodo(params).then(function(response) {
       alert("Success");
     }).catch(function(err) {
       alert("Failed")
@@ -50,7 +71,7 @@ angular.module('AdministradoresCtrl', []).controller('AdministradoresController'
     });
   }
 
-  $scope.callVentasPorTiendaPeriodo= function(params) {
+  $scope.callVentasPorTiendaPeriodo = function(params) {
     Administrador.montoVentasPorTiendaPeriodo($scope.form).then(function(response) {
       alert("Success");
     }).catch(function(err) {
@@ -58,7 +79,7 @@ angular.module('AdministradoresCtrl', []).controller('AdministradoresController'
     });
   }
 
-  $scope.callVentasPorTiendaYProductoPeriodo = function (params) {
+  $scope.callVentasPorTiendaYProductoPeriodo = function(params) {
     Administrador.ventasPorTiendaYProductoPeriodo($scope.form).then(function(response) {
       alert("Success");
     }).catch(function(err) {

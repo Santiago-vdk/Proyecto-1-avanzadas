@@ -50,7 +50,8 @@ angular.module('AdministradorService', []).factory('Administrador', ['$rootScope
     },
 
     mejoresClientesPeriodo: function(data) {
-      return $http.post('/api/v1/administrador/consulta7?origin=' + $rootScope.origin, data).then(function(data) {
+
+      return $http.get('/api/v1/administrador/consulta7?origin=' + $rootScope.origin + '&desde=' + data.desde + '&hasta=' + data.hasta, data).then(function(data) {
         return data;
       }).catch(function(err) {
         throw err;
