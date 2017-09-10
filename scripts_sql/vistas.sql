@@ -2,6 +2,8 @@
 --Author: OskrD
 --Version: 1.2
 
+-- Para consultas a las tablas (GETs)
+
 CREATE VIEW cliente_v AS
   SELECT Nombre, Apellidos
   FROM cliente
@@ -39,26 +41,31 @@ CREATE VIEW articulo_v AS
     a.Precio
   FROM articulo a,
     tipo_articulo t
-  WHERE a.id_tipo = t.id AND Activo = TRUE;
+  WHERE a.id_tipo = t.id AND a.Activo = TRUE;
 
 CREATE VIEW venta_v AS
-  SELECT c.id_cliente AS cliente,
-    t.id_tienda AS tienda,
-    e.id_empleado AS empleado,
+  SELECT c.nombre AS cliente,
+    t.nombre AS tienda,
+    e.nombre AS empleado,
     v.fecha AS fecha,
     v.monto AS monto
   FROM cliente c,
     tienda t,
     empleado e,
     venta v
-  WHERE v.Activo = TRUE;
+  WHERE c.id = v.id_cliente AND t.id = v.id_tienda AND e.id = v.id_empleado AND
+  	v.Activo = TRUE;
 
 CREATE VIEW venta_articulo_v AS
   SELECT v.id_venta AS Factura,
-    a.id_articulo AS articulo
+    a.nombre AS articulo
   FROM venta_articulo v,
     articulo a
-  WHERE Activo = TRUE;
+  WHERE a.id = v.id_articulo AND v.Activo = TRUE;
+
+
+
+-- Para consultas de los administradores
 
 CREATE VIEW dinero_tienda AS
   SELECT SUM(Monto) AS Ventas_tienda
