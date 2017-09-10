@@ -61,13 +61,16 @@ module.exports.set = function(app) {
     var id_tienda = req.body.id_tienda;
     var id_empleado = req.body.id_empleado;
     var monto = req.body.monto;
-    var myquery = 'INSERT INTO public.venta(${columns^}) VALUES ('+ id_cliente+','+ id_tienda+','+ id_empleado+ ',' + monto+')';
+    var myquery = 'INSERT INTO public.venta(${columns^}) VALUES ('+ id_cliente+','+ id_tienda+','+ id_empleado+ ',' + monto+') returning id';
 
     databaseConfig.getDb(destino).query(myquery, {
         columns: columns.map(pgp.as.name).join(),
         table: 'Table Name'
       }).then(result => {
-        console.log(result); // printing the data returned
+        console.log("este",result); // printing the data returned
+
+
+
         res.status(200).json({
           status: "success",
           data: result
