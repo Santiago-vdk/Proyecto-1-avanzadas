@@ -56,11 +56,10 @@ module.exports.set = function(app) {
 
     var destino = req.query.origin || "heredia";
     // Default siempre desde heredia
-    const columns = ['id_cliente', 'id_tienda', 'id_empleado', 'id_articulo',  'monto'];
+    const columns = ['id_cliente', 'id_tienda', 'id_empleado', 'monto'];
     var id_cliente = req.body.id_cliente;
     var id_tienda = req.body.id_tienda;
     var id_empleado = req.body.id_empleado;
-    var id_articulo = req.body.id_articulo;
     var monto = req.body.monto;
     var myquery = 'INSERT INTO public.venta(${columns^}) VALUES ('+ id_cliente+','+ id_tienda+','+ id_empleado+')'+ id_articulo+','+ monto+')';
 
