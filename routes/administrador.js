@@ -118,7 +118,7 @@ module.exports.set = function(app) {
     var hasta = req.query.hasta;
     var cliente = req.query.cliente;
     const columns = [];
-    var myquery = 'SELECT ${columns^} promedio_compra_cliente_f('+cliente+','+desde+','+hasta+')';
+    var myquery = 'SELECT ${columns^} promedio_compra_cliente_f('+cliente+',\''+desde+'\',\''+hasta+'\')';
 
     databaseConfig.getDb(destino).query(myquery, {
         columns: columns.map(pgp.as.name).join(),
@@ -171,7 +171,7 @@ module.exports.set = function(app) {
     var articulo = req.query.articulo;
     var mes = req.query.mes;
     const columns = [];
-    var myquery = 'SELECT ${columns^} venta_producto_mes_f('+articulo+','+mes+')';
+    var myquery = 'SELECT ${columns^} venta_producto_mes_f('+articulo+',\''+mes+'\')';
 
     databaseConfig.getDb(destino).query(myquery, {
         columns: columns.map(pgp.as.name).join(),
@@ -224,7 +224,7 @@ module.exports.set = function(app) {
     var desde = req.query.desde;
     var hasta = req.query.hasta;
     const columns = [];
-    var myquery = 'SELECT ${columns^} dinero_tienda_periodo_f('+destino+','+desde+','+hasta+')';
+    var myquery = 'SELECT ${columns^} dinero_tienda_periodo_f('+destino+',\''+desde+'\',\''+hasta+'\')';
 
     databaseConfig.getDb(destino).query(myquery, {
         columns: columns.map(pgp.as.name).join(),
@@ -279,7 +279,7 @@ module.exports.set = function(app) {
     var desde = req.query.desde;
     var hasta = req.query.hasta;
     const columns = [];
-    var myquery = 'SELECT ${columns^} dinero_tienda_producto_periodo_f('+destino+','+producto+','+desde+','+hasta+')';
+    var myquery = 'SELECT ${columns^} dinero_tienda_producto_periodo_f('+destino+','+producto+',\''+desde+'\',\''+hasta+'\')';
 
     databaseConfig.getDb(destino).query(myquery, {
         columns: columns.map(pgp.as.name).join(),
@@ -334,7 +334,7 @@ module.exports.set = function(app) {
     var hasta = req.query.hasta;
 
     const columns = [];
-    var myquery = 'SELECT ${columns^} mejores_clientes_f('+desde+','+hasta+')';
+    var myquery = 'SELECT ${columns^} mejores_clientes_f(\''+desde+'\',\''+hasta+'\')';
 
     databaseConfig.getDb(destino).query(myquery, {
         columns: columns.map(pgp.as.name).join(),

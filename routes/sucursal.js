@@ -113,7 +113,7 @@ module.exports.set = function(app) {
     const columns = ['nombre'];
     var nombre = req.body.nombre;
 
-    var myquery = 'INSERT INTO public.sucursal(nombre) VALUES (\"'+nombre+'\")';
+    var myquery = 'INSERT INTO public.sucursal(nombre) VALUES (\''+nombre+'\')';
 
     databaseConfig.getDb(destino).query(myquery, {
         table: 'Table Name'
