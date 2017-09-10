@@ -1,6 +1,6 @@
 angular.module('MainCtrl', []).controller('MainController', ['$rootScope', '$scope', '$location', 'Articulos', 'Clientes', 'Empleados', 'Tiendas', '$state', function($rootScope, $scope, $location, Articulos, Clientes, Empleados, Tiendas, $state) {
 
-  $rootScope.origin = "heredia";
+  $rootScope.origin = "1";
   $scope.currentPath = $location.path();
   $scope.updateOrigin = function(origin) {
     $rootScope.origin = origin

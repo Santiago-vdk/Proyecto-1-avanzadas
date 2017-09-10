@@ -1,7 +1,7 @@
 angular.module('AdministradoresCtrl', []).controller('AdministradoresController', ['$rootScope', '$scope', '$state', 'Administrador', function($rootScope, $scope, $state, Administrador) {
   $scope.params = {};
   $scope.isHeredia = function() {
-    if ($rootScope.origin.localeCompare("heredia") === 0) {
+    if (parseInt($rootScope.origin) === 1) {
       return true;
     }
     return false;
@@ -24,23 +24,22 @@ angular.module('AdministradoresCtrl', []).controller('AdministradoresController'
   }
 
   $scope.callMejoresClientesPeriodo = function(params) {
-    console.log(params);
-
-
 
     params.desde = fixDate(params.desde);
     params.hasta = fixDate(params.hasta);
-    console.log(params);
+
     Administrador.mejoresClientesPeriodo(params).then(function(response) {
-      alert("Success");
+      console.log(response);
     }).catch(function(err) {
       alert("Failed")
     });
   }
 
   $scope.callDineroRecaudadoEnLaTienda = function() {
-    Administrador.dineroRecaudadoEnLaTiendas($scope.form).then(function(response) {
-      alert("Success");
+
+
+    Administrador.dineroRecaudadoEnLaTiendas().then(function(response) {
+      $scope.dinero_recaudado = response.data.data;
     }).catch(function(err) {
       alert("Failed")
     });
