@@ -8,7 +8,7 @@ module.exports.set = function(app) {
 
     console.log("Solicitud desde ",destino);
     const columns = ['id', 'nombre', 'apellidos'];
-    var myquery = 'SELECT (${columns^}) FROM cliente WHERE activo = true';
+    var myquery = 'SELECT ${columns^} FROM cliente WHERE activo = true';
 
     databaseConfig.getDb(destino).query(myquery, {
         columns: columns.map(pgp.as.name).join(),

@@ -7,7 +7,7 @@ module.exports.set = function(app) {
   app.get('/api/v1/sucursal', function(req, res) {
     var destino = req.query.origin || "heredia";
       const columns = ['id','nombre'];
-      var myquery = 'SELECT (${columns^}) FROM sucursal WHERE activo = true';
+      var myquery = 'SELECT ${columns^} FROM sucursal WHERE activo = true';
 
         databaseConfig.getDb(destino).query(myquery, {
             columns: columns.map(pgp.as.name).join(),

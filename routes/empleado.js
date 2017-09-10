@@ -7,7 +7,7 @@ module.exports.set = function(app) {
   app.get('/api/v1/empleado', function(req, res) {
     var destino = req.query.origin || "heredia";
         const columns = ['id','id_tienda','id_puesto','nombre'];
-    var myquery = 'SELECT (${columns^}) FROM empleado WHERE activo = true';
+    var myquery = 'SELECT ${columns^} FROM empleado WHERE activo = true';
 
       databaseConfig.getDb(destino).query(myquery, {
           columns: columns.map(pgp.as.name).join(),
