@@ -6,7 +6,7 @@ module.exports.set = function(app) {
     var destino = req.query.origin || "heredia";
 
     // Default siempre desde heredia
-    const columns = ['id','id_tienda','id_puesto',"nombre"];
+    const columns = ['id','id_tienda','id_puesto','nombre'];
     databaseConfig.getDb(destino).query('SELECT ${columns^} FROM empleado', {
         columns: columns.map(pgp.as.name).join(),
         table: 'Table Name'
@@ -23,20 +23,12 @@ module.exports.set = function(app) {
       });
   });
 
-
-  app.param('id', function(req, res, next, id) {
-    req.id = id;
-    next();
-  });
-
-
   app.get('/api/v1/empleado/:id?', function(req, res) {
-
     var destino = req.query.origin || "heredia";
 
     // Default siempre desde heredia
     const columns = ['id','id_tienda','id_puesto',"nombre"];
-    databaseConfig.getDb(destino).query('SELECT ${columns^} FROM empleado', {
+    databaseConfig.getDb(destino).query('SELECT ${columns^} FROM empleado WHERE id = id', {
         columns: columns.map(pgp.as.name).join(),
         table: 'Table Name'
       }).then(data => {
