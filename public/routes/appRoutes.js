@@ -92,11 +92,11 @@ angular.module('appRoutes', []).config(['$stateProvider', '$locationProvider', '
         controller: 'AdministradoresController'
       }
     }
-  }).state('pedidosClientePeriodo', {
+  }).state('cantidadVentasClientePeriodo', {
     parent: 'administradores',
     views: {
       'consultas@administradores': {
-        templateUrl: 'views/administrativo/pedidosClientePeriodo.html',
+        templateUrl: 'views/administrativo/cantidadVentasClientePeriodo.html',
         controller: 'AdministradoresController'
       }
     }

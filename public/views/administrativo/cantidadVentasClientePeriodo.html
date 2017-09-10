@@ -1,11 +1,10 @@
 <div class="container">
-  <h3>Monto promedio de compras por cliente para un período de fechas específico</h3>
+  <h3>Cantidad de pedidos según cliente para un rango de fechas específico</h3>
   <label>Desde:</label>
   <input type="date" name="myDate" ng-model="params.desde">
   <br />
   <label>Hasta:</label>
   <input type="date" name="myDate" ng-model="params.hasta">
-
 
   <div class="form-group ">
     <label class="control-label requiredField" for="name">
@@ -23,5 +22,6 @@
   </div>
 
 
-    <button class="btn btn-primary" ng-click="callPromedioComprasPorClientePeriodo(params)">Consultar</button>
+
+  <button class="btn btn-primary" ng-click="callCantidadVentasClientePeriodo(params)">Consultar</button>
 </div>

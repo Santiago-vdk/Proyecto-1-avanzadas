@@ -7,14 +7,17 @@
       <h1 class="my-4">Administrador</h1>
       <h5 class="my-4">Consultas Disponibles</h5>
       <div class="list-group">
+
+        <a href="#" ng-click="dineroRecaudado()" class="list-group-item">Cantidad de dinero recaudado en la tienda</a>
+        <a href="#" ng-click="cantidadVentasClientePeriodo()" class="list-group-item">Cantidad de ventas de un cliente para un período de fechas específicas</a>
+        <a href="#" ng-click="promedioComprasClientePeriodo()" class="list-group-item">Monto promedio de compras por cliente para un período de fechas específico</a>
+        <a href="#" ng-click="ventaProductoMesParticular()" class="list-group-item">Monto de ventas para un producto específico para un mes en particular</a>
+
         <a href="#" ng-if="isHeredia()" ng-click="ventasportiendaperiodo()" class="list-group-item">Monto de ventas por tienda para un período específico</a>
         <a href="#" ng-if="isHeredia()" ng-click="ventasportiendayproductoperiodo()" class="list-group-item">Monto de ventas por tienda y por producto para un período específico</a>
         <a href="#" ng-if="isHeredia()" ng-click="mejoresclientesperiodo()" class="list-group-item">Listado de los tres mejores clientes en un período específico</a>
 
-        <a href="#" ng-click="dineroRecaudado()" class="list-group-item">Cantidad de dinero recaudado en la tienda</a>
-        <a href="#" ng-click="pedidosClientePeriodo()" class="list-group-item">Cantidad de pedidos según cliente para un rango de fechas específico</a>
-        <a href="#" ng-click="promedioComprasClientePeriodo()" class="list-group-item">Monto promedio de compras por cliente para un período de fechas específico</a>
-        <a href="#" ng-click="ventaProductoMesParticular()" class="list-group-item">Monto de ventas para un producto específico para un mes en particular</a>
+
       </div>
     </div>
     <div class="col-lg-9">
