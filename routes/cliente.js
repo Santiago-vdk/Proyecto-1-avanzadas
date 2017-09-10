@@ -6,8 +6,7 @@ module.exports.set = function(app) {
 
   app.get('/api/v1/cliente', function(req, res) {
     var destino = req.query.origin || "heredia";
-    const columns = ['id', 'nombre', 'apellidos'];
-    var myquery = 'SELECT (${columns^}) FROM cliente WHERE activo = true';
+    var myquery = 'SELECT (id, nombre, apellidos) FROM cliente WHERE activo = true';
 
 
     databaseConfig.getDb(destino).query(myquery, {
