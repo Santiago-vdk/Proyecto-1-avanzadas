@@ -27,85 +27,309 @@ module.exports.set = function(app) {
   });
 
 
-  app.post('/api/v1/administrador/consulta2', function (req, res) {//Cantidad de pedidos según cliente para un rango de fechas específico
+  app.get('/api/v1/administrador/consulta2', function (req, res) {//Cantidad de ventas según cliente para un rango de fechas específico
 
-    var inicio = req.body.inicio;
-    var final = req.body.final;
-    console.log(inicio);
-    res.status(201).json({
-      status: "success",
-      data: req.body
-    });
+    var destino = req.query.origin || "heredia";
+        const columns = ['id','id_tienda','id_puesto','nombre'];
+    var myquery = 'SELECT ${columns^} FROM empleado WHERE activo = true';
+
+      databaseConfig.getDb(destino).query(myquery, {
+          columns: columns.map(pgp.as.name).join(),
+          table: 'Table Name'
+        }).then(result => {
+          console.log(result); // printing the data returned
+
+          res.status(200).json({
+            status: "success",
+            data: result
+          });
+
+        })
+        .catch(error => {
+            // var error_type = error.code.substring(0, 2);
+            // if (destino.localeCompare('heredia') == 0) {
+            //   console.log("Nodo central fuera de linea..."); // printing the error
+            //   res.status(500).send();
+            // } else {
+            //   if ((error_type.localeCompare('08') == 0) || (error_type.localeCompare('28') == 0)) {
+            //     console.log('Error de conexion, realizando consulta en nodo principal Heredia');
+            //     databaseConfig.getDb('heredia').query(myquery, {
+            //
+            //         table: 'Table Name'
+            //       }).then(result => {
+            //         console.log(result); // printing the data returned
+            //
+            //         res.status(200).json({
+            //           status: "success",
+            //           data: result
+            //         });
+            //
+            //       })
+            //       .catch(error => {
+            //         console.log("Nodo central fuera de linea..."); // printing the error
+            //         res.status(500).send();
+            //       });
+            //   } else {
+            //     console.log("Error inesperado"); // printing the error
+            //     res.status(500).send();
+            //   }
+            // }
+
+          })
   })
 
-  app.post('/api/v1/administrador/consulta3', function (req, res) {//Monto  promedio  de  compras  por  cliente  para  un  período  de  fechas específico
+  app.get('/api/v1/administrador/consulta3', function (req, res) {//Monto  promedio  de  compras  por  cliente  para  un  período  de  fechas específico
 
-    var inicio = req.body.inicio;
-    var final = req.body.final;
-    console.log(inicio);
-    res.status(201).json({
-      status: "success",
-      data: req.body
-    });
+    var destino = req.query.origin || "heredia";
+        const columns = ['id','id_tienda','id_puesto','nombre'];
+    var myquery = 'SELECT ${columns^} FROM empleado WHERE activo = true';
+
+      databaseConfig.getDb(destino).query(myquery, {
+          columns: columns.map(pgp.as.name).join(),
+          table: 'Table Name'
+        }).then(result => {
+          console.log(result); // printing the data returned
+
+          res.status(200).json({
+            status: "success",
+            data: result
+          });
+
+        })
+        .catch(error => {
+            // var error_type = error.code.substring(0, 2);
+            // if (destino.localeCompare('heredia') == 0) {
+            //   console.log("Nodo central fuera de linea..."); // printing the error
+            //   res.status(500).send();
+            // } else {
+            //   if ((error_type.localeCompare('08') == 0) || (error_type.localeCompare('28') == 0)) {
+            //     console.log('Error de conexion, realizando consulta en nodo principal Heredia');
+            //     databaseConfig.getDb('heredia').query(myquery, {
+            //
+            //         table: 'Table Name'
+            //       }).then(result => {
+            //         console.log(result); // printing the data returned
+            //
+            //         res.status(200).json({
+            //           status: "success",
+            //           data: result
+            //         });
+            //
+            //       })
+            //       .catch(error => {
+            //         console.log("Nodo central fuera de linea..."); // printing the error
+            //         res.status(500).send();
+            //       });
+            //   } else {
+            //     console.log("Error inesperado"); // printing the error
+            //     res.status(500).send();
+            //   }
+            // }
+
+          })
   })
 
-  app.post('/api/v1/administrador/consulta4', function (req, res) {//Monto de ventas para un producto específico para un mes en particular
+  app.get('/api/v1/administrador/consulta4', function (req, res) {//Monto de ventas para un producto específico para un mes en particular
 
-    var producto = req.body.producto;
-    var mes = req.body.mes;
-    console.log(producto);
-    res.status(201).json({
-      status: "success",
-      data: req.body
-    });
+    var destino = req.query.origin || "heredia";
+        const columns = ['id','id_tienda','id_puesto','nombre'];
+    var myquery = 'SELECT ${columns^} FROM empleado WHERE activo = true';
+
+      databaseConfig.getDb(destino).query(myquery, {
+          columns: columns.map(pgp.as.name).join(),
+          table: 'Table Name'
+        }).then(result => {
+          console.log(result); // printing the data returned
+
+          res.status(200).json({
+            status: "success",
+            data: result
+          });
+
+        })
+        .catch(error => {
+            // var error_type = error.code.substring(0, 2);
+            // if (destino.localeCompare('heredia') == 0) {
+            //   console.log("Nodo central fuera de linea..."); // printing the error
+            //   res.status(500).send();
+            // } else {
+            //   if ((error_type.localeCompare('08') == 0) || (error_type.localeCompare('28') == 0)) {
+            //     console.log('Error de conexion, realizando consulta en nodo principal Heredia');
+            //     databaseConfig.getDb('heredia').query(myquery, {
+            //
+            //         table: 'Table Name'
+            //       }).then(result => {
+            //         console.log(result); // printing the data returned
+            //
+            //         res.status(200).json({
+            //           status: "success",
+            //           data: result
+            //         });
+            //
+            //       })
+            //       .catch(error => {
+            //         console.log("Nodo central fuera de linea..."); // printing the error
+            //         res.status(500).send();
+            //       });
+            //   } else {
+            //     console.log("Error inesperado"); // printing the error
+            //     res.status(500).send();
+            //   }
+            // }
+
+          })
   })
 
-  app.post('/api/v1/administrador/consulta5', function (req, res) {//Monto de ventas por tienda para un período específico
+  app.get('/api/v1/administrador/consulta5', function (req, res) {//Monto de ventas por tienda para un período específico
 
-    var inicio = req.body.inicio;
-    var final = req.body.final;
-    var tienda = req.body.tienda;
-    console.log(tienda);
-    res.status(201).json({
-      status: "success",
-      data: req.body
-    });
+    var destino = req.query.origin || "heredia";
+        const columns = ['id','id_tienda','id_puesto','nombre'];
+    var myquery = 'SELECT ${columns^} FROM empleado WHERE activo = true';
+
+      databaseConfig.getDb(destino).query(myquery, {
+          columns: columns.map(pgp.as.name).join(),
+          table: 'Table Name'
+        }).then(result => {
+          console.log(result); // printing the data returned
+
+          res.status(200).json({
+            status: "success",
+            data: result
+          });
+
+        })
+        .catch(error => {
+            // var error_type = error.code.substring(0, 2);
+            // if (destino.localeCompare('heredia') == 0) {
+            //   console.log("Nodo central fuera de linea..."); // printing the error
+            //   res.status(500).send();
+            // } else {
+            //   if ((error_type.localeCompare('08') == 0) || (error_type.localeCompare('28') == 0)) {
+            //     console.log('Error de conexion, realizando consulta en nodo principal Heredia');
+            //     databaseConfig.getDb('heredia').query(myquery, {
+            //
+            //         table: 'Table Name'
+            //       }).then(result => {
+            //         console.log(result); // printing the data returned
+            //
+            //         res.status(200).json({
+            //           status: "success",
+            //           data: result
+            //         });
+            //
+            //       })
+            //       .catch(error => {
+            //         console.log("Nodo central fuera de linea..."); // printing the error
+            //         res.status(500).send();
+            //       });
+            //   } else {
+            //     console.log("Error inesperado"); // printing the error
+            //     res.status(500).send();
+            //   }
+            // }
+
+          })
   })
 
 
-  app.post('/api/v1/administrador/consulta6', function (req, res) {//Monto de ventas por tienda y por producto para un período específico
+  app.get('/api/v1/administrador/consulta6', function (req, res) {//Monto de ventas por tienda y por producto para un período específico
 
-    var inicio = req.body.inicio;
-    var final = req.body.final;
-    var tienda = req.body.tienda;
-    var producto = req.body.producto;
+    var destino = req.query.origin || "heredia";
+        const columns = ['id','id_tienda','id_puesto','nombre'];
+    var myquery = 'SELECT ${columns^} FROM empleado WHERE activo = true';
 
-    console.log(tienda);
-    res.status(201).json({
-      status: "success",
-      data: req.body
-    });
+      databaseConfig.getDb(destino).query(myquery, {
+          columns: columns.map(pgp.as.name).join(),
+          table: 'Table Name'
+        }).then(result => {
+          console.log(result); // printing the data returned
+
+          res.status(200).json({
+            status: "success",
+            data: result
+          });
+
+        })
+        .catch(error => {
+            // var error_type = error.code.substring(0, 2);
+            // if (destino.localeCompare('heredia') == 0) {
+            //   console.log("Nodo central fuera de linea..."); // printing the error
+            //   res.status(500).send();
+            // } else {
+            //   if ((error_type.localeCompare('08') == 0) || (error_type.localeCompare('28') == 0)) {
+            //     console.log('Error de conexion, realizando consulta en nodo principal Heredia');
+            //     databaseConfig.getDb('heredia').query(myquery, {
+            //
+            //         table: 'Table Name'
+            //       }).then(result => {
+            //         console.log(result); // printing the data returned
+            //
+            //         res.status(200).json({
+            //           status: "success",
+            //           data: result
+            //         });
+            //
+            //       })
+            //       .catch(error => {
+            //         console.log("Nodo central fuera de linea..."); // printing the error
+            //         res.status(500).send();
+            //       });
+            //   } else {
+            //     console.log("Error inesperado"); // printing the error
+            //     res.status(500).send();
+            //   }
+            // }
+
+          })
   })
 
   app.get('/api/v1/administrador/consulta7', function(req, res) {//Listado  de  los  tres  mejores  clientes en un período específico
     var destino = req.query.origin || "heredia";
+        const columns = ['id','id_tienda','id_puesto','nombre'];
+    var myquery = 'SELECT ${columns^} FROM empleado WHERE activo = true';
 
-    // Default siempre desde heredia
-    const columns = ['id','id_tipo','nombre','precio'];
-    databaseConfig.getDb(destino).query('SELECT ${columns^} FROM cientes', {
-        columns: columns.map(pgp.as.name).join(),
-        table: 'Table Name'
-      }).then(result => {
-        console.log(result); // printing the data returned
-        res.status(200).json({
-          status: "success",
-          data: result
-        });
-      })
-      .catch(error => {
-        console.log(error); // printing the error
-        res.status(500).send();
-      });
-  });
+      databaseConfig.getDb(destino).query(myquery, {
+          columns: columns.map(pgp.as.name).join(),
+          table: 'Table Name'
+        }).then(result => {
+          console.log(result); // printing the data returned
+
+          res.status(200).json({
+            status: "success",
+            data: result
+          });
+
+        })
+        .catch(error => {
+            // var error_type = error.code.substring(0, 2);
+            // if (destino.localeCompare('heredia') == 0) {
+            //   console.log("Nodo central fuera de linea..."); // printing the error
+            //   res.status(500).send();
+            // } else {
+            //   if ((error_type.localeCompare('08') == 0) || (error_type.localeCompare('28') == 0)) {
+            //     console.log('Error de conexion, realizando consulta en nodo principal Heredia');
+            //     databaseConfig.getDb('heredia').query(myquery, {
+            //
+            //         table: 'Table Name'
+            //       }).then(result => {
+            //         console.log(result); // printing the data returned
+            //
+            //         res.status(200).json({
+            //           status: "success",
+            //           data: result
+            //         });
+            //
+            //       })
+            //       .catch(error => {
+            //         console.log("Nodo central fuera de linea..."); // printing the error
+            //         res.status(500).send();
+            //       });
+            //   } else {
+            //     console.log("Error inesperado"); // printing the error
+            //     res.status(500).send();
+            //   }
+            // }
+
+          })
 
 };
