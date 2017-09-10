@@ -6,7 +6,7 @@ module.exports.set = function(app) {
   app.use(bodyParser.json());
 
   app.get('/api/v1/articulo', function(req, res) {
-    var destino = req.query.origin || "heredia";
+    var destino = req.query.origin || 1;
     var myquery = 'SELECT * FROM articulo_v';
     databaseConfig.getDb(destino).query(myquery, {
         table: 'Table Name'
@@ -56,7 +56,7 @@ module.exports.set = function(app) {
 
 
   app.get('/api/v1/articulo/tipo', function(req, res) {
-    var destino = req.query.origin || "heredia";
+    var destino = req.query.origin || 1;
     const columns = ['id', 'nombre'];
     var myquery = 'SELECT ${columns^} FROM tipo_articulo WHERE activo = true';
     databaseConfig.getDb(destino).query(myquery, {
@@ -108,7 +108,7 @@ module.exports.set = function(app) {
 
 
   app.post('/api/v1/articulo', function(req, res) {
-    var destino = req.query.origin || "heredia";
+    var destino = req.query.origin || 1;
     // Default siempre desde heredia
     const columns = ['id_tipo', 'nombre', 'precio'];
     var id_tipo = req.body.id_tipo;
@@ -181,7 +181,7 @@ console.log(myquery);
   })
 
   app.put('/api/v1/articulo', function(req, res) {
-    var destino = req.query.origin || "heredia";
+    var destino = req.query.origin || 1;
     // Default siempre desde heredia
     var id = req.body.id;
     var nombre = req.body.nombre;
@@ -252,7 +252,7 @@ console.log(myquery);
   })
 
   app.delete('/api/v1/articulo', function(req, res) {
-    var destino = req.query.origin || "heredia";
+    var destino = req.query.origin || 1;
     // Default siempre desde heredia
     var id = req.body.id;
 
@@ -319,7 +319,7 @@ console.log(myquery);
 
   app.get('/api/v1/articulo/:id?', function(req, res) {
 
-    var destino = req.query.origin || "heredia";
+    var destino = req.query.origin || 1;
     var myquery = 'SELECT * FROM articulo_v WHERE id = ' + req.params.id;
 
     databaseConfig.getDb(destino).query(myquery, {

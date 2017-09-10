@@ -58,9 +58,13 @@ module.exports.set = function(app) {
 
   app.get('/api/v1/administrador/consulta2', function(req, res) { //Cantidad de ventas según cliente para un rango de fechas específico
 
-    var destino = req.query.origin || "heredia";
-    const columns = ['id', 'id_tienda', 'id_puesto', 'nombre'];
-    var myquery = 'SELECT ${columns^} FROM empleado WHERE activo = true';
+    var destino = req.query.origin || 1;
+    var desde = req.query.desde;
+    var hasta = req.query.hasta;
+    var cliente = req.query.cliente;
+    console.log("params",destino,desde,hasta,cliente);
+    const columns = [];
+    var myquery = 'SELECT ${columns^} venta_cliente_f('+cliente+','+desde+','+hasta+')';
 
     databaseConfig.getDb(destino).query(myquery, {
         columns: columns.map(pgp.as.name).join(),
@@ -109,9 +113,12 @@ module.exports.set = function(app) {
 
   app.get('/api/v1/administrador/consulta3', function(req, res) { //Monto  promedio  de  compras  por  cliente  para  un  período  de  fechas específico
 
-    var destino = req.query.origin || "heredia";
-    const columns = ['id', 'id_tienda', 'id_puesto', 'nombre'];
-    var myquery = 'SELECT ${columns^} FROM empleado WHERE activo = true';
+    var destino = req.query.origin || 1;
+    var desde = req.query.desde;
+    var hasta = req.query.hasta;
+    var cliente = req.query.cliente;
+    const columns = [];
+    var myquery = 'SELECT ${columns^} promedio_compra_cliente_f('+cliente+','+desde+','+hasta+')';
 
     databaseConfig.getDb(destino).query(myquery, {
         columns: columns.map(pgp.as.name).join(),
@@ -160,9 +167,11 @@ module.exports.set = function(app) {
 
   app.get('/api/v1/administrador/consulta4', function(req, res) { //Monto de ventas para un producto específico para un mes en particular
 
-    var destino = req.query.origin || "heredia";
-    const columns = ['id', 'id_tienda', 'id_puesto', 'nombre'];
-    var myquery = 'SELECT ${columns^} FROM empleado WHERE activo = true';
+    var destino = req.query.origin || 1;
+    var articulo = req.query.articulo;
+    var mes = req.query.mes;
+    const columns = [];
+    var myquery = 'SELECT ${columns^} venta_producto_mes_f('+articulo+','+mes+')';
 
     databaseConfig.getDb(destino).query(myquery, {
         columns: columns.map(pgp.as.name).join(),
@@ -211,9 +220,11 @@ module.exports.set = function(app) {
 
   app.get('/api/v1/administrador/consulta5', function(req, res) { //Monto de ventas por tienda para un período específico
 
-    var destino = req.query.origin || "heredia";
-    const columns = ['id', 'id_tienda', 'id_puesto', 'nombre'];
-    var myquery = 'SELECT ${columns^} FROM empleado WHERE activo = true';
+    var destino = req.query.origin || 1;
+    var desde = req.query.desde;
+    var hasta = req.query.hasta;
+    const columns = [];
+    var myquery = 'SELECT ${columns^} dinero_tienda_periodo_f('+destino+','+desde+','+hasta+')';
 
     databaseConfig.getDb(destino).query(myquery, {
         columns: columns.map(pgp.as.name).join(),
@@ -263,9 +274,12 @@ module.exports.set = function(app) {
 
   app.get('/api/v1/administrador/consulta6', function(req, res) { //Monto de ventas por tienda y por producto para un período específico
 
-    var destino = req.query.origin || "heredia";
-    const columns = ['id', 'id_tienda', 'id_puesto', 'nombre'];
-    var myquery = 'SELECT ${columns^} FROM empleado WHERE activo = true';
+    var destino = req.query.origin || 1;
+    var articulo = req.query.articulo;
+    var desde = req.query.desde;
+    var hasta = req.query.hasta;
+    const columns = [];
+    var myquery = 'SELECT ${columns^} dinero_tienda_producto_periodo_f('+destino+','+producto+','+desde+','+hasta+')';
 
     databaseConfig.getDb(destino).query(myquery, {
         columns: columns.map(pgp.as.name).join(),
@@ -315,9 +329,12 @@ module.exports.set = function(app) {
   app.get('/api/v1/administrador/consulta7', function(req, res) { //Listado  de  los  tres  mejores  clientes en un período específico
     console.log(req.query.desde, req.query.hasta);
 
-    var destino = req.query.origin || "heredia";
-    const columns = ['id', 'id_tienda', 'id_puesto', 'nombre'];
-    var myquery = 'SELECT ${columns^} FROM empleado WHERE activo = true';
+    var destino = req.query.origin || 1;
+    var desde = req.query.desde;
+    var hasta = req.query.hasta;
+
+    const columns = [];
+    var myquery = 'SELECT ${columns^} mejores_clientes_f('+desde+','+hasta+')';
 
     databaseConfig.getDb(destino).query(myquery, {
         columns: columns.map(pgp.as.name).join(),

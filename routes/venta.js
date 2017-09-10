@@ -4,7 +4,7 @@ module.exports.set = function(app) {
   var pgp = databaseConfig.getPgp();
 
   app.get('/api/v1/venta', function(req, res) {
-    var destino = req.query.origin || "heredia";
+    var destino = req.query.origin || 1;
     var myquery = 'SELECT * FROM venta_v';
 
           databaseConfig.getDb(destino).query(myquery, {
@@ -54,7 +54,7 @@ module.exports.set = function(app) {
 
   app.post('/api/v1/venta', function (req, res) {
 
-    var destino = req.query.origin || "heredia";
+    var destino = req.query.origin || 1;
     // Default siempre desde heredia
     const columns = ['id_cliente', 'id_tienda', 'id_empleado', 'monto'];
     var id_cliente = req.body.id_cliente;
@@ -202,7 +202,7 @@ module.exports.set = function(app) {
 
 
   app.get('/api/v1/venta/:id?', function(req, res) {
-    var destino = req.query.origin || "heredia";
+    var destino = req.query.origin || 1;
     var myquery = 'SELECT * FROM venta_v WHERE id = '+req.params.id;
 
     databaseConfig.getDb(destino).query(myquery, {

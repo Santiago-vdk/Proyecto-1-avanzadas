@@ -5,7 +5,7 @@ module.exports.set = function(app) {
 
 
   app.get('/api/v1/sucursal', function(req, res) {
-    var destino = req.query.origin || "heredia";
+    var destino = req.query.origin || 1;
       const columns = ['id','nombre'];
       var myquery = 'SELECT ${columns^} FROM sucursal WHERE activo = true';
 
@@ -57,7 +57,7 @@ module.exports.set = function(app) {
 
 
   app.get('/api/v1/sucursal_v', function(req, res) {
-    var destino = req.query.origin || "heredia";
+    var destino = req.query.origin || 1;
       var myquery = 'SELECT * FROM sucursal_v';
 
         databaseConfig.getDb(destino).query(myquery, {
@@ -108,7 +108,7 @@ module.exports.set = function(app) {
 
   app.post('/api/v1/sucursal', function(req, res) {
 
-    var destino = req.query.origin || "heredia";
+    var destino = req.query.origin || 1;
     // Default siempre desde heredia
     const columns = ['nombre'];
     var nombre = req.body.nombre;
@@ -179,7 +179,7 @@ module.exports.set = function(app) {
 
 
   app.get('/api/v1/sucursal/:id?', function(req, res) {
-    var destino = req.query.origin || "heredia";
+    var destino = req.query.origin || 1;
     var myquery = 'SELECT * FROM sucursal_v WHERE id = '+req.params.id;
 
     databaseConfig.getDb(destino).query(myquery, {
