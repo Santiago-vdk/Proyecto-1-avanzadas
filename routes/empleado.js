@@ -5,7 +5,7 @@ module.exports.set = function(app) {
 
 
   app.get('/api/v1/empleado', function(req, res) {
-    var destino = req.query.origin || "heredia";
+    var destino = req.query.origin || 1;
         const columns = ['id','id_tienda','id_puesto','nombre'];
     var myquery = 'SELECT ${columns^} FROM empleado WHERE activo = true';
 
@@ -57,7 +57,7 @@ module.exports.set = function(app) {
 
 
   app.get('/api/v1/empleado/puesto', function(req, res) {
-    var destino = req.query.origin || "heredia";
+    var destino = req.query.origin || 1;
         const columns = ['id','nombre'];
     var myquery = 'SELECT ${columns^} FROM puesto_empleado WHERE activo = true';
 
@@ -109,7 +109,7 @@ module.exports.set = function(app) {
 
 
   app.get('/api/v1/empleado_v', function(req, res) {
-    var destino = req.query.origin || "heredia";
+    var destino = req.query.origin || 1;
     var myquery = 'SELECT * FROM empleado_v';
 
       databaseConfig.getDb(destino).query(myquery, {
@@ -160,7 +160,7 @@ module.exports.set = function(app) {
 
   app.post('/api/v1/empleado', function(req, res) {
 
-    var destino = req.query.origin || "heredia";
+    var destino = req.query.origin || 1;
     // Default siempre desde heredia
     const columns = ['id_tienda', 'id_puesto','nombre'];
     var id_tienda = req.body.id_tienda;
@@ -236,7 +236,7 @@ module.exports.set = function(app) {
 
 
   app.get('/api/v1/empleado/:id?', function(req, res) {
-    var destino = req.query.origin || "heredia";
+    var destino = req.query.origin || 1;
     var myquery = 'SELECT * FROM empleado_v WHERE id = '+req.params.id;
 
     databaseConfig.getDb(destino).query(myquery, {

@@ -4,7 +4,7 @@ module.exports.set = function(app) {
   var pgp = databaseConfig.getPgp();
 
   app.get('/api/v1/cliente', function(req, res) {
-    var destino = req.query.origin || "heredia";
+    var destino = req.query.origin || 1;
 
     console.log("Solicitud desde ",destino);
     const columns = ['id', 'nombre', 'apellidos'];
@@ -59,7 +59,7 @@ module.exports.set = function(app) {
 
 
   app.get('/api/v1/cliente_v', function(req, res) {
-    var destino = req.query.origin || "heredia";
+    var destino = req.query.origin || 1;
     var myquery = 'SELECT * FROM cliente_v';
 
 
@@ -112,7 +112,7 @@ module.exports.set = function(app) {
 
   app.post('/api/v1/cliente', function(req, res) {
 
-    var destino = req.query.origin || "heredia";
+    var destino = req.query.origin || 1;
     // Default siempre desde heredia
     const columns = ['nombre', 'apellidos'];
     var nombre = req.body.nombre;
@@ -186,7 +186,7 @@ module.exports.set = function(app) {
 
 
   app.get('/api/v1/cliente/:id?', function(req, res) {
-    var destino = req.query.origin || "heredia";
+    var destino = req.query.origin || 1;
     var myquery = 'SELECT * FROM cliente_v WHERE id = ' + req.params.id;
 
     databaseConfig.getDb(destino).query(myquery, {
