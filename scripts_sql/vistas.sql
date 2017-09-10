@@ -1,6 +1,7 @@
 --Views
 --Author: OskrD
---Version: 1.2
+--Version: 1.3
+
 
 -- Para consultas a las tablas (GETs)
 
@@ -62,11 +63,3 @@ CREATE VIEW venta_articulo_v AS
   FROM venta_articulo v,
     articulo a
   WHERE a.id = v.id_articulo AND v.Activo = TRUE;
-
-
-
--- Para consultas de los administradores
-
-CREATE VIEW dinero_tienda AS
-  SELECT SUM(Monto) AS Ventas_tienda
-  FROM venta;
