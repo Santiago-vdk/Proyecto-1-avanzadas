@@ -119,7 +119,7 @@ module.exports.set = function(app) {
     var cliente = req.query.cliente;
     const columns = [];
     var myquery = 'SELECT ${columns^} promedio_compra_cliente_f('+cliente+',\''+desde+'\',\''+hasta+'\')';
-
+    console.log("query",myquery);
     databaseConfig.getDb(destino).query(myquery, {
         columns: columns.map(pgp.as.name).join(),
         table: 'Table Name'
