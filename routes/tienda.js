@@ -114,7 +114,7 @@ module.exports.set = function(app) {
     var id_sucursal = req.body.id_sucursal;
     var nombre = req.body.nombre;
 
-    var myquery = 'INSERT INTO public.tienda(${columns^}) VALUES ('+id_sucursal+','+nombre+')';
+    var myquery = 'INSERT INTO public.tienda(${columns^}) VALUES ('+id_sucursal+',\''+nombre+'\')';
 
     databaseConfig.getDb(destino).query(myquery, {
         table: 'Table Name'

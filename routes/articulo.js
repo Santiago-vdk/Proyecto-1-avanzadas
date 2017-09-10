@@ -187,7 +187,7 @@ console.log(myquery);
     var nombre = req.body.nombre;
     var precio = req.body.precio;
 
-    var myquery = 'UPDATE articulo SET nombre = ' + nombre + ' precio = ' + precio + ' WHERE id = ' + id;
+    var myquery = 'UPDATE articulo SET nombre = \'' + nombre + '\' precio = ' + precio + ' WHERE id = ' + id;
 
     databaseConfig.getDb(destino).query(myquery, {
 
