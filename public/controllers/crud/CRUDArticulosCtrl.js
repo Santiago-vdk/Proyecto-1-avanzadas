@@ -10,20 +10,14 @@ angular.module('CRUDArticulosCtrl', []).controller('CRUDArticulosController', ['
       toastr.success('Exito', 'Su solicitud fue procesada');
       $scope.articulo = {};
     }).catch(function(err) {
-      toastr.error('Hubo un error mientras se solicitaban los datos.', 'Error');
+      toastr.error('Hubo un error mientras se creaba el articulo.', 'Error');
     });
-
   }
 
   Articulos.getTipoArticulos().then(function(response) {
-    console.log("articulos", response.data.data);
     $scope.tipoarticulos = response.data.data;
   }).catch(function(err) {
-
+      toastr.error('Hubo un error mientras se obtenian los tipos de articulos.', 'Error');
   });
-
-
-
-
 
 }]);

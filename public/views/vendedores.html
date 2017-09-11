@@ -51,7 +51,7 @@
 
         <div class="form-group">
           <select id="myselect" name="mydata" multiple="multiple" ng-model="articulos" size="10">
-            <option ng-repeat="model in collectionGeneralArticulos" value="{{model.nombre}}&{{model.precio}}">{{model.nombre}}, ${{model.precio}}</option>
+            <option ng-repeat="model in collectionGeneralArticulos" value="{{model.id}}&{{model.precio}}">{{model.nombre}}, ${{model.precio}}</option>
           </select>
         </div>
 

@@ -21,52 +21,45 @@ angular.module('VendedoresCtrl', []).controller('VendedoresController', ['$scope
       monto: monto,
       articulos: articulosList
     }
-    console.log("lista de articulos",articulosList);
 
     Ventas.postVenta(data).then(function(response) {
       toastr.success('Exito', 'Su solicitud fue procesada');
       $scope.cargarVentas();
       $scope.venta = {};
     }).catch(function(err) {
-      toastr.error('Hubo un error mientras se solicitaban los datos.', 'Error');
+      toastr.error('Hubo un error mientras se creaba la venta.', 'Error');
     });
   }
 
   Articulos.getArticulosGenerales().then(function(response) {
     $scope.collectionGeneralArticulos = response.data.data;
   }).catch(function(err) {
-    toastr.error('Hubo un error mientras se solicitaban los datos.', 'Error');
+    toastr.error('Hubo un error mientras se solicitaban los articulos.', 'Error');
   });
 
   Clientes.getClientes().then(function(response) {
-    console.log(response.data.data);
     $scope.clientes = response.data.data;
   }).catch(function(err) {
-    toastr.error('Hubo un error mientras se solicitaban los datos.', 'Error');
+    toastr.error('Hubo un error mientras se solicitaban los clientes.', 'Error');
   });
 
   Empleados.getEmpleados().then(function(response) {
     $scope.empleados = response.data.data;
   }).catch(function(err) {
-    toastr.error('Hubo un error mientras se solicitaban los datos.', 'Error');
+    toastr.error('Hubo un error mientras se solicitaban los empleados.', 'Error');
   });
-
 
   Tiendas.getTiendas().then(function(response) {
     $scope.tiendas = response.data.data;
   }).catch(function(err) {
-    toastr.error('Hubo un error mientras se solicitaban los datos.', 'Error');
+    toastr.error('Hubo un error mientras se solicitaban las tiendas.', 'Error');
   });
-
-
-
-
 
   $scope.cargarVentas = function() {
     Ventas.getVentas().then(function(response) {
       $scope.ventas = response.data.data;
     }).catch(function(err) {
-      toastr.error('Hubo un error mientras se solicitaban los datos.', 'Error');
+      toastr.error('Hubo un error mientras se solicitaban las ventas existentes.', 'Error');
     });
   }
 

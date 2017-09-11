@@ -6,18 +6,11 @@ angular.module('CRUDClientesCtrl', []).controller('CRUDClientesController', ['$r
     $rootScope.origin = origin
   }
   $scope.crearClientes = function(cliente) {
-    console.log(cliente);
-
     Clientes.postCliente(cliente).then(function(response) {
       toastr.success('Exito', 'Su solicitud fue procesada');
       $scope.cliente = {};
     }).catch(function(err) {
-      toastr.error('Hubo un error mientras se solicitaban los datos.', 'Error');
+      toastr.error('Hubo un error mientras se creaba el cliente.', 'Error');
     });
   }
-
-
-
-
-
 }]);

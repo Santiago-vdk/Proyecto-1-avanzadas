@@ -1,4 +1,4 @@
-angular.module('AdministradoresCtrl', []).controller('AdministradoresController', ['$rootScope', '$scope', '$state', 'Administrador','Clientes','Articulos','Tiendas', function($rootScope, $scope, $state, Administrador, Clientes, Articulos, Tiendas) {
+angular.module('AdministradoresCtrl', []).controller('AdministradoresController', ['$rootScope', '$scope', '$state', 'Administrador', 'Clientes', 'Articulos', 'Tiendas', function($rootScope, $scope, $state, Administrador, Clientes, Articulos, Tiendas) {
   $scope.params = {};
   $scope.isHeredia = function() {
     if (parseInt($rootScope.origin) === 1) {
@@ -23,83 +23,74 @@ angular.module('AdministradoresCtrl', []).controller('AdministradoresController'
 
   }
 
-
   Clientes.getClientes().then(function(response) {
     $scope.clientes = response.data.data;
   }).catch(function(err) {
-    toastr.error('Hubo un error mientras se solicitaban los datos.', 'Error');
+    toastr.error('Hubo un error mientras se solicitaban los clientes.', 'Error');
   });
 
   Articulos.getArticulosGenerales().then(function(response) {
     $scope.articulos = response.data.data;
   }).catch(function(err) {
-    toastr.error('Hubo un error mientras se solicitaban los datos.', 'Error');
+    toastr.error('Hubo un error mientras se solicitaban los articulos', 'Error');
   });
 
   Tiendas.getTiendas().then(function(response) {
     $scope.tiendas = response.data.data;
   }).catch(function(err) {
-    toastr.error('Hubo un error mientras se solicitaban los datos.', 'Error');
+    toastr.error('Hubo un error mientras se solicitaban las tiendas', 'Error');
   });
-
 
   //Consulta 1
   $scope.callDineroRecaudadoEnLaTienda = function() {
     Administrador.getDineroRecaudadoEnLaTienda().then(function(response) {
       $scope.dinero_recaudado = response.data.data[0];
     }).catch(function(err) {
-      alert("Failed")
+      toastr.error('Hubo un error mientras se procesaba la consulta 1', 'Error');
     });
   }
   //Consulta 2
   $scope.callCantidadVentasClientePeriodo = function(params) {
-
     params.desde = fixDate(params.desde);
     params.hasta = fixDate(params.hasta);
-
 
     Administrador.getCantidadVentasClientePeriodo(params).then(function(response) {
       $scope.ventas_cliente = response.data.data[0].venta_cliente_f;
     }).catch(function(err) {
-      alert("Failed")
+      toastr.error('Hubo un error mientras se procesaba la consulta 2', 'Error');
     });
   }
 
   //Consulta 3
   $scope.callPromedioComprasPorClientePeriodo = function(params) {
 
-        params.desde = fixDate(params.desde);
-        params.hasta = fixDate(params.hasta);
-
+    params.desde = fixDate(params.desde);
+    params.hasta = fixDate(params.hasta);
 
     Administrador.getPromedioComprasPorClientePeriodo(params).then(function(response) {
-      console.log("gere",response.data.data[0]);
-      $scope.compras_cliente = response.data.data[0].promedio_compra_cliente_f;
+      $scope.promedio_compras_cliente = response.data.data[0].promedio_compra_cliente_f;
     }).catch(function(err) {
-      alert("Failed")
+      toastr.error('Hubo un error mientras se procesaba la consulta 3', 'Error');
     });
   }
 
   //Consulta 4
   $scope.callVentasProductoMesParticular = function(params) {
-
     Administrador.getMontoVentasProductoMesParticular(params).then(function(response) {
-      console.log(response);
+      $scope.venta_producto_mes = response.data.data[0].venta_producto_mes_f;
     }).catch(function(err) {
-      alert("Failed")
+      toastr.error('Hubo un error mientras se procesaba la consulta 4', 'Error');
     });
   }
   //Consulta 5
   $scope.callVentasPorTiendaPeriodo = function(params) {
-
     params.desde = fixDate(params.desde);
     params.hasta = fixDate(params.hasta);
 
-
     Administrador.getMontoVentasPorTiendaPeriodo(params).then(function(response) {
-      console.log("5",response);
+      $scope.dinero_tienda_periodo = response.data.data[0].dinero_tienda_periodo_f;
     }).catch(function(err) {
-      alert("Failed")
+      toastr.error('Hubo un error mientras se procesaba la consulta 5', 'Error');
     });
   }
   //Consulta 6
@@ -107,7 +98,7 @@ angular.module('AdministradoresCtrl', []).controller('AdministradoresController'
     Administrador.getMontoVentasPorTiendaYProductoPeriodo($scope.form).then(function(response) {
       alert("Success");
     }).catch(function(err) {
-      alert("Failed")
+      toastr.error('Hubo un error mientras se procesaba la consulta 6', 'Error');
     });
   }
   //Consulta 7
@@ -116,9 +107,10 @@ angular.module('AdministradoresCtrl', []).controller('AdministradoresController'
     params.hasta = fixDate(params.hasta);
 
     Administrador.getMejoresClientesPeriodo(params).then(function(response) {
+      console.log(response);
       $scope.mejores = response.data.data;
     }).catch(function(err) {
-      alert("Failed")
+      toastr.error('Hubo un error mientras se procesaba la consulta 7', 'Error');
     });
   }
 

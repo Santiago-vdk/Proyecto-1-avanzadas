@@ -7,20 +7,10 @@
   <br />
   <label>Hasta:</label>
   <input type="date" name="myDate" ng-model="params.hasta">
+
   <button class="btn btn-primary" ng-click="callMejoresClientesPeriodo(params)">Consultar</button>
 
-
-
-        <label class="control-label requiredField" for="idTienda">
-    Tipo de Articulo
-    <span class="asteriskField">
-     *
-    </span>
-   </label>
-        <!-- <input class="form-control" id="idTienda" ng-model="venta.idTienda" name="idTienda" type="number" ng-required="true" /> -->
-        <select id="mejores" name="mejores">
-          <option ng-repeat="mejor in mejores" value="{{mejor.nombre}}">{{mejor.nombre}} {{mejor.apellido}}, {{mejor.monto}}</option>
-      </select>
+  <h2 ng-if="mejores" ng-repeat="mejor in mejores" value="{{mejor.nombre}}">{{mejor.nombre}} {{mejor.apellido}}, {{mejor.monto}}</h2>
 
 
 

@@ -6,31 +6,24 @@ angular.module('CRUDEmpleadosCtrl', []).controller('CRUDEmpleadosController', ['
     $rootScope.origin = origin
   }
   $scope.crearEmpleados = function(empleado) {
-    console.log(empleado);
-
     Empleados.postEmpleado(empleado).then(function(response) {
-      toastr.success('Exito', 'Su solicitud fue procesada');
+      toastr.success('Exito', 'Su solicitud fue procesada.');
       $scope.empleado = {};
     }).catch(function(err) {
-      toastr.error('Hubo un error mientras se solicitaban los datos.', 'Error');
+      toastr.error('Hubo un error mientras se creaba el cliente.', 'Error');
     });
   }
 
   Tiendas.getTiendas().then(function(response) {
-    console.log("tiendas", response.data.data);
     $scope.tiendas = response.data.data;
   }).catch(function(err) {
-
+      toastr.error('Hubo un error mientras se cargaban las tiendas.', 'Error');
   });
 
   Puestos.getPuestos().then(function(response) {
-    console.log("puestos", response.data.data);
     $scope.puestos = response.data.data;
   }).catch(function(err) {
-
+      toastr.error('Hubo un error mientras se cargaban los puestos', 'Error');
   });
-
-
-
 
 }]);
