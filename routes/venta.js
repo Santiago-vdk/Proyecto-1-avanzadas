@@ -23,6 +23,9 @@ module.exports.set = function(app) {
 
       })
       .catch(error => {
+        if (debug) {
+          console.log(error); // printing the data returned
+        }
         // var error_type = error.code.substring(0, 2);
         // if (destino.localeCompare('heredia') == 0) {
         //   console.log("Nodo central fuera de linea..."); // printing the error
@@ -102,6 +105,9 @@ module.exports.set = function(app) {
 
               })
               .catch(error => {
+                if (debug) {
+                  console.log(error); // printing the data returned
+                }
 
               })
 
@@ -113,6 +119,9 @@ module.exports.set = function(app) {
           });
 
         }).catch(error => {
+          if (debug) {
+            console.log(error); // printing the data returned
+          }
 
         })
       }
@@ -138,6 +147,9 @@ module.exports.set = function(app) {
         });
       })
       .catch(error => {
+        if (debug) {
+          console.log(error); // printing the data returned
+        }
 
       })
 
