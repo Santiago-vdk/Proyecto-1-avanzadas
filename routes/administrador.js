@@ -256,6 +256,7 @@ module.exports.set = function(app) {
 
       })
       .catch(error => {
+        console.log(error);
         // var error_type = error.code.substring(0, 2);
         // if (destino.localeCompare('heredia') == 0) {
         //   console.log("Nodo central fuera de linea..."); // printing the error
