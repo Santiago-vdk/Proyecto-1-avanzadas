@@ -1,7 +1,7 @@
-angular.module('AdministradoresCtrl', []).controller('AdministradoresController', ['$rootScope', '$scope', '$state', 'Administrador', 'Clientes', 'Articulos', 'Tiendas', function($rootScope, $scope, $state, Administrador, Clientes, Articulos, Tiendas) {
+angular.module('AdministradoresCtrl', []).controller('AdministradoresController', ['$rootScope', '$scope', '$state', 'Administrador', 'Clientes', 'Articulos', 'Tiendas','$localStorage', function($rootScope, $scope, $state, Administrador, Clientes, Articulos, Tiendas, $localStorage) {
   $scope.params = {};
   $scope.isHeredia = function() {
-    if (parseInt($rootScope.origin) === 1) {
+    if ($localStorage.origin === 1) {
       return true;
     }
     return false;
