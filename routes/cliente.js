@@ -72,10 +72,10 @@ module.exports.set = function(app) {
   app.get('/api/v1/cliente_v', function(req, res) {
     var destino = req.query.origin || 1;
     var myquery = 'SELECT * FROM cliente_v';
-
+    const columns = [];
 
     databaseConfig.getDb(destino).query(myquery, {
-
+        columns: columns.map(pgp.as.name).join(),
         table: 'Table Name'
       }).then(result => {
         console.log("Realizando get cliente_v");
@@ -132,7 +132,7 @@ module.exports.set = function(app) {
           if (error.code.localeCompare("ETIMEDOUT") === 0) {
             console.log('Error de conexion, realizando consulta en nodo principal Heredia');
             databaseConfig.getDb(1).query(myquery, {
-              columns: columns.map(pgp.as.name).join(),
+                columns: columns.map(pgp.as.name).join(),
                 table: 'Table Name'
               }).then(result => {
                 console.log(result); // printing the data returned
@@ -157,29 +157,4 @@ module.exports.set = function(app) {
 
   })
 
-
-
-  app.get('/api/v1/cliente/:id?', function(req, res) {
-    var destino = req.query.origin || 1;
-    var myquery = 'SELECT * FROM cliente_v WHERE id = ' + req.params.id;
-
-    databaseConfig.getDb(destino).query(myquery, {
-
-        table: 'Table Name'
-      }).then(result => {
-        console.log("Realizando get de un cliente");
-        if (debug) {
-          console.log(result); // printing the data returned
-        }
-        res.status(200).json({
-          status: "success",
-          data: result
-        });
-      })
-      .catch(error => {
-        if (debug) {
-          console.log(error); // printing the data returned
-        }
-      })
-  });
 };

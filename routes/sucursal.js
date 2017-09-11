@@ -25,38 +25,43 @@ module.exports.set = function(app) {
 
       })
       .catch(error => {
+
         if (debug) {
-          console.log(error.code); // printing the data returned
-        }
-        if (destino === 1) {
-          console.log("Nodo principal fuera de linea..."); // printing the error
-          res.status(500).send();
-        } else {
-          if (error.code.localeCompare("ETIMEDOUT") === 0) {
-            console.log('Error de conexion, realizando consulta en nodo principal Heredia');
-            databaseConfig.getDb(1).query(myquery, {
-                columns: columns.map(pgp.as.name).join(),
-                table: 'Table Name'
-              }).then(result => {
-                console.log(result); // printing the data returned
-
-                res.status(200).json({
-                  status: "success",
-                  data: result
-                });
-
-              })
-              .catch(error => {
-                console.log("Nodo central fuera de linea..."); // printing the error
-                res.status(500).send();
-              });
-          } else {
-            console.log("Error inesperado"); // printing the error
-            res.status(500).send();
-          }
+          console.log(error); // printing the data returned
         }
 
       })
+
+
+    setTimeout(function() {
+      if (destino === 1) {
+        console.log("Nodo principal fuera de linea..."); // printing the error
+        res.status(500).send();
+      } else {
+
+        console.log('Error de conexion, realizando consulta en nodo principal Heredia');
+        databaseConfig.getDb(1).query(myquery, {
+            columns: columns.map(pgp.as.name).join(),
+            table: 'Table Name'
+          }).then(result => {
+            console.log(result); // printing the data returned
+
+            res.status(200).json({
+              status: "success",
+              data: result
+            });
+
+          })
+          .catch(error => {
+            console.log("Nodo central fuera de linea..."); // printing the error
+            res.status(500).send();
+          });
+
+      }
+
+    }, 5000);
+
+
   });
 
 
@@ -123,7 +128,7 @@ module.exports.set = function(app) {
           if (error.code.localeCompare("ETIMEDOUT") === 0) {
             console.log('Error de conexion, realizando consulta en nodo principal Heredia');
             databaseConfig.getDb(1).query(myquery, {
-              columns: columns.map(pgp.as.name).join(),
+                columns: columns.map(pgp.as.name).join(),
                 table: 'Table Name'
               }).then(result => {
                 console.log(result); // printing the data returned

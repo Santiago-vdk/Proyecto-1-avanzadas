@@ -6,6 +6,7 @@ angular.module('CRUDArticulosCtrl', []).controller('CRUDArticulosController', ['
       toastr.success('Exito', 'Su solicitud fue procesada');
       $scope.articulo = {};
     }).catch(function(err) {
+      $scope.articulo = {};
       toastr.error('Hubo un error mientras se creaba el articulo.', 'Error');
     });
   }

@@ -5,6 +5,7 @@ angular.module('CRUDClientesCtrl', []).controller('CRUDClientesController', ['$r
       toastr.success('Exito', 'Su solicitud fue procesada');
       $scope.cliente = {};
     }).catch(function(err) {
+      $scope.cliente = {};
       toastr.error('Hubo un error mientras se creaba el cliente.', 'Error');
     });
   }

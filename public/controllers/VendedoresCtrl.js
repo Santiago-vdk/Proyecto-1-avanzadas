@@ -55,6 +55,8 @@ angular.module('VendedoresCtrl', []).controller('VendedoresController', ['$scope
   }).catch(function(err) {
     toastr.error('Hubo un error mientras se solicitaban las tiendas.', 'Error');
   });
+
+
 $scope.ventas = [];
   $scope.cargarVentas = function() {
     Ventas.getVentas().then(function(response) {

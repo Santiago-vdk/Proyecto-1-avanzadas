@@ -9,8 +9,9 @@ module.exports.set = function(app) {
   app.get('/api/v1/venta', function(req, res) {
     var destino = req.query.origin || 1;
     var myquery = 'SELECT * FROM venta_v';
-
+    const columns = [];
     databaseConfig.getDb(destino).query(myquery, {
+        columns: columns.map(pgp.as.name).join(),
         table: 'Table Name'
       }).then(result => {
         console.log("Realizando get ventas");

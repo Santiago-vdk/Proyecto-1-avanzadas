@@ -1,11 +1,12 @@
 angular.module('CRUDEmpleadosCtrl', []).controller('CRUDEmpleadosController', ['$rootScope', '$scope', '$location','Empleados','Tiendas','Puestos','toastr', function($rootScope, $scope, $location, Empleados,Tiendas,Puestos, toastr) {
 
-  
+
   $scope.crearEmpleados = function(empleado) {
     Empleados.postEmpleado(empleado).then(function(response) {
       toastr.success('Exito', 'Su solicitud fue procesada.');
       $scope.empleado = {};
     }).catch(function(err) {
+      $scope.empleado = {};
       toastr.error('Hubo un error mientras se creaba el cliente.', 'Error');
     });
   }
