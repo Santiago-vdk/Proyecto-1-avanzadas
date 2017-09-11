@@ -5,6 +5,8 @@ module.exports.set = function(app) {
   var bodyParser = require('body-parser')
   app.use(bodyParser.json());
 
+  var debug = true;
+
   app.get('/api/v1/administrador/consulta1', function(req, res) { //Cantidad de dinero recaudado en la tienda
     var destino = req.query.origin || 1;
     // Default siempre desde heredia
@@ -14,7 +16,10 @@ module.exports.set = function(app) {
         columns: columns.map(pgp.as.name).join(),
         table: 'Table Name'
       }).then(result => {
-        console.log(result); // printing the data returned
+        console.log("Realizando consulta 1");
+        if(debug){
+          console.log(result); // printing the data returned
+        }
 
         res.status(200).json({
           status: "success",
@@ -70,7 +75,10 @@ module.exports.set = function(app) {
         columns: columns.map(pgp.as.name).join(),
         table: 'Table Name'
       }).then(result => {
-        console.log(result); // printing the data returned
+        console.log("Realizando consulta 2");
+        if(debug){
+          console.log(result); // printing the data returned
+        }
 
         res.status(200).json({
           status: "success",
@@ -124,7 +132,10 @@ module.exports.set = function(app) {
         columns: columns.map(pgp.as.name).join(),
         table: 'Table Name'
       }).then(result => {
-        console.log(result); // printing the data returned
+        console.log("Realizando consulta 3");
+        if(debug){
+          console.log(result); // printing the data returned
+        }
 
         res.status(200).json({
           status: "success",
@@ -177,7 +188,10 @@ module.exports.set = function(app) {
         columns: columns.map(pgp.as.name).join(),
         table: 'Table Name'
       }).then(result => {
-        console.log(result); // printing the data returned
+        console.log("Realizando consulta 4");
+        if(debug){
+          console.log(result); // printing the data returned
+        }
 
         res.status(200).json({
           status: "success",
@@ -230,7 +244,10 @@ module.exports.set = function(app) {
         columns: columns.map(pgp.as.name).join(),
         table: 'Table Name'
       }).then(result => {
-        console.log(result); // printing the data returned
+        console.log("Realizando consulta 5");
+        if(debug){
+          console.log(result); // printing the data returned
+        }
 
         res.status(200).json({
           status: "success",
@@ -280,14 +297,16 @@ module.exports.set = function(app) {
     var desde = req.query.desde;
     var hasta = req.query.hasta;
     const columns = [];
-    var myquery = 'SELECT ${columns^} dinero_tienda_producto_periodo_f('+destino+','+producto+',\''+desde+'\',\''+hasta+'\')';
+    var myquery = 'SELECT ${columns^} dinero_tienda_producto_periodo_f('+destino+','+articulo+',\''+desde+'\',\''+hasta+'\')';
 
     databaseConfig.getDb(destino).query(myquery, {
         columns: columns.map(pgp.as.name).join(),
         table: 'Table Name'
       }).then(result => {
-        console.log(result); // printing the data returned
-
+        console.log("Realizando consulta 6");
+        if(debug){
+          console.log(result); // printing the data returned
+        }
         res.status(200).json({
           status: "success",
           data: result
@@ -341,8 +360,10 @@ module.exports.set = function(app) {
         columns: columns.map(pgp.as.name).join(),
         table: 'Table Name'
       }).then(result => {
-        console.log(result); // printing the data returned
-
+        console.log("Realizando consulta 7");
+        if(debug){
+          console.log(result); // printing the data returned
+        }
         res.status(200).json({
           status: "success",
           data: result

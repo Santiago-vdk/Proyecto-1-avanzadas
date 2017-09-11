@@ -2,7 +2,7 @@ module.exports.set = function(app) {
   var direccionador = require('../logic/direccionador');
   var databaseConfig = require('../configs/database');
   var pgp = databaseConfig.getPgp();
-
+  var debug = true;
 
   app.get('/api/v1/tienda', function(req, res) {
     var destino = req.query.origin || 1;
@@ -13,7 +13,10 @@ module.exports.set = function(app) {
               columns: columns.map(pgp.as.name).join(),
               table: 'Table Name'
             }).then(result => {
-              console.log(result); // printing the data returned
+              console.log("Realizando get tiendas");
+              if(debug){
+                console.log(result); // printing the data returned
+              }
 
               res.status(200).json({
                 status: "success",
@@ -64,7 +67,10 @@ module.exports.set = function(app) {
 
               table: 'Table Name'
             }).then(result => {
-              console.log(result); // printing the data returned
+              console.log("Realizando get tienda_v");
+              if(debug){
+                console.log(result); // printing the data returned
+              }
 
               res.status(200).json({
                 status: "success",
@@ -119,7 +125,10 @@ module.exports.set = function(app) {
     databaseConfig.getDb(destino).query(myquery, {
         table: 'Table Name'
       }).then(result => {
-        console.log(result); // printing the data returned
+        console.log("Realizando post de tienda");
+        if(debug){
+          console.log(result); // printing the data returned
+        }
         res.status(200).json({
           status: "success",
           data: result
@@ -188,7 +197,10 @@ module.exports.set = function(app) {
 
         table: 'Table Name'
       }).then(result => {
-        console.log(result); // printing the data returned
+        console.log("Realizando get de una tienda");
+        if(debug){
+          console.log(result); // printing the data returned
+        }
         res.status(200).json({
           status: "success",
           data: result

@@ -3,6 +3,7 @@ module.exports.set = function(app) {
   var databaseConfig = require('../configs/database');
   var pgp = databaseConfig.getPgp();
   var bodyParser = require('body-parser')
+  var debug = true;
   app.use(bodyParser.json());
 
 
@@ -16,7 +17,10 @@ module.exports.set = function(app) {
           columns: columns.map(pgp.as.name).join(),
           table: 'Table Name'
         }).then(result => {
-          console.log(result); // printing the data returned
+          console.log("Realizando get articulos");
+          if(debug){
+            console.log(result); // printing the data returned
+          }
 
           res.status(200).json({
             status: "success",
@@ -65,7 +69,10 @@ module.exports.set = function(app) {
     databaseConfig.getDb(destino).query(myquery, {
         table: 'Table Name'
       }).then(result => {
-        console.log(result); // printing the data returned
+        console.log("Realizando get articulo_v");
+        if(debug){
+          console.log(result); // printing the data returned
+        }
 
         res.status(200).json({
           status: "success",
@@ -117,7 +124,10 @@ module.exports.set = function(app) {
       columns: columns.map(pgp.as.name).join(),
         table: 'Table Name'
       }).then(result => {
-        console.log(result); // printing the data returned
+        console.log("Realizando get tipos de articulos");
+        if(debug){
+          console.log(result); // printing the data returned
+        }
 
         res.status(200).json({
           status: "success",
@@ -169,12 +179,15 @@ module.exports.set = function(app) {
     var nombre = req.body.nombre;
     var precio = req.body.precio;
     var myquery = 'INSERT INTO public.articulo(${columns^}) VALUES (' + id_tipo + ',\'' + nombre + '\',' + precio + ')';
-console.log(myquery);
+
     databaseConfig.getDb(destino).query(myquery, {
         columns: columns.map(pgp.as.name).join(),
         table: 'Table Name'
       }).then(result => {
-        console.log(result); // printing the data returned
+        console.log("Realizando post articulo");
+        if(debug){
+          console.log(result); // printing the data returned
+        }
         res.status(200).json({
           status: "success",
           data: result
@@ -247,7 +260,10 @@ console.log(myquery);
 
         table: 'Table Name'
       }).then(result => {
-        console.log(result); // printing the data returned
+        console.log("Realizando put articulo");
+        if(debug){
+          console.log(result); // printing the data returned
+        }
         res.status(200).json({
           status: "success",
           data: result
@@ -316,7 +332,10 @@ console.log(myquery);
 
         table: 'Table Name'
       }).then(result => {
-        console.log(result); // printing the data returned
+        console.log("Realizando delete articulo");
+        if(debug){
+          console.log(result); // printing the data returned
+        }
         res.status(200).json({
           status: "success",
           data: result
@@ -380,7 +399,10 @@ console.log(myquery);
 
         table: 'Table Name'
       }).then(result => {
-        console.log(result); // printing the data returned
+        console.log("Realizando get de un articulo");
+        if(debug){
+          console.log(result); // printing the data returned
+        }
         res.status(200).json({
           status: "success",
           data: result

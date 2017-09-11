@@ -2,6 +2,7 @@ module.exports.set = function(app) {
   var direccionador = require('../logic/direccionador');
   var databaseConfig = require('../configs/database');
   var pgp = databaseConfig.getPgp();
+  var debug = true;
 
   app.get('/api/v1/venta', function(req, res) {
     var destino = req.query.origin || 1;
@@ -9,9 +10,12 @@ module.exports.set = function(app) {
 
     databaseConfig.getDb(destino).query(myquery, {
 
-        table: 'Table Name'
-      }).then(result => {
-        console.log(result); // printing the data returned
+              table: 'Table Name'
+            }).then(result => {
+              console.log("Realizando get ventas");
+              if(debug){
+                console.log(result); // printing the data returned
+              }
 
         res.status(200).json({
           status: "success",
@@ -68,6 +72,7 @@ module.exports.set = function(app) {
         columns: columns.map(pgp.as.name).join(),
         table: 'Table Name'
       }).then(result => {
+<<<<<<< HEAD
         console.log("este", result); // printing the data returned
         var id = result[0].id;
         for (i = 0; i < articulos.length; i++) {
@@ -78,6 +83,26 @@ module.exports.set = function(app) {
               table: 'Table Name'
             }).then(result2 => {
               console.log("segundo", result2); // printing the data returned
+=======
+        console.log("Realizando post venta");
+        if(debug){
+          console.log(result); // printing the data returned
+        }
+
+
+        var id = result[0].id;
+        for(i=0;i<articulos.length;i++){
+                        const columns2 = ['id_venta', 'id_articulo'];
+                        var myquery2 = 'INSERT INTO public.venta_articulo(${columns^}) VALUES ('+ id+','+ articulos[i]+')';
+                        databaseConfig.getDb(destino).query(myquery2, {
+                            columns: columns2.map(pgp.as.name).join(),
+                            table: 'Table Name'
+                          }).then(result2 => {
+                            console.log("Realizando insercion en el for");
+                            if(debug){
+                              console.log(result); // printing the data returned
+                            }
+>>>>>>> c7f1cb18c8cc770f51cc391e39b970e6ee4f40c1
 
               res.status(200).json({
                 status: "success",
@@ -209,7 +234,10 @@ module.exports.set = function(app) {
 
         table: 'Table Name'
       }).then(result => {
-        console.log(result); // printing the data returned
+        console.log("Realizando get de una venta");
+        if(debug){
+          console.log(result); // printing the data returned
+        }
         res.status(200).json({
           status: "success",
           data: result
