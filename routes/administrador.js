@@ -370,7 +370,7 @@ module.exports.set = function(app) {
     var desde = req.query.desde;
     var hasta = req.query.hasta;
 
-    const columns = [];
+    const columns = ['nombre','apellidos','dinero'];
     var myquery = 'SELECT ${columns^} mejores_clientes_f(\'' + desde + '\',\'' + hasta + '\')';
 
     databaseConfig.getDb(destino).query(myquery, {
