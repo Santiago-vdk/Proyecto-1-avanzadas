@@ -67,15 +67,16 @@
 
     </div>
 
-    <div class="col-md-8" ng-init="cargarVentas()">
-      <div style="border: 1px solid black;padding:3%;" class="row" ng-repeat="venta in ventas">
+    <div class="col-md-8" style="height: 614px;overflow: scroll;" ng-init="cargarVentas()">
+      <div style="" class="row" ng-repeat="venta in ventas">
         <div class="col-md-12">
-
-          <h6>Identificador Cliente: {{venta.cliente}}</h6>
-          <h6>Identificador Tienda: {{venta.tienda}}</h6>
-          <h6>Identificador Empleado: {{venta.empleado}}</h6>
-          <h6>Identificador Fecha:{{ venta.fecha}}</h6>
-          <h6>Identificador Monto: {{venta.monto}}</h6>
+          <div class="jumbotron">
+            <h6>Identificador Cliente: {{venta.cliente}}</h6>
+            <h6>Identificador Tienda: {{venta.tienda}}</h6>
+            <h6>Identificador Empleado: {{venta.empleado}}</h6>
+            <h6>Identificador Fecha:{{ venta.fecha}}</h6>
+            <h6>Identificador Monto: {{venta.monto}}</h6>
+          </div>
         </div>
 
       </div>

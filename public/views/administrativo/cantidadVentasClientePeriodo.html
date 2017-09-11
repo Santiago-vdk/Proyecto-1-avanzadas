@@ -1,5 +1,4 @@
 <!-- consulta 2 -->
-
 <div class="container">
   <h3>Cantidad de ventas según cliente para un rango de fechas específico</h3>
   <label>Desde:</label>
@@ -22,10 +21,15 @@
     </select>
   </div>
 
-
-
   <button class="btn btn-primary" ng-click="callCantidadVentasClientePeriodo(params)">Consultar</button>
 
-  <h4 ng-if="ventas_cliente">Ventas del Cliente: {{ventas_cliente}}</h4>
+  <hr />
+
+  <div class="jumbotron">
+    <h4 ng-if="ventas_cliente">Ventas del Cliente: {{ventas_cliente}}</h4>
+
+  </div>
+
+
 
 </div>

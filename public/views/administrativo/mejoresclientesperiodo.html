@@ -1,5 +1,4 @@
 <!-- consulta 7 -->
-
 <div class="container">
   <h3>Tres mejores clientes para un período específico</h3>
   <label>Desde:</label>
@@ -7,11 +6,13 @@
   <br />
   <label>Hasta:</label>
   <input type="date" name="myDate" ng-model="params.hasta">
-
+  <br />
   <button class="btn btn-primary" ng-click="callMejoresClientesPeriodo(params)">Consultar</button>
 
-  <h2 ng-if="mejores" ng-repeat="mejor in mejores" value="{{mejor.nombre}}">{{mejor.nombre}} {{mejor.apellido}}, {{mejor.monto}}</h2>
+  <hr />
 
+  <div class="jumbotron">
+    <h4 ng-if="mejores" ng-repeat="mejor in mejores">{{mejor.nombre}} {{mejor.apellidos}}, {{mejor.monto}}</h4>
 
-
+  </div>
 </div>

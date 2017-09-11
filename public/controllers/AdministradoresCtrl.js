@@ -95,8 +95,12 @@ angular.module('AdministradoresCtrl', []).controller('AdministradoresController'
   }
   //Consulta 6
   $scope.callVentasPorTiendaYProductoPeriodo = function(params) {
+
+    params.desde = fixDate(params.desde);
+    params.hasta = fixDate(params.hasta);
+
     Administrador.getMontoVentasPorTiendaYProductoPeriodo(params).then(function(response) {
-      console.log(response);
+      $scope.dinero_tienda_producto_periodo = response.data.data[0].dinero_tienda_producto_periodo_f;
     }).catch(function(err) {
       toastr.error('Hubo un error mientras se procesaba la consulta 6', 'Error');
     });
@@ -107,7 +111,7 @@ angular.module('AdministradoresCtrl', []).controller('AdministradoresController'
     params.hasta = fixDate(params.hasta);
 
     Administrador.getMejoresClientesPeriodo(params).then(function(response) {
-      // console.log(response);
+      console.log(response);
       $scope.mejores = response.data.data;
     }).catch(function(err) {
       toastr.error('Hubo un error mientras se procesaba la consulta 7', 'Error');

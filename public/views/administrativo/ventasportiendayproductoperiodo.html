@@ -19,7 +19,6 @@
       <option ng-repeat="tienda in tiendas" value="{{tienda.id}}">{{tienda.nombre}}</option>
     </select>
   </div>
-
   <div class="form-group ">
     <label class="control-label requiredField" for="name">
      Articulo
@@ -36,7 +35,9 @@
 
   <button class="btn btn-primary" ng-click="callVentasPorTiendaYProductoPeriodo(params)">Consultar</button>
 
-  <h2 ng-if="mejores" ng-repeat="mejor in mejores" value="{{mejor.nombre}}">{{mejor.nombre}} {{mejor.apellido}}, {{mejor.monto}}</h2>
-
+<hr />
+  <div class="jumbotron">
+    <h4 ng-if="dinero_tienda_producto_periodo">Dinero por tienda y producto: {{dinero_tienda_producto_periodo}}</h4>
+  </div>
 
 </div>
