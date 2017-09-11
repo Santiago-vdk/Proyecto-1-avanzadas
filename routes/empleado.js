@@ -2,7 +2,7 @@ module.exports.set = function(app) {
   var direccionador = require('../logic/direccionador');
   var databaseConfig = require('../configs/database');
   var pgp = databaseConfig.getPgp();
-
+  var debug = true;
 
   app.get('/api/v1/empleado', function(req, res) {
     var destino = req.query.origin || 1;
@@ -13,7 +13,10 @@ module.exports.set = function(app) {
           columns: columns.map(pgp.as.name).join(),
           table: 'Table Name'
         }).then(result => {
-          console.log(result); // printing the data returned
+          console.log("Realizando get empleados");
+          if(debug){
+            console.log(result); // printing the data returned
+          }
 
           res.status(200).json({
             status: "success",
@@ -65,7 +68,10 @@ module.exports.set = function(app) {
           columns: columns.map(pgp.as.name).join(),
           table: 'Table Name'
         }).then(result => {
-          console.log(result); // printing the data returned
+          console.log("Realizando get puestos");
+          if(debug){
+            console.log(result); // printing the data returned
+          }
 
           res.status(200).json({
             status: "success",
@@ -116,7 +122,10 @@ module.exports.set = function(app) {
 
           table: 'Table Name'
         }).then(result => {
-          console.log(result); // printing the data returned
+          console.log("Realizando get empleado_v");
+          if(debug){
+            console.log(result); // printing the data returned
+          }
 
           res.status(200).json({
             status: "success",
@@ -173,7 +182,10 @@ module.exports.set = function(app) {
       columns: columns.map(pgp.as.name).join(),
         table: 'Table Name'
       }).then(result => {
-        console.log(result); // printing the data returned
+        console.log("Realizando post empleado");
+        if(debug){
+          console.log(result); // printing the data returned
+        }
         res.status(200).json({
           status: "success",
           data: result
@@ -243,7 +255,11 @@ module.exports.set = function(app) {
 
         table: 'Table Name'
       }).then(result => {
-        console.log(result); // printing the data returned
+        console.log("Realizando get de un empleado");
+        if(debug){
+          console.log(result); // printing the data returned
+        }
+
         res.status(200).json({
           status: "success",
           data: result
