@@ -1,10 +1,5 @@
 angular.module('CRUDClientesCtrl', []).controller('CRUDClientesController', ['$rootScope', '$scope', '$location','Clientes','toastr', function($rootScope, $scope, $location, Clientes,toastr) {
 
-  $rootScope.origin = "heredia";
-  $scope.currentPath = $location.path();
-  $scope.updateOrigin = function(origin) {
-    $rootScope.origin = origin
-  }
   $scope.crearClientes = function(cliente) {
     Clientes.postCliente(cliente).then(function(response) {
       toastr.success('Exito', 'Su solicitud fue procesada');

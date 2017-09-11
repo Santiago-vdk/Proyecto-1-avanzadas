@@ -2,7 +2,8 @@ var app = angular.module('app', [
   'ui.router',
   'appRoutes',
    'toastr',
-   'ngAnimate',
+   'ngStorage',
+
   // Controladores
   'MainCtrl',
   'AdministradoresCtrl',

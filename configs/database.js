@@ -4,31 +4,39 @@ var databaseSanjose = pgp(getDatabaseSanjose());
 var databaseAlajuela = pgp(getDatabaseAlajuela());
 
 function getDb(destino) {
-  if (destino.localeCompare("heredia") === 0) {
+  destino = parseInt(destino);
+  if (destino === 1) {
+    console.log("Consultando Heredia");
     return databaseHeredia;
-  } else if (destino.localeCompare("sanjose") === 0) {
+  } else if (destino === 2) {
+    console.log("Consultado San Jose");
     return databaseSanjose
-  } else if (destino.localeCompare("alajuela") === 0) {
+  } else if (destino === 3) {
+    console.log("Consultando Alajuela");
     return databaseAlajuela
   } else {
+    console.log("Consultando Heredia, DEFAULT");
     return databaseHeredia
   }
 }
 
-function getDatabaseHeredia(){
+function getDatabaseHeredia() {
+
   return "postgres://root:mypassword@heredia.czeeqkvoq4jr.us-east-1.rds.amazonaws.com:5432/heredia?ssl=true";
 
 }
 
-function getDatabaseSanjose(){
+function getDatabaseSanjose() {
+
   return "postgres://root:mypassword@sanjose.czeeqkvoq4jr.us-east-1.rds.amazonaws.com:5432/sanjose?ssl=true";
 }
 
 function getDatabaseAlajuela() {
+
   return "postgres://root:mypassword@alajuela.czeeqkvoq4jr.us-east-1.rds.amazonaws.com:5432/alajuela?ssl=true";
 }
 
-function getInitOptions(){
+function getInitOptions() {
   const initOptions = {
     query: e => {
       console.log("-----------------");
@@ -44,22 +52,22 @@ function getPgp() {
 }
 
 module.exports = {
-    getDatabaseHeredia: function () {
-        return getDatabaseHeredia();
-    },
-    getDatabaseSanjose: function () {
-        return getDatabaseSanjose();
-    },
-    getDatabaseAlajuela: function () {
-        return getDatabaseAlajuela();
-    },
-    getInitOptions: function () {
-      return getInitOptions();
-    },
-    getDb: function (destino) {
-      return getDb(destino);
-    },
-    getPgp: function () {
-      return getPgp();
-    }
+  getDatabaseHeredia: function() {
+    return getDatabaseHeredia();
+  },
+  getDatabaseSanjose: function() {
+    return getDatabaseSanjose();
+  },
+  getDatabaseAlajuela: function() {
+    return getDatabaseAlajuela();
+  },
+  getInitOptions: function() {
+    return getInitOptions();
+  },
+  getDb: function(destino) {
+    return getDb(destino);
+  },
+  getPgp: function() {
+    return getPgp();
+  }
 };

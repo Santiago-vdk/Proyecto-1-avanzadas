@@ -1,9 +1,5 @@
 angular.module('CRUDTiendasCtrl', []).controller('CRUDTiendasController', ['$rootScope', '$scope', '$location', 'Tiendas', 'Sucursales', function($rootScope, $scope, $location, Tiendas, Sucursales) {
-  $rootScope.origin = "heredia";
-  $scope.currentPath = $location.path();
-  $scope.updateOrigin = function(origin) {
-    $rootScope.origin = origin
-  }
+
   $scope.crearTiendas = function(tienda) {
     Tiendas.postTienda().then(function(response) {
       toastr.success('Exito', 'Su solicitud fue procesada');
