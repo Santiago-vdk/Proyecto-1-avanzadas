@@ -25,6 +25,8 @@
     "method-override": "latest",
     "node-gyp": "latest",
     "pg-promise": "latest",
+    "promise": "^8.0.1",
+    "q": "^1.5.0",
     "sequelize": "latest"
   },
   "devDependencies": {

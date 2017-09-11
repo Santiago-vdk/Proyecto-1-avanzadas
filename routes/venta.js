@@ -2,6 +2,8 @@ module.exports.set = function(app) {
   var direccionador = require('../logic/direccionador');
   var databaseConfig = require('../configs/database');
   var pgp = databaseConfig.getPgp();
+  var promise = require('promise');
+  var $q = require('q');
   var debug = false;
 
   app.get('/api/v1/venta', function(req, res) {
@@ -59,7 +61,6 @@ module.exports.set = function(app) {
   });
 
   app.post('/api/v1/venta', function(req, res) {
-
     var destino = req.query.origin || 1;
     // Default siempre desde heredia
     const columns = ['id_cliente', 'id_tienda', 'id_empleado', 'monto'];
@@ -70,61 +71,54 @@ module.exports.set = function(app) {
     var articulos = req.body.articulos;
     var myquery = 'INSERT INTO public.venta(${columns^}) VALUES (' + id_cliente + ',' + id_tienda + ',' + id_empleado + ',' + monto + ') returning id';
 
+    if(articulos.length === 0){
+      res.status(500).send();
+      return;
+    }
+
     databaseConfig.getDb(destino).query(myquery, {
       columns: columns.map(pgp.as.name).join(),
       table: 'Table Name'
     }).then(result => {
       var id = result[0].id;
+
+      var promises = [];
       for (i = 0; i < articulos.length; i++) {
         const columns2 = ['id_venta', 'id_articulo'];
         var myquery2 = 'INSERT INTO public.venta_articulo(${columns^}) VALUES (' + id + ',' + articulos[i] + ')';
-        databaseConfig.getDb(destino).query(myquery2, {
-          columns: columns2.map(pgp.as.name).join(),
-          table: 'Table Name'
-        }).then(result2 => {
-          console.log("Realizando post venta");
-          if (debug) {
-            console.log(result); // printing the data returned
-          }
-          var id = result[0].id;
-          for (i = 0; i < articulos.length; i++) {
-            const columns2 = ['id_venta', 'id_articulo'];
-            var myquery2 = 'INSERT INTO public.venta_articulo(${columns^}) VALUES (' + id + ',' + articulos[i] + ')';
-            databaseConfig.getDb(destino).query(myquery2, {
-                columns: columns2.map(pgp.as.name).join(),
-                table: 'Table Name'
-              }).then(result2 => {
-                console.log("Realizando insercion en el for");
-                if (debug) {
-                  console.log(result); // printing the data returned
-                }
-                res.status(200).json({
-                  status: "success",
-                  data: result2
-                });
 
-              })
-              .catch(error => {
-                if (debug) {
-                  console.log(error); // printing the data returned
-                }
+        var promise = databaseConfig.getDb(destino).query(myquery2, {
+            columns: columns2.map(pgp.as.name).join(),
+            table: 'Table Name'
+          }).then(result2 => {
+            console.log("Realizando post venta");
+            if (debug) {
+              console.log(result); // printing the data returned
+            }
+            var id = result[0].id;
 
-              })
+            res.status(200).json({
+              status: "success",
+              data: result
+            });
 
-          }
+          }).catch(error => {
+            if (debug) {
+              console.log(error); // printing the data returned
+            }
 
-          res.status(200).json({
-            status: "success",
-            data: result
-          });
-
-        }).catch(error => {
-          if (debug) {
-            console.log(error); // printing the data returned
-          }
-
-        })
+          })
+        promises.push(promise);
       }
+
+      $q.all(promises).then(function(){
+        console.log("Done all promises");
+        res.status(200).json({
+          status: "success",
+          data: result
+        });
+      });
+
     });
   });
 

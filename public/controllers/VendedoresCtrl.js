@@ -24,8 +24,9 @@ angular.module('VendedoresCtrl', []).controller('VendedoresController', ['$scope
 
     Ventas.postVenta(data).then(function(response) {
       toastr.success('Exito', 'Su solicitud fue procesada');
+      $scope.ventas = [];
       $scope.cargarVentas();
-      $scope.venta = {};
+      $scope.venta = {}
     }).catch(function(err) {
       toastr.error('Hubo un error mientras se creaba la venta.', 'Error');
     });
@@ -54,10 +55,16 @@ angular.module('VendedoresCtrl', []).controller('VendedoresController', ['$scope
   }).catch(function(err) {
     toastr.error('Hubo un error mientras se solicitaban las tiendas.', 'Error');
   });
-
+$scope.ventas = [];
   $scope.cargarVentas = function() {
     Ventas.getVentas().then(function(response) {
-      $scope.ventas = response.data.data;
+
+
+      angular.forEach(response.data.data, function(value) {
+        $scope.ventas.push(value);
+      });
+
+
     }).catch(function(err) {
       toastr.error('Hubo un error mientras se solicitaban las ventas existentes.', 'Error');
     });
