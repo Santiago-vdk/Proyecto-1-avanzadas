@@ -31,7 +31,9 @@ function getDatabaseAlajuela() {
 function getInitOptions(){
   const initOptions = {
     query: e => {
+      console.log("-----------------");
       console.log('QUERY:', e.query);
+      console.log("-----------------");
     }
   };
   return initOptions;

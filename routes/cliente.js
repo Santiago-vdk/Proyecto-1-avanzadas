@@ -2,12 +2,12 @@ module.exports.set = function(app) {
   var direccionador = require('../logic/direccionador');
   var databaseConfig = require('../configs/database');
   var pgp = databaseConfig.getPgp();
-  var debug = true;
+  var debug = false;
 
   app.get('/api/v1/cliente', function(req, res) {
     var destino = req.query.origin || 1;
 
-    console.log("Solicitud desde ",destino);
+    console.log("Solicitud desde ", destino);
     const columns = ['id', 'nombre', 'apellidos'];
     var myquery = 'SELECT ${columns^} FROM cliente WHERE activo = true';
 
@@ -16,7 +16,7 @@ module.exports.set = function(app) {
         table: 'Table Name'
       }).then(result => {
         console.log("Realizando get clientes");
-        if(debug){
+        if (debug) {
           console.log(result); // printing the data returned
         }
 
@@ -72,7 +72,7 @@ module.exports.set = function(app) {
         table: 'Table Name'
       }).then(result => {
         console.log("Realizando get cliente_v");
-        if(debug){
+        if (debug) {
           console.log(result); // printing the data returned
         }
 
@@ -127,11 +127,11 @@ module.exports.set = function(app) {
     var myquery = 'INSERT INTO public.cliente(${columns^}) VALUES (\'' + nombre + '\',\'' + apellidos + '\')';
 
     databaseConfig.getDb(destino).query(myquery, {
-      columns: columns.map(pgp.as.name).join(),
+        columns: columns.map(pgp.as.name).join(),
         table: 'Table Name'
       }).then(result => {
         console.log("Realizando post cliente");
-        if(debug){
+        if (debug) {
           console.log(result); // printing the data returned
         }
         res.status(200).json({
@@ -204,7 +204,7 @@ module.exports.set = function(app) {
         table: 'Table Name'
       }).then(result => {
         console.log("Realizando get de un cliente");
-        if(debug){
+        if (debug) {
           console.log(result); // printing the data returned
         }
         res.status(200).json({

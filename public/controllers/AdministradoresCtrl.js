@@ -95,7 +95,7 @@ angular.module('AdministradoresCtrl', []).controller('AdministradoresController'
   }
   //Consulta 6
   $scope.callVentasPorTiendaYProductoPeriodo = function(params) {
-    Administrador.getMontoVentasPorTiendaYProductoPeriodo($scope.form).then(function(response) {
+    Administrador.getMontoVentasPorTiendaYProductoPeriodo(params).then(function(response) {
       alert("Success");
     }).catch(function(err) {
       toastr.error('Hubo un error mientras se procesaba la consulta 6', 'Error');

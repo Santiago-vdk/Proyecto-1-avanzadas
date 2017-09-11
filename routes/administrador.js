@@ -5,19 +5,19 @@ module.exports.set = function(app) {
   var bodyParser = require('body-parser')
   app.use(bodyParser.json());
 
-  var debug = true;
+  var debug = false;
 
   app.get('/api/v1/administrador/consulta1', function(req, res) { //Cantidad de dinero recaudado en la tienda
     var destino = req.query.origin || 1;
     // Default siempre desde heredia
     const columns = [];
-    var myquery = 'SELECT ${columns^} dinero_tienda_f('+destino+')';
+    var myquery = 'SELECT ${columns^} dinero_tienda_f(' + destino + ')';
     databaseConfig.getDb(destino).query(myquery, {
         columns: columns.map(pgp.as.name).join(),
         table: 'Table Name'
       }).then(result => {
         console.log("Realizando consulta 1");
-        if(debug){
+        if (debug) {
           console.log(result); // printing the data returned
         }
 
@@ -67,16 +67,16 @@ module.exports.set = function(app) {
     var desde = req.query.desde;
     var hasta = req.query.hasta;
     var cliente = req.query.cliente;
-    console.log("params",destino,desde,hasta,cliente);
+    console.log("params", destino, desde, hasta, cliente);
     const columns = [];
-    var myquery = 'SELECT ${columns^} venta_cliente_f('+cliente+',\''+desde+'\',\''+hasta+'\')';
+    var myquery = 'SELECT ${columns^} venta_cliente_f(' + cliente + ',\'' + desde + '\',\'' + hasta + '\')';
 
     databaseConfig.getDb(destino).query(myquery, {
         columns: columns.map(pgp.as.name).join(),
         table: 'Table Name'
       }).then(result => {
         console.log("Realizando consulta 2");
-        if(debug){
+        if (debug) {
           console.log(result); // printing the data returned
         }
 
@@ -126,14 +126,14 @@ module.exports.set = function(app) {
     var hasta = req.query.hasta;
     var cliente = req.query.cliente;
     const columns = [];
-    var myquery = 'SELECT ${columns^} promedio_compra_cliente_f('+cliente+',\''+desde+'\',\''+hasta+'\')';
-    console.log("query",myquery);
+    var myquery = 'SELECT ${columns^} promedio_compra_cliente_f(' + cliente + ',\'' + desde + '\',\'' + hasta + '\')';
+    console.log("query", myquery);
     databaseConfig.getDb(destino).query(myquery, {
         columns: columns.map(pgp.as.name).join(),
         table: 'Table Name'
       }).then(result => {
         console.log("Realizando consulta 3");
-        if(debug){
+        if (debug) {
           console.log(result); // printing the data returned
         }
 
@@ -182,14 +182,14 @@ module.exports.set = function(app) {
     var articulo = req.query.articulo;
     var mes = req.query.mes;
     const columns = [];
-    var myquery = 'SELECT ${columns^} venta_producto_mes_f('+articulo+',\''+mes+'\')';
+    var myquery = 'SELECT ${columns^} venta_producto_mes_f(' + articulo + ',\'' + mes + '\')';
 
     databaseConfig.getDb(destino).query(myquery, {
         columns: columns.map(pgp.as.name).join(),
         table: 'Table Name'
       }).then(result => {
         console.log("Realizando consulta 4");
-        if(debug){
+        if (debug) {
           console.log(result); // printing the data returned
         }
 
@@ -238,14 +238,14 @@ module.exports.set = function(app) {
     var desde = req.query.desde;
     var hasta = req.query.hasta;
     const columns = [];
-    var myquery = 'SELECT ${columns^} dinero_tienda_periodo_f('+destino+',\''+desde+'\',\''+hasta+'\')';
+    var myquery = 'SELECT ${columns^} dinero_tienda_periodo_f(' + destino + ',\'' + desde + '\',\'' + hasta + '\')';
 
     databaseConfig.getDb(destino).query(myquery, {
         columns: columns.map(pgp.as.name).join(),
         table: 'Table Name'
       }).then(result => {
         console.log("Realizando consulta 5");
-        if(debug){
+        if (debug) {
           console.log(result); // printing the data returned
         }
 
@@ -297,14 +297,14 @@ module.exports.set = function(app) {
     var desde = req.query.desde;
     var hasta = req.query.hasta;
     const columns = [];
-    var myquery = 'SELECT ${columns^} dinero_tienda_producto_periodo_f('+destino+','+articulo+',\''+desde+'\',\''+hasta+'\')';
+    var myquery = 'SELECT ${columns^} dinero_tienda_producto_periodo_f(' + destino + ',' + articulo + ',\'' + desde + '\',\'' + hasta + '\')';
 
     databaseConfig.getDb(destino).query(myquery, {
         columns: columns.map(pgp.as.name).join(),
         table: 'Table Name'
       }).then(result => {
         console.log("Realizando consulta 6");
-        if(debug){
+        if (debug) {
           console.log(result); // printing the data returned
         }
         res.status(200).json({
@@ -354,14 +354,14 @@ module.exports.set = function(app) {
     var hasta = req.query.hasta;
 
     const columns = [];
-    var myquery = 'SELECT ${columns^} mejores_clientes_f(\''+desde+'\',\''+hasta+'\')';
+    var myquery = 'SELECT ${columns^} mejores_clientes_f(\'' + desde + '\',\'' + hasta + '\')';
 
     databaseConfig.getDb(destino).query(myquery, {
         columns: columns.map(pgp.as.name).join(),
         table: 'Table Name'
       }).then(result => {
         console.log("Realizando consulta 7");
-        if(debug){
+        if (debug) {
           console.log(result); // printing the data returned
         }
         res.status(200).json({
