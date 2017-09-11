@@ -48,7 +48,7 @@ angular.module('AdministradorService', []).factory('Administrador', ['$rootScope
 
     // Consulta 6
     getMontoVentasPorTiendaYProductoPeriodo: function(data) {
-      return $http.get('/api/v1/administrador/consulta6?origin=' + $rootScope.origin + '&desde=' + data.desde + '&hasta=' + data.hasta).then(function(data) {
+      return $http.get('/api/v1/administrador/consulta6?origin=' + $rootScope.origin + '&desde=' + data.desde + '&hasta=' + data.hasta + '&tienda=' + data.tienda + '&articulo=' + data.articulo).then(function(data) {
         return data;
       }).catch(function(err) {
         throw err;

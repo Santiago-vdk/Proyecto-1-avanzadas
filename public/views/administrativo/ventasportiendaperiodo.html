@@ -8,7 +8,6 @@
   <label>Hasta:</label>
   <input type="date" name="myDate" ng-model="params.hasta">
 
-
   <div class="form-group ">
     <label class="control-label requiredField" for="name">
    Tienda
@@ -16,16 +15,13 @@
     *
    </span>
   </label>
-
-    <!-- <input class="form-control" id="idCliente" ng-model="venta.idCliente" name="idCliente" type="number" ng-required="true" /> -->
     <select id="idTienda" name="idTienda" ng-model="params.tienda">
       <option ng-repeat="tienda in tiendas" value="{{tienda.id}}">{{tienda.nombre}}</option>
     </select>
-
   </div>
 
-    <button class="btn btn-primary" ng-click="callVentasPorTiendaPeriodo(params)">Consultar</button>
+  <button class="btn btn-primary" ng-click="callVentasPorTiendaPeriodo(params)">Consultar</button>
 
-    <h4 ng-if="dinero_tienda_periodo">Monto por tienda periodo: {{dinero_tienda_periodo}}</h4>
+  <h4 ng-if="dinero_tienda_periodo">Monto por tienda periodo: {{dinero_tienda_periodo}}</h4>
 
 </div>
