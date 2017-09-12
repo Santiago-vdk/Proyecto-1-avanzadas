@@ -2,62 +2,62 @@
 
 
 
-<h1>Crear Empleados</h1>
-<br />
+  <h1>Crear Empleados</h1>
+  <br />
 
-<form ng-model="empleado">
+  <form ng-model="empleado">
 
 
-  <div class="form-group ">
-   <label class="control-label requiredField" for="date">
+    <div class="form-group ">
+      <label class="control-label requiredField" for="date">
   Nombre
   <span class="asteriskField">
    *
   </span>
  </label>
-   <input class="form-control" id="nombre" ng-model="empleado.nombre" name="nombre" placeholder="nombre" type="text" ng-required="true" />
- </div>
+      <input class="form-control" id="nombre" ng-model="empleado.nombre" name="nombre" placeholder="nombre" type="text" ng-required="true" />
+    </div>
 
- <div class="form-group ">
-  <label class="control-label requiredField" for="date">
+    <div class="form-group ">
+      <label class="control-label requiredField" for="date">
  Puesto
  <span class="asteriskField">
   *
  </span>
 </label>
-  <!-- <input class="form-control" id="puestos" ng-model="empleado.puestos" name="puestos" placeholder="puestos" type="text" ng-required="true" /> -->
-  <select id="idPuesto" name="idPuesto" ng-model="empleado.id_puesto">
+      <!-- <input class="form-control" id="puestos" ng-model="empleado.puestos" name="puestos" placeholder="puestos" type="text" ng-required="true" /> -->
+      <select id="idPuesto" name="idPuesto" ng-model="empleado.id_puesto">
     <option ng-repeat="puesto in puestos" value="{{puesto.id}}">{{puesto.nombre}}</option>
   </select>
 
 
-</div>
+    </div>
 
-<div class="form-group ">
-  <label class="control-label requiredField" for="idTienda">
+    <div class="form-group ">
+      <label class="control-label requiredField" for="idTienda">
  Tienda
  <span class="asteriskField">
   *
  </span>
 </label>
-  <!-- <input class="form-control" id="idTienda" ng-model="venta.idTienda" name="idTienda" type="number" ng-required="true" /> -->
-  <select id="idTienda" name="idTienda" ng-model="empleado.id_tienda">
+      <!-- <input class="form-control" id="idTienda" ng-model="venta.idTienda" name="idTienda" type="number" ng-required="true" /> -->
+      <select id="idTienda" name="idTienda" ng-model="empleado.id_tienda">
     <option ng-repeat="tienda in tiendas" value="{{tienda.id}}">{{tienda.nombre}}</option>
   </select>
 
 
-</div>
+    </div>
 
-<div class="form-group">
-  <div>
-    <button class="btn btn-primary " name="submit" ng-click="crearEmpleados(empleado)" type="submit">
-  Submit
+    <div class="form-group">
+      <div>
+        <button class="btn btn-primary " name="submit" ng-click="crearEmpleados(empleado)" type="submit">
+  Submit <i ng-if="submited" class="fa fa-circle-o-notch fa-spin fa-1x fa-fw"></i>
  </button>
-  </div>
-</div>
+      </div>
+    </div>
 
 
 
 
-</form>
+  </form>
 </div>

@@ -2,6 +2,7 @@ angular.module('VendedoresCtrl', []).controller('VendedoresController', ['$scope
 
   $scope.form = {};
   $scope.articulos = {};
+  $scope.loading_ventas = false;
   $scope.agregarVenta = function(venta, articulos) {
     $scope.form = angular.copy(venta);
     $scope.articulos = angular.copy(articulos);
@@ -57,17 +58,19 @@ angular.module('VendedoresCtrl', []).controller('VendedoresController', ['$scope
   });
 
 
-$scope.ventas = [];
+  $scope.ventas = [];
   $scope.cargarVentas = function() {
+    $scope.loading_ventas = true;
     Ventas.getVentas().then(function(response) {
 
 
       angular.forEach(response.data.data, function(value) {
         $scope.ventas.push(value);
       });
-
+        $scope.loading_ventas = false;
 
     }).catch(function(err) {
+  $scope.loading_ventas = false;
       toastr.error('Hubo un error mientras se solicitaban las ventas existentes.', 'Error');
     });
   }

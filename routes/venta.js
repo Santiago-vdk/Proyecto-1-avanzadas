@@ -187,13 +187,6 @@ module.exports.set = function(app) {
               if (debug) {
                 console.log(error); // printing the data returned
               }
-
-
-
-
-
-
-
             })
             .catch(error => {
               console.log("Nodo central fuera de linea..."); // printing the error
