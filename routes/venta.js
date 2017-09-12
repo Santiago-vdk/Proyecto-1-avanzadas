@@ -90,7 +90,7 @@ module.exports.set = function(app) {
         console.log(result); // printing the data returned
       }
       const columnslog = ['id_tabla', 'fila_id','id_sucursal'];
-      var myquerylog = 'INSERT INTO public.log_tabla(${columnslog^}) VALUES (5, + '+id+',1)';
+      var myquerylog = 'INSERT INTO public.log_tabla(${columnslog^}) VALUES (5,'+id+',1)';
       databaseConfig.getDb(destino).query(myquerylog, {
           columnslog: columnslog.map(pgp.as.name).join(),
           table: 'Table Name'
@@ -121,7 +121,7 @@ module.exports.set = function(app) {
           }
                     var fila = result[0].id;
                     const columnslog = ['id_tabla', 'fila_id','id_sucursal'];
-                    var myquerylog = 'INSERT INTO public.log_tabla(${columnslog^}) VALUES (9, + '+fila+',1)';
+                    var myquerylog = 'INSERT INTO public.log_tabla(${columnslog^}) VALUES (9, '+fila+',1)';
                     databaseConfig.getDb(destino).query(myquerylog, {
                         columnslog: columnslog.map(pgp.as.name).join(),
                         table: 'Table Name'
@@ -182,7 +182,7 @@ module.exports.set = function(app) {
               }
                         var fila = result[0].id;
                         const columnslog = ['id_tabla', 'fila_id','id_sucursal'];
-                        var myquerylog = 'INSERT INTO public.log_tabla(${columnslog^}) VALUES (8, + '+fila+','+destino+')';
+                        var myquerylog = 'INSERT INTO public.log_tabla(${columnslog^}) VALUES (8, '+fila+','+destino+')';
                         databaseConfig.getDb(destino).query(myquerylog, {
                             columnslog: columnslog.map(pgp.as.name).join(),
                             table: 'Table Name'
@@ -215,7 +215,7 @@ module.exports.set = function(app) {
                   }
                             var fila = result[0].id;
                             const columnslog = ['id_tabla', 'fila_id','id_sucursal'];
-                            var myquerylog = 'INSERT INTO public.log_tabla(${columnslog^}) VALUES (9, + '+fila+','+destino+')';
+                            var myquerylog = 'INSERT INTO public.log_tabla(${columnslog^}) VALUES (9,'+fila+','+destino+')';
                             databaseConfig.getDb(destino).query(myquerylog, {
                                 columnslog: columnslog.map(pgp.as.name).join(),
                                 table: 'Table Name'
