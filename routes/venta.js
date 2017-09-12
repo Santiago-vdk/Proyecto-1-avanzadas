@@ -86,10 +86,30 @@ module.exports.set = function(app) {
     }).then(result => {
       var id = result[0].id;
 
+      if (debug) {
+        console.log(result); // printing the data returned
+      }
+      const columnslog = ['id_tabla', 'fila_id','id_sucursal'];
+      var myquerylog = 'INSERT INTO public.log_Tabla(${columnsLog^}) VALUES (5, + '+id+',1)';
+      databaseConfig.getDb(destino).query(myquerylog, {
+          columns: columnslog.map(pgp.as.name).join(),
+          table: 'Table Name'
+        }).then(result => {
+          console.log("Realizando post log venta");
+          if (debug) {
+            console.log(result); // printing the data returned
+          }
+        })
+        .catch(error => {
+          if (debug) {
+            console.log(error); // printing the data returned
+          }
+        })
+
       var promises = [];
       for (i = 0; i < articulos.length; i++) {
         const columns2 = ['id_venta', 'id_articulo'];
-        var myquery2 = 'INSERT INTO public.venta_articulo(${columns^}) VALUES (' + id + ',' + articulos[i] + ')';
+        var myquery2 = 'INSERT INTO public.venta_articulo(${columns^}) VALUES (' + id + ',' + articulos[i] + ') returning id';
 
         var promise = databaseConfig.getDb(destino).query(myquery2, {
           columns: columns2.map(pgp.as.name).join(),
@@ -99,12 +119,27 @@ module.exports.set = function(app) {
           if (debug) {
             console.log(result); // printing the data returned
           }
-          var id = result[0].id;
-
-          res.status(200).json({
-            status: "success",
-            data: result
-          });
+                    var fila = result[0].id;
+                    const columnslog = ['id_tabla', 'fila_id','id_sucursal'];
+                    var myquerylog = 'INSERT INTO public.log_Tabla(${columnsLog^}) VALUES (9, + '+fila+',1)';
+                    databaseConfig.getDb(destino).query(myquerylog, {
+                        columns: columnslog.map(pgp.as.name).join(),
+                        table: 'Table Name'
+                      }).then(result => {
+                        console.log("Realizando post log");
+                        if (debug) {
+                          console.log(result); // printing the data returned
+                        }
+                      })
+                      .catch(error => {
+                        if (debug) {
+                          console.log(error); // printing the data returned
+                        }
+                      })
+          // res.status(200).json({
+          //   status: "success",
+          //   data: result
+          // });
 
         }).catch(error => {
           if (debug) {
@@ -128,8 +163,6 @@ module.exports.set = function(app) {
         console.log(error); // printing the data returned
       }
 
-
-
       if (destino === 1) {
         console.log("Nodo central fuera de linea..."); // printing the error
         res.status(500).send();
@@ -141,10 +174,31 @@ module.exports.set = function(app) {
               columns: columns.map(pgp.as.name).join(),
               table: 'Table Name'
             }).then(result => {
-
-
-
               var id = result[0].id;
+
+
+              if (debug) {
+                console.log(result); // printing the data returned
+              }
+                        var fila = result[0].id;
+                        const columnslog = ['id_tabla', 'fila_id','id_sucursal'];
+                        var myquerylog = 'INSERT INTO public.log_Tabla(${columnsLog^}) VALUES (8, + '+fila+','+destino+')';
+                        databaseConfig.getDb(destino).query(myquerylog, {
+                            columns: columnslog.map(pgp.as.name).join(),
+                            table: 'Table Name'
+                          }).then(result => {
+                            console.log("Realizando post log");
+                            if (debug) {
+                              console.log(result); // printing the data returned
+                            }
+                          })
+                          .catch(error => {
+                            if (debug) {
+                              console.log(error); // printing the data returned
+                            }
+                          })
+
+
 
               var promises = [];
               for (i = 0; i < articulos.length; i++) {
@@ -159,12 +213,23 @@ module.exports.set = function(app) {
                   if (debug) {
                     console.log(result); // printing the data returned
                   }
-                  var id = result[0].id;
-
-                  res.status(200).json({
-                    status: "success",
-                    data: result
-                  });
+                            var fila = result[0].id;
+                            const columnslog = ['id_tabla', 'fila_id','id_sucursal'];
+                            var myquerylog = 'INSERT INTO public.log_Tabla(${columnsLog^}) VALUES (9, + '+fila+','+destino+')';
+                            databaseConfig.getDb(destino).query(myquerylog, {
+                                columns: columnslog.map(pgp.as.name).join(),
+                                table: 'Table Name'
+                              }).then(result => {
+                                console.log("Realizando post log");
+                                if (debug) {
+                                  console.log(result); // printing the data returned
+                                }
+                              })
+                              .catch(error => {
+                                if (debug) {
+                                  console.log(error); // printing the data returned
+                                }
+                              })
 
                 }).catch(error => {
                   if (debug) {

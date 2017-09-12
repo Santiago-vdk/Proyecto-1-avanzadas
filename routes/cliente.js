@@ -60,9 +60,6 @@ module.exports.set = function(app) {
             res.status(500).send();
           }
         }
-
-
-
       })
 
   });
@@ -105,23 +102,47 @@ module.exports.set = function(app) {
     const columns = ['nombre', 'apellidos'];
     var nombre = req.body.nombre;
     var apellidos = req.body.apellidos;
-    var myquery = 'INSERT INTO public.cliente(${columns^}) VALUES (\'' + nombre + '\',\'' + apellidos + '\')';
+    var myquery = 'INSERT INTO public.cliente(${columns^}) VALUES (\'' + nombre + '\',\'' + apellidos + '\') returning id';
 
     databaseConfig.getDb(destino).query(myquery, {
         columns: columns.map(pgp.as.name).join(),
         table: 'Table Name'
       }).then(result => {
         console.log("Realizando post cliente");
-        if (debug) {
-          console.log(result); // printing the data returned
-        }
+                    if (debug) {
+                      console.log(result); // printing the data returned
+                    }
+                    var fila = result[0].id;
+                    const columnslog = ['id_tabla', 'fila_id','id_sucursal'];
+                    var myquerylog = 'INSERT INTO public.log_Tabla(${columnsLog^}) VALUES (3, + '+fila+',1)';
+                    databaseConfig.getDb(destino).query(myquerylog, {
+                        columns: columnslog.map(pgp.as.name).join(),
+                        table: 'Table Name'
+                      }).then(result => {
+                        console.log("Realizando post log");
+                        if (debug) {
+                          console.log(result); // printing the data returned
+                        }
+                        res.status(200).json({
+                          status: "success",
+                          data: result
+                        });
+
+                      })
+                      .catch(error => {
+                        if (debug) {
+                          console.log(error); // printing the data returned
+                        }
+                      })
+
+        /*
         res.status(200).json({
           status: "success",
           data: result
         });
+        */
 
-      })
-      .catch(error => {
+      }).catch(error => {
         if (debug) {
           console.log(error); // printing the data returned
         }
@@ -135,18 +156,36 @@ module.exports.set = function(app) {
                 columns: columns.map(pgp.as.name).join(),
                 table: 'Table Name'
               }).then(result => {
-                console.log(result); // printing the data returned
+                                if (debug) {
+                                  console.log(result); // printing the data returned
+                                }
+                                var fila = result[0].id;
+                                const columnslog = ['id_tabla', 'fila_id','id_sucursal'];
+                                var myquerylog = 'INSERT INTO public.log_Tabla(${columnsLog^}) VALUES (3, + '+fila+','+destino+')';
+                                databaseConfig.getDb(destino).query(myquerylog, {
+                                    columns: columnslog.map(pgp.as.name).join(),
+                                    table: 'Table Name'
+                                  }).then(result => {
+                                    console.log("Realizando post log");
+                                    if (debug) {
+                                      console.log(result); // printing the data returned
+                                    }
+                                    res.status(200).json({
+                                      status: "success",
+                                      data: result
+                                    });
 
-                res.status(200).json({
-                  status: "success",
-                  data: result
-                });
-
-              })
-              .catch(error => {
+                                  }).catch(error => {
+                                    if (debug) {
+                                      console.log(error); // printing the data returned
+                                    }
+                                  })
+                        }).catch(error => {
                 console.log("Nodo central fuera de linea..."); // printing the error
                 res.status(500).send();
-              });
+              })
+
+
           } else {
             console.log("Error inesperado"); // printing the error
             res.status(500).send();

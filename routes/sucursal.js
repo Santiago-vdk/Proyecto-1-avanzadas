@@ -96,19 +96,37 @@ module.exports.set = function(app) {
     const columns = ['nombre'];
     var nombre = req.body.nombre;
 
-    var myquery = 'INSERT INTO public.sucursal(nombre) VALUES (\'' + nombre + '\')';
+    var myquery = 'INSERT INTO public.sucursal(nombre) VALUES (\'' + nombre + '\') returning id';
 
     databaseConfig.getDb(destino).query(myquery, {
         table: 'Table Name'
       }).then(result => {
         console.log("Realizando post de sucursal");
-        if (debug) {
-          console.log(result); // printing the data returned
-        }
-        res.status(200).json({
-          status: "success",
-          data: result
-        });
+                  if (debug) {
+                    console.log(result); // printing the data returned
+                  }
+                  var fila = result[0].id;
+                  const columnslog = ['id_tabla', 'fila_id','id_sucursal'];
+                  var myquerylog = 'INSERT INTO public.log_Tabla(${columnsLog^}) VALUES (4, + '+fila+',1)';
+                  databaseConfig.getDb(destino).query(myquerylog, {
+                      columns: columnslog.map(pgp.as.name).join(),
+                      table: 'Table Name'
+                    }).then(result => {
+                      console.log("Realizando post log");
+                      if (debug) {
+                        console.log(result); // printing the data returned
+                      }
+                      res.status(200).json({
+                        status: "success",
+                        data: result
+                      });
+
+                    })
+                    .catch(error => {
+                      if (debug) {
+                        console.log(error); // printing the data returned
+                      }
+                    })
 
       })
       .catch(error => {
@@ -126,12 +144,31 @@ module.exports.set = function(app) {
                 columns: columns.map(pgp.as.name).join(),
                 table: 'Table Name'
               }).then(result => {
-                console.log(result); // printing the data returned
+                            if (debug) {
+                              console.log(result); // printing the data returned
+                            }
+                            var fila = result[0].id;
+                            const columnslog = ['id_tabla', 'fila_id','id_sucursal'];
+                            var myquerylog = 'INSERT INTO public.log_Tabla(${columnsLog^}) VALUES (4, + '+fila+','+destino+')';
+                            databaseConfig.getDb(destino).query(myquerylog, {
+                                columns: columnslog.map(pgp.as.name).join(),
+                                table: 'Table Name'
+                              }).then(result => {
+                                console.log("Realizando post log");
+                                if (debug) {
+                                  console.log(result); // printing the data returned
+                                }
+                                res.status(200).json({
+                                  status: "success",
+                                  data: result
+                                });
 
-                res.status(200).json({
-                  status: "success",
-                  data: result
-                });
+                              })
+                              .catch(error => {
+                                if (debug) {
+                                  console.log(error); // printing the data returned
+                                }
+                              })
 
               })
               .catch(error => {

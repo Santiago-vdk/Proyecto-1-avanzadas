@@ -160,20 +160,38 @@ module.exports.set = function(app) {
     var id_puesto = req.body.id_puesto;
     var nombre = req.body.nombre;
 
-    var myquery = 'INSERT INTO public.empleado(${columns^}) VALUES (' + id_tienda + ',' + id_puesto + ',\'' + nombre + '\')';
+    var myquery = 'INSERT INTO public.empleado(${columns^}) VALUES (' + id_tienda + ',' + id_puesto + ',\'' + nombre + '\') returning id';
 
     databaseConfig.getDb(destino).query(myquery, {
         columns: columns.map(pgp.as.name).join(),
         table: 'Table Name'
       }).then(result => {
         console.log("Realizando post empleado");
-        if (debug) {
-          console.log(result); // printing the data returned
-        }
-        res.status(200).json({
-          status: "success",
-          data: result
-        });
+                        if (debug) {
+                          console.log(result); // printing the data returned
+                        }
+                        var fila = result[0].id;
+                        const columnslog = ['id_tabla', 'fila_id','id_sucursal'];
+                        var myquerylog = 'INSERT INTO public.log_Tabla(${columnsLog^}) VALUES (2, + '+fila+',1)';
+                        databaseConfig.getDb(destino).query(myquerylog, {
+                            columns: columnslog.map(pgp.as.name).join(),
+                            table: 'Table Name'
+                          }).then(result => {
+                            console.log("Realizando post log");
+                            if (debug) {
+                              console.log(result); // printing the data returned
+                            }
+                            res.status(200).json({
+                              status: "success",
+                              data: result
+                            });
+
+                          })
+                          .catch(error => {
+                            if (debug) {
+                              console.log(error); // printing the data returned
+                            }
+                          })
 
       })
       .catch(error => {
@@ -190,12 +208,31 @@ module.exports.set = function(app) {
                 columns: columns.map(pgp.as.name).join(),
                 table: 'Table Name'
               }).then(result => {
-                console.log(result); // printing the data returned
+                              if (debug) {
+                                console.log(result); // printing the data returned
+                              }
+                              var fila = result[0].id;
+                              const columnslog = ['id_tabla', 'fila_id','id_sucursal'];
+                              var myquerylog = 'INSERT INTO public.log_Tabla(${columnsLog^}) VALUES (2, + '+fila+','+destino+')';
+                              databaseConfig.getDb(destino).query(myquerylog, {
+                                  columns: columnslog.map(pgp.as.name).join(),
+                                  table: 'Table Name'
+                                }).then(result => {
+                                  console.log("Realizando post log");
+                                  if (debug) {
+                                    console.log(result); // printing the data returned
+                                  }
+                                  res.status(200).json({
+                                    status: "success",
+                                    data: result
+                                  });
 
-                res.status(200).json({
-                  status: "success",
-                  data: result
-                });
+                                })
+                                .catch(error => {
+                                  if (debug) {
+                                    console.log(error); // printing the data returned
+                                  }
+                                })
 
               })
               .catch(error => {
