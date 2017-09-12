@@ -90,9 +90,9 @@ module.exports.set = function(app) {
         console.log(result); // printing the data returned
       }
       const columnslog = ['id_tabla', 'fila_id','id_sucursal'];
-      var myquerylog = 'INSERT INTO public.log_Tabla(${columnslog^}) VALUES (5, + '+id+',1)';
+      var myquerylog = 'INSERT INTO public.log_tabla(${columnslog^}) VALUES (5, + '+id+',1)';
       databaseConfig.getDb(destino).query(myquerylog, {
-          columns: columnslog.map(pgp.as.name).join(),
+          columnslog: columnslog.map(pgp.as.name).join(),
           table: 'Table Name'
         }).then(result => {
           console.log("Realizando post log venta");
@@ -112,7 +112,7 @@ module.exports.set = function(app) {
         var myquery2 = 'INSERT INTO public.venta_articulo(${columns^}) VALUES (' + id + ',' + articulos[i] + ') returning id';
 
         var promise = databaseConfig.getDb(destino).query(myquery2, {
-          columns: columns2.map(pgp.as.name).join(),
+          columns2: columns2.map(pgp.as.name).join(),
           table: 'Table Name'
         }).then(result2 => {
           console.log("Realizando post venta");
@@ -121,9 +121,9 @@ module.exports.set = function(app) {
           }
                     var fila = result[0].id;
                     const columnslog = ['id_tabla', 'fila_id','id_sucursal'];
-                    var myquerylog = 'INSERT INTO public.log_Tabla(${columnslog^}) VALUES (9, + '+fila+',1)';
+                    var myquerylog = 'INSERT INTO public.log_tabla(${columnslog^}) VALUES (9, + '+fila+',1)';
                     databaseConfig.getDb(destino).query(myquerylog, {
-                        columns: columnslog.map(pgp.as.name).join(),
+                        columnslog: columnslog.map(pgp.as.name).join(),
                         table: 'Table Name'
                       }).then(result => {
                         console.log("Realizando post log");
@@ -182,9 +182,9 @@ module.exports.set = function(app) {
               }
                         var fila = result[0].id;
                         const columnslog = ['id_tabla', 'fila_id','id_sucursal'];
-                        var myquerylog = 'INSERT INTO public.log_Tabla(${columnslog^}) VALUES (8, + '+fila+','+destino+')';
+                        var myquerylog = 'INSERT INTO public.log_tabla(${columnslog^}) VALUES (8, + '+fila+','+destino+')';
                         databaseConfig.getDb(destino).query(myquerylog, {
-                            columns: columnslog.map(pgp.as.name).join(),
+                            columnslog: columnslog.map(pgp.as.name).join(),
                             table: 'Table Name'
                           }).then(result => {
                             console.log("Realizando post log");
@@ -206,7 +206,7 @@ module.exports.set = function(app) {
                 var myquery2 = 'INSERT INTO public.venta_articulo(${columns^}) VALUES (' + id + ',' + articulos[i] + ')';
 
                 var promise = databaseConfig.getDb(1).query(myquery2, {
-                  columns: columns2.map(pgp.as.name).join(),
+                  columns2: columns2.map(pgp.as.name).join(),
                   table: 'Table Name'
                 }).then(result2 => {
                   console.log("Realizando post venta");
@@ -215,9 +215,9 @@ module.exports.set = function(app) {
                   }
                             var fila = result[0].id;
                             const columnslog = ['id_tabla', 'fila_id','id_sucursal'];
-                            var myquerylog = 'INSERT INTO public.log_Tabla(${columnslog^}) VALUES (9, + '+fila+','+destino+')';
+                            var myquerylog = 'INSERT INTO public.log_tabla(${columnslog^}) VALUES (9, + '+fila+','+destino+')';
                             databaseConfig.getDb(destino).query(myquerylog, {
-                                columns: columnslog.map(pgp.as.name).join(),
+                                columnslog: columnslog.map(pgp.as.name).join(),
                                 table: 'Table Name'
                               }).then(result => {
                                 console.log("Realizando post log");

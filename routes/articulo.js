@@ -176,7 +176,7 @@ module.exports.set = function(app) {
                               const columnslog = ['id_tabla', 'fila_id','id_sucursal'];
                               var myquerylog = 'INSERT INTO public.log_tabla(${columnslog^}) VALUES (7, + '+fila+',1)';
                               databaseConfig.getDb(destino).query(myquerylog, {
-                                  columns: columnslog.map(pgp.as.name).join(),
+                                  columnslog: columnslog.map(pgp.as.name).join(),
                                   table: 'Table Name'
                                 }).then(result => {
                                   console.log("Realizando post log");
@@ -219,7 +219,7 @@ module.exports.set = function(app) {
                                   const columnslog = ['id_tabla', 'fila_id','id_sucursal'];
                                   var myquerylog = 'INSERT INTO public.log_tabla(${columnslog^}) VALUES (7, + '+fila+','+destino+')';
                                   databaseConfig.getDb(destino).query(myquerylog, {
-                                      columns: columnslog.map(pgp.as.name).join(),
+                                      columnslog: columnslog.map(pgp.as.name).join(),
                                       table: 'Table Name'
                                     }).then(result => {
                                       console.log("Realizando post log");
