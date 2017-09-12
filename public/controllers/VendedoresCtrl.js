@@ -65,6 +65,7 @@ angular.module('VendedoresCtrl', []).controller('VendedoresController', ['$scope
 
 
       angular.forEach(response.data.data, function(value) {
+        value.fecha = value.fecha.substring(0,value.fecha.indexOf("T"));
         $scope.ventas.push(value);
       });
         $scope.loading_ventas = false;
