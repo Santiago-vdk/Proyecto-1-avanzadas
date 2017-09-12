@@ -172,7 +172,7 @@ module.exports.set = function(app) {
                         }
                         var fila = result[0].id;
                         const columnslog = ['id_tabla', 'fila_id','id_sucursal'];
-                        var myquerylog = 'INSERT INTO public.log_Tabla(${columnsLog^}) VALUES (2, + '+fila+',1)';
+                        var myquerylog = 'INSERT INTO public.log_Tabla(${columnslog^}) VALUES (2, + '+fila+',1)';
                         databaseConfig.getDb(destino).query(myquerylog, {
                             columns: columnslog.map(pgp.as.name).join(),
                             table: 'Table Name'
@@ -213,7 +213,7 @@ module.exports.set = function(app) {
                               }
                               var fila = result[0].id;
                               const columnslog = ['id_tabla', 'fila_id','id_sucursal'];
-                              var myquerylog = 'INSERT INTO public.log_Tabla(${columnsLog^}) VALUES (2, + '+fila+','+destino+')';
+                              var myquerylog = 'INSERT INTO public.log_Tabla(${columnslog^}) VALUES (2, + '+fila+','+destino+')';
                               databaseConfig.getDb(destino).query(myquerylog, {
                                   columns: columnslog.map(pgp.as.name).join(),
                                   table: 'Table Name'
