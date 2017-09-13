@@ -19,7 +19,7 @@ angular.module('AdministradoresCtrl', []).controller('AdministradoresController'
     if (month < 10) {
       month = '0' + month;
     }
-    return dt + '/' + month + '/' + year;
+    return  year + '/' + month + '/' + dt;
 
   }
 
