@@ -21,22 +21,9 @@ angular.module('MainCtrl', []).controller('MainController', ['$rootScope', '$sco
   }
 
   if (!$localStorage.origin) {
-    var origin = prompt("Digite el nombre del lugar desde el cual trabaja, Heredia, SanJose o Alajuela", "Heredia");
-    try {
-      if (origin.toLowerCase().localeCompare("heredia") === 0) {
-        $localStorage.origin = 1;
-      } else if (origin.toLowerCase().localeCompare("sanjose") === 0) {
-        $localStorage.origin = 2;
-      } else if (origin.toLowerCase().localeCompare("alajuela") === 0) {
-        $localStorage.origin = 3;
-      } else {
-        alert("Usando Heredia DEFAULT");
-        $localStorage.origin = 1;
-      }
-    } catch (err) {
-      alert("Usando Heredia DEFAULT");
+
       $localStorage.origin = 1;
-    }
+
   }
 
   $scope.irCrearClientes = function() {
