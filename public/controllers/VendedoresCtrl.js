@@ -3,6 +3,23 @@ angular.module('VendedoresCtrl', []).controller('VendedoresController', ['$scope
   $scope.form = {};
   $scope.articulos = {};
   $scope.loading_ventas = false;
+
+  function fixDate(date) {
+    date = new Date(date);
+    year = date.getFullYear();
+    month = date.getMonth() + 1;
+    dt = date.getDate();
+
+    if (dt < 10) {
+      dt = '0' + dt;
+    }
+    if (month < 10) {
+      month = '0' + month;
+    }
+    return dt + '/' + month + '/' + year;
+
+  }
+
   $scope.agregarVenta = function(venta, articulos) {
     $scope.form = angular.copy(venta);
     $scope.articulos = angular.copy(articulos);
@@ -15,12 +32,15 @@ angular.module('VendedoresCtrl', []).controller('VendedoresController', ['$scope
       articulosList.push(res[0]);
     }
 
+
+    var fixedFecha = fixDate(venta.fecha);
     var data = {
       id_cliente: venta.idCliente,
       id_tienda: venta.idTienda,
       id_empleado: venta.idEmpleado,
       monto: monto,
-      articulos: articulosList
+      articulos: articulosList,
+      fecha: fixedFecha
     }
 
     Ventas.postVenta(data).then(function(response) {
@@ -65,13 +85,13 @@ angular.module('VendedoresCtrl', []).controller('VendedoresController', ['$scope
 
 
       angular.forEach(response.data.data, function(value) {
-        value.fecha = value.fecha.substring(0,value.fecha.indexOf("T"));
+        value.fecha = value.fecha.substring(0, value.fecha.indexOf("T"));
         $scope.ventas.push(value);
       });
-        $scope.loading_ventas = false;
+      $scope.loading_ventas = false;
 
     }).catch(function(err) {
-  $scope.loading_ventas = false;
+      $scope.loading_ventas = false;
       toastr.error('Hubo un error mientras se solicitaban las ventas existentes.', 'Error');
     });
   }
