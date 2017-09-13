@@ -3,7 +3,7 @@ module.exports.set = function(app) {
   var databaseConfig = require('../configs/database');
   var pgp = databaseConfig.getPgp();
   var bodyParser = require('body-parser')
-  var debug = true;
+  var debug = false;
   app.use(bodyParser.json());
 
   app.get('/api/v1/articulo', function(req, res) {

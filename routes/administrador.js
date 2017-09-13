@@ -5,7 +5,7 @@ module.exports.set = function(app) {
   var bodyParser = require('body-parser')
   app.use(bodyParser.json());
 
-  var debug = true;
+  var debug = false;
 
   app.get('/api/v1/administrador/consulta1', function(req, res) { //Cantidad de dinero recaudado en la tienda
     var destino = req.query.origin || 1;

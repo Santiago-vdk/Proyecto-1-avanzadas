@@ -41,6 +41,12 @@ angular.module('AdministradoresCtrl', []).controller('AdministradoresController'
     toastr.error('Hubo un error mientras se solicitaban las tiendas', 'Error');
   });
 
+  Tiendas.getTiendasTotal().then(function(response) {
+    $scope.tiendasTotal = response.data.data;
+  }).catch(function(err) {
+    toastr.error('Hubo un error mientras se solicitaban las tiendas total', 'Error');
+  });
+
   //Consulta 1
   $scope.callDineroRecaudadoEnLaTienda = function() {
     Administrador.getDineroRecaudadoEnLaTienda().then(function(response) {

@@ -15,6 +15,13 @@ angular.module('TiendasService', []).factory('Tiendas', ['$rootScope', '$http','
       }).catch(function(err) {
         throw err;
       });
+    },
+    getTiendasTotal: function() {
+      return $http.get('/api/v1/tienda/total?origin=' + $localStorage.origin).then(function(data) {
+        return data;
+      }).catch(function(err) {
+        throw err;
+      });
     }
 
   };

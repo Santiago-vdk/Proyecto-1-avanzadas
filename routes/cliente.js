@@ -2,7 +2,7 @@ module.exports.set = function(app) {
   var direccionador = require('../logic/direccionador');
   var databaseConfig = require('../configs/database');
   var pgp = databaseConfig.getPgp();
-  var debug = true;
+  var debug = false;
 
   app.get('/api/v1/cliente', function(req, res) {
     var destino = req.query.origin || 1;

@@ -4,7 +4,7 @@ module.exports.set = function(app) {
   var pgp = databaseConfig.getPgp();
   var promise = require('promise');
   var $q = require('q');
-  var debug = true;
+  var debug = false;
 
   app.get('/api/v1/venta', function(req, res) {
     var destino = req.query.origin || 1;
