@@ -189,7 +189,7 @@ module.exports.set = function(app) {
     var articulo = req.query.articulo;
     var mes = req.query.mes;
     const columns = [];
-    var myquery = 'SELECT ${columns^} venta_producto_mes_f(' + articulo + ',\'' + mes + '\')';
+    var myquery = 'SELECT ${columns^} venta_producto_mes_f(' + articulo + ',' + mes + ')';
 
     databaseConfig.getDb(destino).query(myquery, {
         columns: columns.map(pgp.as.name).join(),
