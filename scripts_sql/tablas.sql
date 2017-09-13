@@ -94,10 +94,11 @@ CREATE TABLE cambio_tabla (
 );
 
 CREATE TABLE log_tabla (
-  ID        BIGSERIAL,
-  id_tabla  SMALLINT NOT NULL,
-  fila_id   INT NOT NULL,
-  replicado BOOLEAN NOT NULL DEFAULT FALSE,
+  ID          BIGSERIAL,
+  id_tabla    SMALLINT NOT NULL,
+  fila_id     INT NOT NULL,
+  id_sucursal SMALLINT NOT NULL,
+  replicado   BOOLEAN NOT NULL DEFAULT FALSE,
   PRIMARY KEY (ID),
   FOREIGN KEY (id_tabla) REFERENCES cambio_tabla (ID)
 );

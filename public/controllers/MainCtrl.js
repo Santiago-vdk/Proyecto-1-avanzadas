@@ -6,6 +6,16 @@ angular.module('MainCtrl', []).controller('MainController', ['$rootScope', '$sco
   $scope.updateOrigin = function(origin) {
     console.log("Cambiando ubicacion a", origin);
     $localStorage.origin = parseInt(origin);
+    $scope.title = "HELLEDIA"
+    if($localStorage.origin === 1){
+      $scope.title = "HELLEDIA";
+    }
+    else if($localStorage.origin === 2){
+      $scope.title = "JOSESAN";
+    }
+    else if($localStorage.origin === 3){
+      $scope.title = "ALAJUEX";
+    }
   }
 
   $scope.setOrigin = function(origin) {
