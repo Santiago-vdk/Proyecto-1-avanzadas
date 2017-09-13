@@ -46,7 +46,7 @@ CREATE FUNCTION dinero_tienda_periodo_f(tienda INTEGER, desde DATE, hasta DATE)
   WHERE id_tienda = $1 AND fecha >= $2 AND fecha <= $3 AND activo = TRUE
 $$ LANGUAGE SQL;
 
-CREATE FUNCTION dinero_tienda_producto_periodo_f(tienda INTEGER, articulo INTRGER, desde DATE, hasta DATE)
+CREATE FUNCTION dinero_tienda_producto_periodo_f(tienda INTEGER, articulo INTEGER, desde DATE, hasta DATE)
   RETURNS BIGINT AS $$
   SELECT SUM(precio) AS Ventas_tienda_producto
   FROM venta v, venta_articulo va, articulo a

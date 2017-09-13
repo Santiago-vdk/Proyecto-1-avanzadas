@@ -366,8 +366,8 @@ module.exports.set = function(app) {
     var desde = req.query.desde;
     var hasta = req.query.hasta;
 
-    const columns = ['nombre','apellidos','dinero'];
-    var myquery = 'SELECT ${columns^} mejores_clientes_f(\'' + desde + '\',\'' + hasta + '\')';
+    const columns = ['*'];
+    var myquery = 'SELECT ${columns^} from mejores_clientes_f(\'' + desde + '\',\'' + hasta + '\');';
 
     databaseConfig.getDb(destino).query(myquery, {
         columns: columns.map(pgp.as.name).join(),
