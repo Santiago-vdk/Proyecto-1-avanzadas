@@ -44,7 +44,7 @@ INSERT INTO cambio_tabla (nombre) VALUES ('tipo_articulo');
 INSERT INTO cambio_tabla (nombre) VALUES ('articulo');
 INSERT INTO cambio_tabla (nombre) VALUES ('venta');
 INSERT INTO cambio_tabla (nombre) VALUES ('venta_articulo');
-
+INSERT INTO cambio_tabla (nombre) VALUES ('cambio_tabla');
 
 INSERT INTO sucursal (nombre) VALUES ('Heredia');
 INSERT INTO sucursal (nombre) VALUES ('San José');
@@ -53,6 +53,17 @@ INSERT INTO sucursal (nombre) VALUES ('Alajuela');
 INSERT INTO log_tabla(id_tabla,fila_id,id_sucursal) VALUES (4,1,1);
 INSERT INTO log_tabla(id_tabla,fila_id,id_sucursal) VALUES (4,2,1);
 INSERT INTO log_tabla(id_tabla,fila_id,id_sucursal) VALUES (4,3,1);
+
+INSERT INTO log_tabla(id_tabla,fila_id,id_sucursal) VALUES (10,1,1);
+INSERT INTO log_tabla(id_tabla,fila_id,id_sucursal) VALUES (10,2,1);
+INSERT INTO log_tabla(id_tabla,fila_id,id_sucursal) VALUES (10,3,1);
+INSERT INTO log_tabla(id_tabla,fila_id,id_sucursal) VALUES (10,4,1);
+INSERT INTO log_tabla(id_tabla,fila_id,id_sucursal) VALUES (10,5,1);
+INSERT INTO log_tabla(id_tabla,fila_id,id_sucursal) VALUES (10,6,1);
+INSERT INTO log_tabla(id_tabla,fila_id,id_sucursal) VALUES (10,7,1);
+INSERT INTO log_tabla(id_tabla,fila_id,id_sucursal) VALUES (10,8,1);
+INSERT INTO log_tabla(id_tabla,fila_id,id_sucursal) VALUES (10,9,1);
+INSERT INTO log_tabla(id_tabla,fila_id,id_sucursal) VALUES (10,10,1);
 
 INSERT INTO tienda (id_sucursal, nombre) VALUES (1, 'HELLEDIA');
 INSERT INTO tienda (id_sucursal, nombre) VALUES (2, 'JOSESAN');
