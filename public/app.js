@@ -25,3 +25,10 @@ var app = angular.module('app', [
   , 'PuestosService'
 
 ]);
+
+
+app.filter('reverse', function() {
+  return function(items) {
+    return items.slice().reverse();
+  };
+});
