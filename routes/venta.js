@@ -4,7 +4,7 @@ module.exports.set = function(app) {
   var pgp = databaseConfig.getPgp();
   var promise = require('promise');
   var $q = require('q');
-  var debug = false;
+  var debug = true;
 
   app.get('/api/v1/venta', function(req, res) {
     var destino = req.query.origin || 1;
@@ -66,19 +66,19 @@ module.exports.set = function(app) {
 
   app.post('/api/v1/venta', function(req, res) {
     var destino = req.query.origin || 1;
-    var fecha = req.query.fecha || "null";
     // Default siempre desde heredia
-    const columns = ['id_cliente', 'id_tienda', 'id_empleado', 'monto'];
+    var columns = ['id_cliente', 'id_tienda', 'id_empleado', 'monto'];
     var id_cliente = req.body.id_cliente;
     var id_tienda = req.body.id_tienda;
     var id_empleado = req.body.id_empleado;
     var monto = req.body.monto;
     var articulos = req.body.articulos;
+    var fecha = req.body.fecha || null;
     var myquery = 'INSERT INTO public.venta(${columns^}) VALUES (' + id_cliente + ',' + id_tienda + ',' + id_empleado + ',' + monto + ') returning id';
 
-    if(fecha.localeCompare("null") !=0){
+    if(fecha != null){
         columns = ['id_cliente', 'id_tienda', 'id_empleado', 'monto','fecha'];
-        myquery = 'INSERT INTO public.venta(${columns^}) VALUES (' + id_cliente + ',' + id_tienda + ',' + id_empleado + ',' + monto + ','+fecha+') returning id';
+        myquery = 'INSERT INTO public.venta(${columns^}) VALUES (' + id_cliente + ',' + id_tienda + ',' + id_empleado + ',' + monto + ',\''+fecha+'\') returning id';
 
     }
 
@@ -176,9 +176,9 @@ module.exports.set = function(app) {
       } else {
         if (error.code.localeCompare("ETIMEDOUT") === 0) {
           console.log('Error de conexion, realizando consulta en nodo principal Heredia');
-          if(fecha.localeCompare("null") !=0){
+          if(fecha != null){
               columns = ['id_cliente', 'id_tienda', 'id_empleado', 'monto','fecha'];
-              myquery = 'INSERT INTO public.venta(${columns^}) VALUES (' + id_cliente + ',' + id_tienda + ',' + id_empleado + ',' + monto + ','+fecha+') returning id';
+              myquery = 'INSERT INTO public.venta(${columns^}) VALUES (' + id_cliente + ',' + id_tienda + ',' + id_empleado + ',' + monto + ',\''+fecha+'\') returning id';
           }
           databaseConfig.getDb(1).query(myquery, {
               columns: columns.map(pgp.as.name).join(),
