@@ -1,4 +1,4 @@
-angular.module('AdministradoresCtrl', []).controller('AdministradoresController', ['$rootScope', '$scope', '$state', 'Administrador', 'Clientes', 'Articulos', 'Tiendas','$localStorage', function($rootScope, $scope, $state, Administrador, Clientes, Articulos, Tiendas, $localStorage) {
+angular.module('AdministradoresCtrl', []).controller('AdministradoresController', ['$rootScope', '$scope', '$state', 'Administrador', 'Clientes', 'Articulos', 'Tiendas','$localStorage','toastr', function($rootScope, $scope, $state, Administrador, Clientes, Articulos, Tiendas, $localStorage,toastr) {
   $scope.params = {};
   $scope.isHeredia = function() {
     if ($localStorage.origin === 1) {
@@ -44,7 +44,13 @@ angular.module('AdministradoresCtrl', []).controller('AdministradoresController'
   //Consulta 1
   $scope.callDineroRecaudadoEnLaTienda = function() {
     Administrador.getDineroRecaudadoEnLaTienda().then(function(response) {
+
       $scope.dinero_recaudado = response.data.data[0];
+
+      if ($scope.dinero_recaudado.dinero_tienda_f === null) {
+        toastr.warning('No hay dinero recaudado para esta tienda', 'Warning');
+
+      }
     }).catch(function(err) {
       toastr.error('Hubo un error mientras se procesaba la consulta 1', 'Error');
     });
@@ -111,7 +117,6 @@ angular.module('AdministradoresCtrl', []).controller('AdministradoresController'
     params.hasta = fixDate(params.hasta);
 
     Administrador.getMejoresClientesPeriodo(params).then(function(response) {
-      console.log(response);
       $scope.mejores = response.data.data;
     }).catch(function(err) {
       toastr.error('Hubo un error mientras se procesaba la consulta 7', 'Error');
