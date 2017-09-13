@@ -66,6 +66,7 @@ module.exports.set = function(app) {
 
   app.post('/api/v1/venta', function(req, res) {
     var destino = req.query.origin || 1;
+    var fecha = req.query.fecha || "null";
     // Default siempre desde heredia
     const columns = ['id_cliente', 'id_tienda', 'id_empleado', 'monto'];
     var id_cliente = req.body.id_cliente;
@@ -74,6 +75,12 @@ module.exports.set = function(app) {
     var monto = req.body.monto;
     var articulos = req.body.articulos;
     var myquery = 'INSERT INTO public.venta(${columns^}) VALUES (' + id_cliente + ',' + id_tienda + ',' + id_empleado + ',' + monto + ') returning id';
+
+    if(fecha.localeCompare("null") !=0){
+        columns = ['id_cliente', 'id_tienda', 'id_empleado', 'monto','fecha'];
+        myquery = 'INSERT INTO public.venta(${columns^}) VALUES (' + id_cliente + ',' + id_tienda + ',' + id_empleado + ',' + monto + ','+fecha+') returning id';
+
+    }
 
     if (articulos.length === 0) {
       res.status(500).send();
@@ -169,7 +176,10 @@ module.exports.set = function(app) {
       } else {
         if (error.code.localeCompare("ETIMEDOUT") === 0) {
           console.log('Error de conexion, realizando consulta en nodo principal Heredia');
-          var myquery = 'INSERT INTO public.venta(${columns^}) VALUES (' + id_cliente + ',' + id_tienda + ',' + id_empleado + ',' + monto + ') returning id';
+          if(fecha.localeCompare("null") !=0){
+              columns = ['id_cliente', 'id_tienda', 'id_empleado', 'monto','fecha'];
+              myquery = 'INSERT INTO public.venta(${columns^}) VALUES (' + id_cliente + ',' + id_tienda + ',' + id_empleado + ',' + monto + ','+fecha+') returning id';
+          }
           databaseConfig.getDb(1).query(myquery, {
               columns: columns.map(pgp.as.name).join(),
               table: 'Table Name'
