@@ -77,7 +77,7 @@ CREATE TABLE venta (
 );
 
 CREATE TABLE venta_articulo (
-  ID          SERIAL,
+  ID         SERIAL,
   id_venta    INT NOT NULL,
   id_articulo SMALLINT NOT NULL,
   Activo      BOOLEAN NOT NULL DEFAULT TRUE,

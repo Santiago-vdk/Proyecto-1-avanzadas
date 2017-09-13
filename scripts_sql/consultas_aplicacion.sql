@@ -52,6 +52,8 @@ CREATE FUNCTION dinero_tienda_producto_periodo_f(tienda INTEGER, articulo INTEGE
   FROM venta v, venta_articulo va, articulo a
   WHERE v.id_tienda = $1 AND v.fecha >= $3 AND v.fecha <= $4 AND v.activo = TRUE
     AND va.activo = TRUE AND va.id_articulo = $2 AND a.id = $2
+  GROUP BY v.id
+  FETCH FIRST 1 ROWS ONLY
 $$ LANGUAGE SQL;
 
 CREATE TYPE mejores_clientes_t AS (
