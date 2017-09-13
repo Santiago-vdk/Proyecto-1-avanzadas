@@ -21,12 +21,15 @@ angular.module('MainCtrl', []).controller('MainController', ['$rootScope', '$sco
   $scope.setOrigin = function(origin) {
     if($localStorage.origin === 1){
       $scope.radio = "1";
+      $scope.title = "HELLEDIA"
     }
     else if($localStorage.origin === 2){
       $scope.radio = "2";
+      $scope.title = "JOSESAN"
     }
     else if($localStorage.origin === 3){
       $scope.radio = "3";
+      $scope.title = "ALAJUEX"
     }
   }
 
