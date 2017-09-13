@@ -5,19 +5,12 @@ angular.module('VendedoresCtrl', []).controller('VendedoresController', ['$scope
   $scope.loading_ventas = false;
 
   function fixDate(date) {
-    date = new Date(date);
-    year = date.getFullYear();
-    month = date.getMonth() + 1;
-    dt = date.getDate();
+    var json = JSON.stringify(date);
+    var year = json.substring(1,5);
+    var month = json.substring(6,8);
+    var day = json.substring(9,11);
 
-    if (dt < 10) {
-      dt = '0' + dt;
-    }
-    if (month < 10) {
-      month = '0' + month;
-    }
-    return dt + '/' + month + '/' + year;
-
+    return day + '/' + month + '/' + year;
   }
 
   $scope.agregarVenta = function(venta, articulos) {
@@ -34,6 +27,7 @@ angular.module('VendedoresCtrl', []).controller('VendedoresController', ['$scope
 
 
     var fixedFecha = fixDate(venta.fecha);
+    console.log(fixedFecha);
     var data = {
       id_cliente: venta.idCliente,
       id_tienda: venta.idTienda,
