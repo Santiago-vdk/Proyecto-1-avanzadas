@@ -34,7 +34,7 @@ angular.module('VendedoresCtrl', []).controller('VendedoresController', ['$scope
 
 
     var fixedFecha = fixDate(venta.fecha);
-    console.log(fixedFecha);
+
     var data = {
       id_cliente: venta.idCliente,
       id_tienda: venta.idTienda,
